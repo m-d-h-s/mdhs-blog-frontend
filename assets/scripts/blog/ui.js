@@ -1,4 +1,6 @@
 'use strict'
+const store = require('../store.js')
+
 const showBlogTemplate = require('../templates/blog-listing.handlebars')
 
 const onCreateBlogSuccess = (responseData) => {
@@ -12,7 +14,7 @@ const onCreateBlogSuccess = (responseData) => {
 
 const onIndexBlogSuccess = (responseData) => {
   $('#user-message').text('successfully got posts!')
-  const showBlogHtml = showBlogTemplate({ blog: responseData.blog })
+  const showBlogHtml = showBlogTemplate({ blogs: responseData.blog, userId: store.user._id })
   $('form').trigger('reset')
   $('input').trigger('reset')
   $('#blog-content').empty()

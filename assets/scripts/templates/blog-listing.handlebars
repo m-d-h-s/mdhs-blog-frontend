@@ -1,25 +1,40 @@
 <div>
   <h2> Blog Posts </h2>
 </div>
-{{#each blog as |blog|}}
-  <div>
-    <h2>
-      <small>Title:</small> {{limit blog.title 40}}
-    </h2>
-    <p>
-      <small>Body:</small>
-      {{#if blog.body}}
-        {{blog.body}}
-      {{else}}
-        No body text.
-      {{/if}}
-    </p>
-    <p><small>id: </small>
-      {{#if blog._id}}
-        {{blog._id}}
-      {{else}}
-        No id.
-      {{/if}}</p>
+{{#each blogs as |blog|}}
+  <div id="blog-{{blog.id}}" data-id={{blog.id}} data-owner="{{blog.owner}}" class="bg-dark text-light m-2">
+    <h2> {{blog.title}} </h2>
+    <p>Body: {{blog.body}} </p>
+    <h2>ID: {{blog._id}}</h2>
+    <h2>Blog Owner: {{blog.owner}} </h2>
+
+
+    {{#each blog.comments as |comment|}}
+      <div class="">
+        <h2>Comment: {{comment.text}}</h2>
+
+        {{#if ifEquals userId comment.owner }}
+        <form id="update-comment-{{comment._id}}" data-id={{comment._id}} class="comment-crud-form" data-action="update">
+          <input name="comment[text]" type="text" placeholder="text" required>
+          <button type="submit">Update</button>
+        </form>
+        <form id="delete-comment" data-id={{comment._id}} class="comment-crud-form d-none" data-action="delete">
+          <button type="submit">Delete</button>
+        </form>
+        {{else}}
+        {{/if}}
+
+      </div>
+    {{/each}}
+
+
+    <form id="new-comment" class="comment-crud-form" data-action="create">
+      <input name="comment[text]" type="text" placeholder="text" required>
+      <button type="submit">Create Comment</button>
+    </form>
+
+
   </div>
+
 
 {{/each}}

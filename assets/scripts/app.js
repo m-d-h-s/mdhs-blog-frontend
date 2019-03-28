@@ -18,7 +18,7 @@ $(() => {
     const crudAction = $(event.target).data('action')
     blogEvents.onBlogCrud[crudAction](event)
   })
-  $('.comment-crud-form').on('submit', (event) => {
+  $('body').on('submit', '.comment-crud-form', (event) => {
     event.preventDefault()
     const crudAction = $(event.target).data('action')
     commentEvents.onCommentCrud[crudAction](event)

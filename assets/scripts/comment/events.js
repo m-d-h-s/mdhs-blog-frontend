@@ -34,8 +34,8 @@ const onCommentCrud = {
   },
   delete: function (event) {
     event.preventDefault()
-    const formData = getFormFields(event.target)
-    api.deleteComment(formData)
+    const data = $(event.target).data('id')
+    api.deleteComment(data)
       .then(ui.onDeleteCommentSuccess)
       .catch(ui.onCommentFailure)
   }
