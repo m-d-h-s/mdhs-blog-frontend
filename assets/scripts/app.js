@@ -1,5 +1,5 @@
 'use strict'
-
+const blogEvents = require('./blog/events.js')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -7,5 +7,9 @@
 // require('./example')
 
 $(() => {
-  // your JS code goes here
+  $('.blog-crud-form').on('submit', (event) => {
+    event.preventDefault()
+    const crudAction = $(event.target).data('action')
+    blogEvents.onBlogCrud[crudAction](event)
+  })
 })
