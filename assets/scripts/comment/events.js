@@ -2,16 +2,28 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const blog = require('../blog/events')
 
 const onCommentCrud = {
-  create: function (event) {
+  create: () => {
+    console.log('onCommentCrudCreate')
     event.preventDefault()
     const formData = getFormFields(event.target)
-    api.createComment(formData)
+    const blogId = $(event.target).data('blog-id')
+    api.createComment(formData, blogId)
       .then(ui.onCreateCommentSuccess)
+      .then(() => blog.onBlogCrud.index())
       .catch(ui.onCommentFailure)
   },
-  index: function (event) {
+  index: () => {
+    console.log('onCommentCrudIndex')
+    if (event) { event.preventDefault() }
+    api.indexComment()
+      .then(ui.onIndexCommentSuccess)
+      .catch(ui.onCommentFailure)
+  },
+  delete: function () {
+    console.log('onCommentCrudDelete')
     event.preventDefault()
     const formData = getFormFields(event.target)
     api.indexComment(formData)
@@ -25,22 +37,28 @@ const onCommentCrud = {
       .then(ui.onShowCommentSuccess)
       .catch(ui.onCommentFailure)
   },
-  update: function (event) {
+  update: () => {
+    console.log('onCommentCrudUpdate')
     event.preventDefault()
+    const data = $(event.target).data('comment-id')
     const formData = getFormFields(event.target)
-    api.updateComment(formData)
+    console.log(data)
+    api.updateComment(formData, data)
       .then(ui.onUpdateCommentSuccess)
-      .catch(ui.onCommentFailure)
-  },
-  delete: function (event) {
-    event.preventDefault()
-    const formData = getFormFields(event.target)
-    api.deleteComment(formData)
-      .then(ui.onDeleteCommentSuccess)
+      .then(() => blog.onBlogCrud.index())
       .catch(ui.onCommentFailure)
   }
 }
 
+const addHandlers = () => {
+  $('body').on('submit', '.comment-crud-form', (event) => {
+    event.preventDefault()
+    const crudAction = $(event.target).data('action')
+    onCommentCrud[crudAction](event)
+  })
+}
+
 module.exports = {
+  addHandlers,
   onCommentCrud
 }

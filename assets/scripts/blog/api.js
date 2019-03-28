@@ -1,15 +1,13 @@
 'use strict'
 const config = require('../config.js')
-// const store = require('../store.js')
+const store = require('../store.js')
 
 const createBlog = (formData) => {
   const blog = formData.blog
   return $.ajax({
     url: config.apiUrl + '/blogs',
     method: 'POST',
-    // headers: {
-    //   Authorization: 'Token token=' + store.user.token
-    // },
+    headers: { Authorization: 'Token token=' + store.user.token },
     data: {blog}
   })
 }
@@ -24,10 +22,10 @@ const indexBlog = () => {
 const indexMyBlogs = () => {
   return $.ajax({
     url: config.apiUrl + '/my-blogs',
-    method: 'GET'
-    // headers: {
-    //   Authorization: 'Token token=' + store.user.token
-    // }
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
@@ -39,27 +37,25 @@ const showBlog = (formData) => {
   })
 }
 
-const updateBlog = (formData) => {
-  const blog = formData.blog
-  const id = formData.blog.id
+const updateBlog = (formData, id) => {
+  console.log('updateBlog')
   return $.ajax({
     url: config.apiUrl + `/blogs/${id}`,
     method: 'PATCH',
-    // headers: {
-    //   Authorization: 'Token token=' + store.user.token
-    // },
-    data: {blog}
+    headers: { Authorization: 'Token token=' + store.user.token },
+    data: {
+      blog: {
+        title: formData.blog.title,
+        body: formData.blog.body
+      }}
   })
 }
 
-const deleteBlog = (formData) => {
-  const id = formData.blog.id
+const deleteBlog = (formData, id) => {
   return $.ajax({
     url: config.apiUrl + `/blogs/${id}`,
-    method: 'DELETE'
-    // headers: {
-    //   Authorization: 'Token token=' + store.user.token
-    // }
+    method: 'DELETE',
+    headers: { Authorization: 'Token token=' + store.user.token }
   })
 }
 

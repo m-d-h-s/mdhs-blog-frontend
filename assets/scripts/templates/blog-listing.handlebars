@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div>
   <h2> Blog Posts </h2>
 </div>
@@ -22,4 +23,51 @@
       {{/if}}</p>
   </div>
 
+=======
+{{#each blogs as |blog|}}
+  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="bg-dark text-light m-5 p-5">
+    <h2>Title: {{blog.title}} </h2>
+    <h2>Body: {{blog.body}} </h2>
+    <h2>ID: {{blog._id}}</h2>
+    <h2>Blog Owner: {{blog.owner}} </h2>
+
+    <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} class="blog-crud-form" data-action="update">
+      <input name="blog[title]" type="text" placeholder="text" required>
+      <input name="blog[body]" type="text" placeholder="text" required>
+      <button type="submit">Update</button>
+    </form>
+    <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} class="blog-crud-form" data-action="delete">
+      <button type="submit">Delete</button>
+    </form>
+
+
+    {{#each blog.comments as |comment|}}
+    <div id="comment-{{comment._id}}" class="bg-success p-5 my-2" data-owner="{{comment.owner}}">
+        <h4>{{comment.owner}} says </h4>
+        <h4>"{{comment.text}}"</h4>
+
+        <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
+          <input name="comment[text]" type="text" placeholder="text" required>
+          <button type="submit">Update</button>
+        </form>
+        <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="delete">
+          <button type="submit">Delete</button>
+        </form>
+
+    </div>
+
+
+    {{/each}}
+
+    <form data-blog-id={{blog.id}} class="comment-crud-form" data-action="create">
+      <input name="comment[text]" type="text" placeholder="text" required>
+      <button type="submit">Create Comment</button>
+    </form>
+
+  </div>
+
+
+
+
+>>>>>>> Stashed changes
 {{/each}}
