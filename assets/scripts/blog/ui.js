@@ -3,7 +3,7 @@ const showBlogTemplate = require('../templates/blog-listing.handlebars')
 
 const onCreateBlogSuccess = (responseData) => {
   $('#user-message').text('successfully created post!')
-  const showBlogHtml = showBlogTemplate({ blog: responseData.blog })
+  const showBlogHtml = showBlogTemplate({ blog: responseData })
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#blog-content').empty()
