@@ -16,6 +16,29 @@
 <body>
   <h1>MDHS Blog</h1>
   <h2 id="user-message"></h2>
+  <h2>Auth</h2>
+  <form id="sign-up-form">
+    <input name="credentials[email]" required type="email" placeholder="email">
+    <input name="credentials[password]" required type="password" placeholder="password">
+    <input name="credentials[password_confirmation]" required type="password" placeholder="password confirmation">
+    <input type="submit" value="Sign Up" class="button">
+  </form>
+
+  <form id="sign-in-form">
+    <input name="credentials[email]" required type="email" placeholder="email">
+    <input name="credentials[password]" required type="password" placeholder="password">
+    <input type="submit" value="Sign In" class="button">
+  </form>
+
+  <form id="change-password-form">
+    <input name="passwords[old]" required type="password" placeholder="old password">
+    <input name="passwords[new]" required type="password" placeholder="new password">
+    <input type="submit" value="Change Password" class="button">
+  </form>
+
+  <form id="sign-out-form">
+    <input type="submit" value="Sign Out" class="button">
+  </form>
   <h2>Create</h2>
   <form id="new-blog" class="blog-crud-form" data-action="create">
     <input name="blog[title]" type="text" placeholder="title" required>
