@@ -1,0 +1,12 @@
+<div>
+  <h2> Comments </h2>
+</div>
+{{#each comment as |comment|}}
+  <div>
+    <h3>
+      <small>Text:</small> {{comment.text}}
+    </h2>
+    <p><small>ID: </small> {{comment._id}}</p>
+  </div>
+
+{{/each}}
