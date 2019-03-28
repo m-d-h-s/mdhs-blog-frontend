@@ -1,17 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>MDHS Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <h1>MDHS Blog</h1>
+  <h2 id="user-message"></h2>
+  <h2>Create</h2>
+  <form id="new-blog" class="blog-crud-form" data-action="create">
+    <input name="blog[title]" type="text" placeholder="title" required>
+    <textarea name="blog[body]" placeholder="body" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <h2>Index</h2>
+  <form id="index-blog" class="blog-crud-form" data-action="index">
+    <button type="submit">Submit</button>
+  </form>
+  <h2>Show</h2>
+  <form id="show-blog" class="blog-crud-form" data-action="show">
+    <input name="blog[id]" type="text" placeholder="id" required>
+    <button type="submit">Submit</button>
+  </form>
+  <h2>Update</h2>
+  <form id="update-blog" class="blog-crud-form" data-action="update">
+    <input name="blog[id]" type="text" placeholder="id" required>
+    <input name="blog[title]" type="text" placeholder="title" required>
+    <textarea name="blog[body]" placeholder="body" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <h2>Delete</h2>
+  <form id="delete-blog" class="blog-crud-form" data-action="delete">
+    <input name="blog[id]" type="text" placeholder="id" required>
+    <button type="submit">Submit</button>
+  </form>
+  <section id="blog-content">
+    <h2> Blog Posts</h2>
+  </section>
+</body>
+
 </html>

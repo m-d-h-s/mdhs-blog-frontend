@@ -1,0 +1,25 @@
+<div>
+  <h2> Blog Posts </h2>
+</div>
+{{#each blog as |blog|}}
+  <div>
+      <h2>
+        <small>Title:</small> {{limit blog.title 40}}
+      </h2>
+      <p>
+        <small>Body:</small>
+        {{#if blog.body}}
+          {{blog.body}}
+        {{else}}
+          No body text.
+        {{/if}}
+      </p>
+      <p><small>id: </small>
+        {{#if blog._id}}{{blog._id}}
+        {{else}}
+          No id.
+        {{/if}}</p>
+      <p>
+  </div>
+
+{{/each}}
