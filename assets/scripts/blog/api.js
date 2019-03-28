@@ -42,7 +42,6 @@ const showBlog = (formData) => {
 const updateBlog = (formData) => {
   const blog = formData.blog
   const id = formData.blog.id
-  console.log(blog)
   return $.ajax({
     url: config.apiUrl + `/blogs/${id}`,
     method: 'PATCH',
