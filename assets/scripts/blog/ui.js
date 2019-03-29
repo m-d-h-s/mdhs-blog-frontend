@@ -4,7 +4,7 @@ const store = require('../store')
 const view = require('../view/view')
 
 const onCreateBlogSuccess = (responseData) => {
-  console.log('onCreateBlogSuccess')
+  // console.log('onCreateBlogSuccess')
   $('#user-message').text('successfully created post!')
   const showBlogHtml = showBlogTemplate({ blog: responseData })
   $('input').trigger('reset')
@@ -14,7 +14,7 @@ const onCreateBlogSuccess = (responseData) => {
 }
 
 const onIndexBlogSuccess = (responseData) => {
-  console.log('onIndexBlogSuccess')
+  // console.log('onIndexBlogSuccess')
   $('#user-message').text('successfully got posts!')
   const showBlogHtml = showBlogTemplate({ blogs: responseData.blog })
   $('form').trigger('reset')
@@ -23,7 +23,7 @@ const onIndexBlogSuccess = (responseData) => {
   $('#blog-content').append(showBlogHtml)
 
   view.showOwnership()
-  console.log(store)
+  // console.log(store)
   store.user ? $('.post-login').show() : $('.post-login').hide()
 }
 const onShowBlogSuccess = (responseData) => {
@@ -48,7 +48,7 @@ const onDeleteBlogSuccess = id => {
 const onBlogFailure = (responseData) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#user-message').text('something went wrong...')
+  $('#user-message').text('Something went wrong with Blog...')
 }
 
 module.exports = {

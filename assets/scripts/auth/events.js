@@ -10,18 +10,18 @@ const onSignUp = (event) => {
 
   api.signUp(formData)
     .then(ui.signUpSuccess)
-    .catch(ui.signUpFailure)
+    .catch(ui.failure)
 }
 
 const onSignIn = (event) => {
-  console.log('onSignIn')
+  // console.log('onSignIn')
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
 
   api.signIn(formData)
     .then(ui.signInSuccess)
-    .catch(ui.signInFailure)
+    .catch(ui.failure)
 }
 
 const onChangePassword = (event) => {
@@ -31,11 +31,11 @@ const onChangePassword = (event) => {
 
   api.changePassword(formData)
     .then(ui.changePasswordSuccess)
-    .catch(ui.changePasswordFailure)
+    .catch(ui.failure)
 }
 
 const onSignOut = (event) => {
-  console.log('onSignOut')
+  // console.log('onSignOut')
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)

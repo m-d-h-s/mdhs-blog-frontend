@@ -7,11 +7,6 @@ const signUpSuccess = () => {
   $('form').trigger('reset')
 }
 
-const signUpFailure = () => {
-  $('#user-message').text('Error on sign up :(')
-  $('form').trigger('reset')
-}
-
 const signInSuccess = (responseData) => {
   store.user = responseData.user
   $('#user-message').text('Successfully signed in!')
@@ -21,23 +16,9 @@ const signInSuccess = (responseData) => {
   view.showOwnership()
 }
 
-const signInFailure = () => {
-  $('#user-message').show()
-  $('#user-message').text('Error on sign in :(')
-  $('form').trigger('reset')
-}
-
 const changePasswordSuccess = () => {
   $('#user-message').show()
   $('#user-message').text('Successfully changed password!')
-  $('form').trigger('reset')
-  $('#show-one-book-club').hide()
-  $('#show-book-club-list').hide()
-}
-
-const changePasswordFailure = () => {
-  $('#user-message').show()
-  $('#user-message').text('Error: Password change failure!')
   $('form').trigger('reset')
 }
 
@@ -51,18 +32,16 @@ const signOutSuccess = () => {
   store.user = null
 }
 
-const signOutFailure = () => {
+const failure = () => {
   $('#user-message').show()
-  $('#user-message').text('Error signing out')
+  $('#user-message').text('SOMETHING WENT WRONG')
   $('form').trigger('reset')
 }
+
 module.exports = {
   signUpSuccess,
-  signUpFailure,
   signInSuccess,
-  signInFailure,
   signOutSuccess,
-  signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  failure
 }

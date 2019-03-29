@@ -6,7 +6,7 @@ const blog = require('../blog/events')
 
 const onCommentCrud = {
   create: () => {
-    console.log('onCommentCrudCreate')
+    // console.log('onCommentCrudCreate')
     event.preventDefault()
     const formData = getFormFields(event.target)
     const blogId = $(event.target).data('blog-id')
@@ -16,14 +16,14 @@ const onCommentCrud = {
       .catch(ui.onCommentFailure)
   },
   index: () => {
-    console.log('onCommentCrudIndex')
+    // console.log('onCommentCrudIndex')
     if (event) { event.preventDefault() }
     api.indexComment()
       .then(ui.onIndexCommentSuccess)
       .catch(ui.onCommentFailure)
   },
   delete: function () {
-    console.log('onCommentCrudDelete')
+    // console.log('onCommentCrudDelete')
     event.preventDefault()
     const data = $(event.target).data('comment-id')
     api.deleteComment(data)
@@ -38,11 +38,11 @@ const onCommentCrud = {
       .catch(ui.onCommentFailure)
   },
   update: () => {
-    console.log('onCommentCrudUpdate')
+    // console.log('onCommentCrudUpdate')
     event.preventDefault()
     const data = $(event.target).data('comment-id')
     const formData = getFormFields(event.target)
-    console.log(data)
+    // console.log(data)
     api.updateComment(formData, data)
       .then(ui.onUpdateCommentSuccess)
       .then(() => blog.onBlogCrud.index())
