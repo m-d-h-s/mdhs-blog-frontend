@@ -25,9 +25,9 @@ const onCommentCrud = {
   delete: function () {
     console.log('onCommentCrudDelete')
     event.preventDefault()
-    const formData = getFormFields(event.target)
-    api.indexComment(formData)
-      .then(ui.onIndexCommentSuccess)
+    const data = $(event.target).data('comment-id')
+    api.deleteComment(data)
+      .then(() => blog.onBlogCrud.index())
       .catch(ui.onCommentFailure)
   },
   show: function (event) {

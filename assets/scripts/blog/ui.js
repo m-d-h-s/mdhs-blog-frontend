@@ -11,15 +11,16 @@ const onCreateBlogSuccess = (responseData) => {
 }
 
 const onIndexBlogSuccess = (responseData) => {
+  console.log('onIndexBlogSuccess')
   $('#user-message').text('successfully got posts!')
-  const showBlogHtml = showBlogTemplate({ blog: responseData.blog })
+  const showBlogHtml = showBlogTemplate({ blogs: responseData.blog })
   $('form').trigger('reset')
   $('input').trigger('reset')
   $('#blog-content').empty()
   $('#blog-content').append(showBlogHtml)
 }
 const onShowBlogSuccess = (responseData) => {
-  const showBlogHtml = showBlogTemplate({ blog: responseData })
+  const showBlogHtml = showBlogTemplate({ blogs: responseData })
   $('form').trigger('reset')
   $('input').trigger('reset')
   $('#blog-content').empty()

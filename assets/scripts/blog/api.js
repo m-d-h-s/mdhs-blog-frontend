@@ -13,6 +13,7 @@ const createBlog = (formData) => {
 }
 
 const indexBlog = () => {
+  console.log('indexBlog')
   return $.ajax({
     url: config.apiUrl + '/blogs',
     method: 'GET'
@@ -23,9 +24,7 @@ const indexMyBlogs = () => {
   return $.ajax({
     url: config.apiUrl + '/my-blogs',
     method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    headers: { Authorization: 'Token token=' + store.user.token }
   })
 }
 

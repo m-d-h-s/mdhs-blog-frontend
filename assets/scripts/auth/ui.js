@@ -48,7 +48,6 @@ const signOutSuccess = () => {
   $('#user-message').show()
   $('#user-message').text('Successfully signed out!')
   $('form').trigger('reset')
-  store.user = null
   $('.book-forms').hide()
   $('#sign-out-form').hide()
   $('#sign-in-form').show()
@@ -56,6 +55,7 @@ const signOutSuccess = () => {
   $('#change-password-form').hide()
   $('#show-one-book-club').hide()
   $('#show-book-club-list').hide()
+  store.user = null
 }
 
 const signOutFailure = () => {

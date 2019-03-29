@@ -33,6 +33,7 @@ const onUpdateCommentSuccess = (responseData) => {
   $('#user-message').text('successfully updated post!')
 }
 const onDeleteCommentSuccess = (responseData, element) => {
+  console.log('onDeleteCommentSuccess')
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#user-message').text('successfully deleted post!')
