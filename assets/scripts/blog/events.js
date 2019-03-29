@@ -5,7 +5,7 @@ const ui = require('./ui.js')
 
 const onBlogCrud = {
   create: function (event) {
-    console.log('onBlogCrudCreate')
+    // console.log('onBlogCrudCreate')
     event.preventDefault()
     const formData = getFormFields(event.target)
     api.createBlog(formData)
@@ -14,14 +14,14 @@ const onBlogCrud = {
       .catch(ui.onBlogFailure)
   },
   index: function (event) {
-    console.log('onBlogCrudIndex')
+    // console.log('onBlogCrudIndex')
     if (event) { event.preventDefault() }
     api.indexBlog()
       .then(ui.onIndexBlogSuccess)
       .catch(ui.onBlogFailure)
   },
   show: function (event) {
-    console.log('onBlogCrudShow')
+    // console.log('onBlogCrudShow')
     if (event) { event.preventDefault() }
     const formData = getFormFields(event.target)
     api.showBlog(formData)
@@ -29,7 +29,7 @@ const onBlogCrud = {
       .catch(ui.onBlogFailure)
   },
   update: function (event) {
-    console.log('onBlogCrudUpdate')
+    // console.log('onBlogCrudUpdate')
     event.preventDefault()
     const blogId = $(event.target).data('blog-id')
     const formData = getFormFields(event.target)
@@ -39,7 +39,7 @@ const onBlogCrud = {
       .catch(ui.onBlogFailure)
   },
   delete: function (event) {
-    console.log('onBlogCrudDelete')
+    // console.log('onBlogCrudDelete')
     event.preventDefault()
     const id = $(event.target).data('blog-id')
     api.deleteBlog(id)
@@ -49,7 +49,7 @@ const onBlogCrud = {
 }
 
 const onToggleComments = () => {
-  console.log('onToggleComments')
+  // console.log('onToggleComments')
   event.preventDefault()
   const blog = $(event.target).data('blog-id')
   $(`.collapse[data-blog-id=${blog}]`).collapse('toggle')

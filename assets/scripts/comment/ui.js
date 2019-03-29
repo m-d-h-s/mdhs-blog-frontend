@@ -3,7 +3,7 @@ const showCommentTemplate = require('../templates/comment-listing.handlebars')
 const view = require('../view/view')
 
 const onCreateCommentSuccess = (responseData, blog) => {
-  console.log('onCreateCommentSuccess')
+  // console.log('onCreateCommentSuccess')
   $('#user-message').text('successfully created post!')
   const showCommentHtml = showCommentTemplate({ comment: responseData, blog: blog })
   $('input').trigger('reset')
@@ -13,7 +13,7 @@ const onCreateCommentSuccess = (responseData, blog) => {
 }
 
 const onIndexCommentSuccess = (responseData) => {
-  console.log('onIndexCommentSuccess')
+  // console.log('onIndexCommentSuccess')
   $('#user-message').text('successfully got posts!')
   const showCommentHtml = showCommentTemplate({ comment: responseData.comment })
   $('form').trigger('reset')
@@ -29,20 +29,19 @@ const onShowCommentSuccess = (responseData) => {
   $('#comment-content').append(showCommentHtml)
 }
 const onUpdateCommentSuccess = (responseData, comment, blog) => {
-  console.log(comment)
-  console.log(responseData)
+  // console.log(comment)
+  // console.log(responseData)
   $('#user-message').text('successfully updated post!')
-  // const showCommentHtml = showCommentTemplate({ comment: responseData, blog: blog })
   $('input').trigger('reset')
   $('form').trigger('reset')
-  // $(`#comment-${comment}`).replaceWith('replaced')
 
-  $(`#comment-text-${comment}`).replaceWith(`<h4 id="comment-text-${comment}">${responseData.comment.text}</h4>`)
+  $(`#comment-text-${comment}`).text(responseData.comment.text)
+  $(`#comment-textarea-${comment}`).text(responseData.comment.text)
 
   view.showOwnership()
 }
 const onDeleteCommentSuccess = (responseData, element) => {
-  console.log('onDeleteCommentSuccess')
+  // console.log('onDeleteCommentSuccess')
   $('#user-message').text('successfully deleted post!')
   $('input').trigger('reset')
   $('form').trigger('reset')

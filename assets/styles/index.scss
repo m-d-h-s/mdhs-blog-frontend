@@ -18,6 +18,8 @@ body {}
 }
 
 .comment {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   word-break: break-word;
 }
