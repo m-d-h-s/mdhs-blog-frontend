@@ -3,7 +3,7 @@ const showCommentTemplate = require('../templates/comment-listing.handlebars')
 
 const onCreateCommentSuccess = (responseData) => {
   // console.log('onCreateCommentSuccess')
-  $('#user-message').text('successfully created post!')
+  $('#user-message').text('successfully created comment!')
   const showCommentHtml = showCommentTemplate({ comment: responseData })
   $('input').trigger('reset')
   $('form').trigger('reset')
@@ -13,7 +13,6 @@ const onCreateCommentSuccess = (responseData) => {
 
 const onIndexCommentSuccess = (responseData) => {
   // console.log('onIndexCommentSuccess')
-  $('#user-message').text('successfully got posts!')
   const showCommentHtml = showCommentTemplate({ comment: responseData.comment })
   $('form').trigger('reset')
   $('input').trigger('reset')
@@ -30,13 +29,13 @@ const onShowCommentSuccess = (responseData) => {
 const onUpdateCommentSuccess = (responseData) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#user-message').text('successfully updated post!')
+  $('#user-message').text('successfully updated comment!')
 }
 const onDeleteCommentSuccess = (responseData, element) => {
   // console.log('onDeleteCommentSuccess')
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#user-message').text('successfully deleted post!')
+  $('#user-message').text('successfully deleted comment!')
   $(`#comment-${element}`).hide()
 }
 

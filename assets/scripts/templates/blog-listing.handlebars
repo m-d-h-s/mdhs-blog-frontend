@@ -1,6 +1,6 @@
 {{#each blogs as |blog|}}
 
-  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="bg-dark text-light m-5 p-5">
+  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="bg-dark text-light m-5 p-5 blog">
     <h2>Title: {{blog.title}} </h2>
     <h2>Body: {{blog.body}} </h2>
     <h2>ID: {{blog._id}}</h2>
@@ -19,7 +19,7 @@
 
 
     {{#each blog.comments as |comment|}}
-      <div id="comment-{{comment._id}}" class="bg-success p-5 my-2" data-owner="{{comment.owner}}">
+      <div id="comment-{{comment._id}}" class="bg-success p-5 my-2 comment" data-owner="{{comment.owner}}">
 
         <h4>{{comment.owner}} says</h4>
         <h4>"{{comment.text}}"</h4>
