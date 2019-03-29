@@ -28,6 +28,7 @@ const onCommentCrud = {
     const data = $(event.target).data('comment-id')
     api.deleteComment(data)
       .then(() => blog.onBlogCrud.index())
+      .then(ui.onDeleteCommentSuccess)
       .catch(ui.onCommentFailure)
   },
   show: function (event) {
