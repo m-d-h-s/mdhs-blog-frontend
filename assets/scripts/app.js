@@ -16,4 +16,5 @@ $(() => {
   blogEvents.addHandlers()
   commentEvents.addHandlers()
   view.onPageLoad()
+  blogEvents.onBlogCrud.index()
 })

@@ -47,16 +47,16 @@
   <div class="post-login">
     <h2>Create A Blog</h2>
     <form id="new-blog" class="blog-crud-form" data-action="create">
-      <input name="blog[title]" type="text" placeholder="title" required>
-      <textarea name="blog[body]" placeholder="body" required></textarea>
+      <input name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>
+      <textarea name="blog[body]" placeholder="Enter a blog body" maxlength="10000" required></textarea>
       <button type="submit">Submit</button>
     </form>
   </div>
 
 
-  <form id="index-blog" class="blog-crud-form" data-action="index">
+  <!-- <form id="index-blog" class="blog-crud-form" data-action="index">
     <button type="submit">SHOW ALL</button>
-  </form>
+  </form> -->
 
   <section id="blog-content">
     <h2>Blog Posts</h2>
