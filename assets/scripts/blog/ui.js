@@ -31,10 +31,11 @@ const onShowBlogSuccess = (responseData) => {
   $('#blog-content').empty()
   $('#blog-content').append(showBlogHtml)
 }
-const onUpdateBlogSuccess = (responseData) => {
+const onUpdateBlogSuccess = (responseData, blog) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#user-message').text('successfully updated post!')
+  $(`#edit-blog-${blog}`).show()
 }
 const onDeleteBlogSuccess = id => {
   $('input').trigger('reset')

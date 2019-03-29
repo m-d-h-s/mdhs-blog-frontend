@@ -34,7 +34,7 @@ const onBlogCrud = {
     const blogId = $(event.target).data('blog-id')
     const formData = getFormFields(event.target)
     api.updateBlog(formData, blogId)
-      .then(ui.onUpdateBlogSuccess)
+      .then(data => ui.onUpdateBlogSuccess(data, blogId))
       .then(this.index)
       .catch(ui.onBlogFailure)
   },
@@ -61,6 +61,15 @@ const onToggleComments = () => {
   }
 }
 
+const toggleEdit = () => {
+  event.preventDefault()
+  const blog = $(event.target).data('blog-id')
+  $(`#blog-owned-${blog}`).toggleClass('d-none')
+  $(`#blog-title-${blog}`).toggleClass('d-none')
+  $(`#blog-body-${blog}`).toggleClass('d-none')
+  $(event.target).hide()
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.blog-crud-form', (event) => {
     event.preventDefault()
@@ -68,6 +77,7 @@ const addHandlers = () => {
     onBlogCrud[crudAction](event)
   })
   $('body').on('click', '.toggle-comments', onToggleComments)
+  $('body').on('click', '.edit-blog-btn', toggleEdit)
 }
 
 module.exports = {

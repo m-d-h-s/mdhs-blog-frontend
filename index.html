@@ -20,6 +20,7 @@
   <div class="pre-login">
     <form id="sign-up-form">
       <input name="credentials[email]" required type="email" placeholder="email">
+      <input name="credentials[handle]" required type="text" placeholder="handle">
       <input name="credentials[password]" required type="password" placeholder="password">
       <input name="credentials[password_confirmation]" required type="password" placeholder="password confirmation">
       <input type="submit" value="Sign Up" class="button">
@@ -33,7 +34,7 @@
   </div>
 
   <!-- bootstrap test start -->
-  <div class=flex-center>
+  <!-- <div class=flex-center>
     <div class="card m-4">
       <div class="card-header">
         <h5 class="card-title">What are your favorite bakeries in Boston?</h5>
@@ -59,15 +60,11 @@
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Userhandle1 says:</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="This is where our comments will go"></textarea>
-              <div class="flex-right">
-                <!-- <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
-                  <input href=# class="clean-btn editable" type="submit" value="Edit">
-                </form> -->
+              <div class="flex-right my-1">
                 <form></form>
-                <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
+                <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form border-dark border-right" data-action="update">
                   <input href=# class="clean-btn editable" type="submit" value="Edit">
                 </form>
-                <p>&nbsp;|&nbsp;</p>
                 <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="delete">
                   <input href=# class="clean-btn editable" type="submit" value="Delete">
                 </form>
@@ -81,7 +78,7 @@
         <a href="#" class="card-link">Like</a>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- bootstrap test END -->
 

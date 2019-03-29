@@ -17,3 +17,20 @@
   overflow: hidden;
   word-break: break-word;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.clean-btn {
+  background: none;
+  border: none;
+  color: blue;
+  cursor: pointer;
+}

@@ -47,12 +47,21 @@ const onCommentCrud = {
   }
 }
 
+const toggleEdit = () => {
+  event.preventDefault()
+  const comment = $(event.target).data('comment-id')
+  $(`#comment-owned-${comment}`).toggleClass('d-none')
+  $(`#comment-text-${comment}`).toggleClass('d-none')
+  $(event.target).hide()
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.comment-crud-form', (event) => {
     event.preventDefault()
     const crudAction = $(event.target).data('action')
     onCommentCrud[crudAction](event)
   })
+  $('body').on('click', '.edit-comment-btn', toggleEdit)
 }
 
 module.exports = {

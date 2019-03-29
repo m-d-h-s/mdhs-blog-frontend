@@ -34,12 +34,11 @@ const onUpdateCommentSuccess = (responseData, comment, blog) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
 
-
   $(`#comment-text-${comment}`).text(responseData.comment.text)
   $(`#comment-textarea-${comment}`).text(responseData.comment.text)
 
+  $(`#edit-comment-${comment}`).show()
   view.showOwnership()
-
 }
 const onDeleteCommentSuccess = (responseData, element) => {
   // console.log('onDeleteCommentSuccess')
