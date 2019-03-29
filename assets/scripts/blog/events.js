@@ -39,10 +39,9 @@ const onBlogCrud = {
   delete: function (event) {
     console.log('onBlogCrudDelete')
     event.preventDefault()
-    const blogId = $(event.target).data('blog-id')
-    const formData = getFormFields(event.target)
-    api.deleteBlog(formData, blogId)
-      .then(ui.onDeleteBlogSuccess)
+    const id = $(event.target).data('blog-id')
+    api.deleteBlog(id)
+      .then(() => ui.onDeleteBlogSuccess(id))
       .catch(ui.onBlogFailure)
   }
 }

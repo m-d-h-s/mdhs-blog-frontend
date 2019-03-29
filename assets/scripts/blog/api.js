@@ -50,7 +50,7 @@ const updateBlog = (formData, id) => {
   })
 }
 
-const deleteBlog = (formData, id) => {
+const deleteBlog = id => {
   return $.ajax({
     url: config.apiUrl + `/blogs/${id}`,
     method: 'DELETE',

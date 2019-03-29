@@ -31,10 +31,11 @@ const onUpdateBlogSuccess = (responseData) => {
   $('form').trigger('reset')
   $('#user-message').text('successfully updated post!')
 }
-const onDeleteBlogSuccess = (responseData) => {
+const onDeleteBlogSuccess = id => {
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#user-message').text('successfully deleted post!')
+  $(`#blog-${id}`).hide()
 }
 
 const onBlogFailure = (responseData) => {
