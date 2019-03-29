@@ -1,19 +1,23 @@
 {{#each blogs as |blog|}}
 
-  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="bg-dark text-light m-5 p-5">
+  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="bg-dark text-light m-5 p-5 d-flex flex-column">
+
+
+    <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form owned ml-auto" data-action="delete">
+      <button class="btn-danger" type="submit">Delete</button>
+    </form>
+
     <h2>Title: {{blog.title}} </h2>
     <h2>Body: {{blog.body}} </h2>
     <h2>ID: {{blog._id}}</h2>
     <h2>Blog Owner: {{blog.owner}} </h2>
+
 
     <div class="owned" data-owner="{{blog.owner}}">
       <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form" data-action="update" >
         <textarea name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40"required></textarea>
         <textarea name="blog[body]" type="text" placeholder="Enter a blog body" maxlength="10000" required></textarea>
         <button type="submit">Update</button>
-      </form>
-      <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form" data-action="delete">
-        <button class="btn-danger" type="submit">Delete</button>
       </form>
     </div>
 
