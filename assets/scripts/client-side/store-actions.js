@@ -1,11 +1,11 @@
 const store = require('../store')
 
 const initializeStore = () => {
-  store.user = {}
+  store.user = false
 }
 
 const resetStore = () => {
-  store.user = {}
+  store.user = false
 }
 module.exports = {
   initializeStore,

@@ -10,6 +10,7 @@ const onBlogCrud = {
     const formData = getFormFields(event.target)
     api.createBlog(formData)
       .then(ui.onCreateBlogSuccess)
+      .then(this.index)
       .catch(ui.onBlogFailure)
   },
   index: function (event) {

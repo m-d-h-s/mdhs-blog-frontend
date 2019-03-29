@@ -7,13 +7,13 @@
     <h2>Blog Owner: {{blog.owner}} </h2>
 
     <div class="owned" data-owner="{{blog.owner}}">
-      <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} class="blog-crud-form" data-action="update">
-        <input name="blog[title]" type="text" placeholder="text" required>
-        <input name="blog[body]" type="text" placeholder="text" required>
+      <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form" data-action="update">
+        <textarea name="blog[title]" type="text" placeholder="text" required></textarea>
+        <textarea name="blog[body]" type="text" placeholder="text" required></textarea>
         <button type="submit">Update</button>
       </form>
-      <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} class="blog-crud-form" data-action="delete">
-        <button type="submit">Delete</button>
+      <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form" data-action="delete">
+        <button class="btn-danger" type="submit">Delete</button>
       </form>
     </div>
 
@@ -24,10 +24,10 @@
         <h4>{{comment.owner}} says</h4>
         <h4>"{{comment.text}}"</h4>
 
-        <div class="owned" data-owner="{{blog.owner}}">
+        <div class="owned" data-owner="{{comment.owner}}">
 
           <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
-            <input name="comment[text]" type="text" placeholder="text" required>
+            <textarea name="comment[text]" type="text" placeholder="text" required></textarea>
             <button type="submit">Update</button>
           </form>
           <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="delete">
@@ -41,8 +41,8 @@
 
     {{/each}}
 
-    <form data-blog-id={{blog.id}} class="comment-crud-form" data-action="create">
-      <input name="comment[text]" type="text" placeholder="text" required>
+    <form data-blog-id={{blog.id}} class="comment-crud-form post-login" data-action="create">
+      <textarea name="comment[text]" type="text" placeholder="text" required></textarea>
       <button type="submit">Create Comment</button>
     </form>
 

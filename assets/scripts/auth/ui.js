@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store.js')
+const view = require('../view/view')
 
 const signUpSuccess = () => {
   $('#user-message').text('Successfully signed up!')
@@ -12,14 +13,12 @@ const signUpFailure = () => {
 }
 
 const signInSuccess = (responseData) => {
-  $('#user-message').text('Successfully signed in!')
   store.user = responseData.user
+  $('#user-message').text('Successfully signed in!')
   $('form').trigger('reset')
-  $('.book-forms').show()
-  $('#sign-out-form').show()
-  $('#change-password-form').show()
-  $('#sign-in-form').hide()
-  $('#sign-up-form').hide()
+  $('.post-login').show()
+  $('.pre-login').hide()
+  view.showOwnership()
 }
 
 const signInFailure = () => {
@@ -40,21 +39,15 @@ const changePasswordFailure = () => {
   $('#user-message').show()
   $('#user-message').text('Error: Password change failure!')
   $('form').trigger('reset')
-  $('#show-one-book-club').hide()
-  $('#show-book-club-list').hide()
 }
 
 const signOutSuccess = () => {
   $('#user-message').show()
   $('#user-message').text('Successfully signed out!')
   $('form').trigger('reset')
-  $('.book-forms').hide()
-  $('#sign-out-form').hide()
-  $('#sign-in-form').show()
-  $('#sign-up-form').show()
-  $('#change-password-form').hide()
-  $('#show-one-book-club').hide()
-  $('#show-book-club-list').hide()
+  $('.post-login').hide()
+  $('.pre-login').show()
+  view.hideOwnership()
   store.user = null
 }
 

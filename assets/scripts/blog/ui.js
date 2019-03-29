@@ -1,8 +1,10 @@
 'use strict'
 const showBlogTemplate = require('../templates/blog-listing.handlebars')
 const store = require('../store')
+const view = require('../view/view')
 
 const onCreateBlogSuccess = (responseData) => {
+  console.log('onCreateBlogSuccess')
   $('#user-message').text('successfully created post!')
   const showBlogHtml = showBlogTemplate({ blog: responseData })
   $('input').trigger('reset')
@@ -20,18 +22,9 @@ const onIndexBlogSuccess = (responseData) => {
   $('#blog-content').empty()
   $('#blog-content').append(showBlogHtml)
 
+  view.showOwnership()
   console.log(store)
-  console.log($('.owned')[0].getAttribute('data-owner'))
-  // if (store.user._id === $('.owned').first().data('owner')) { $('.owned').show() }
-
-  $('.owned').each(index => {
-    console.log($('.owned')[index])
-    console.log($($('.owned')[index]).data('owner'))
-    const ownedElement = $($('.owned')[index])
-    if (store.user._id === ownedElement.data('owner')) {
-      ownedElement.show()
-    }
-  })
+  store.user ? $('.post-login').show() : $('.post-login').hide()
 }
 const onShowBlogSuccess = (responseData) => {
   const showBlogHtml = showBlogTemplate({ blogs: responseData })
