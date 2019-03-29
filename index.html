@@ -1,17 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>MDHS Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <h1>MDHS Blog</h1>
+  <h2 id="user-message"></h2>
+  <div class="pre-login">
+    <form id="sign-up-form">
+      <input name="credentials[email]" required type="email" placeholder="email">
+      <input name="credentials[password]" required type="password" placeholder="password">
+      <input name="credentials[password_confirmation]" required type="password" placeholder="password confirmation">
+      <input type="submit" value="Sign Up" class="button">
+    </form>
+
+    <form id="sign-in-form">
+      <input name="credentials[email]" required type="email" placeholder="email">
+      <input name="credentials[password]" required type="password" placeholder="password">
+      <input type="submit" value="Sign In" class="button">
+    </form>
+  </div>
+
+  <div class="post-login">
+    <form id="change-password-form">
+      <input name="passwords[old]" required type="password" placeholder="old password">
+      <input name="passwords[new]" required type="password" placeholder="new password">
+      <input type="submit" value="Change Password" class="button">
+    </form>
+
+    <form id="sign-out-form">
+      <input type="submit" value="Sign Out" class="button">
+    </form>
+
+  </div>
+
+  <div class="post-login">
+    <h2>Create A Blog</h2>
+    <form id="new-blog" class="blog-crud-form" data-action="create">
+      <input name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>
+      <textarea name="blog[body]" placeholder="Enter a blog body" maxlength="10000" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+
+  <!-- <form id="index-blog" class="blog-crud-form" data-action="index">
+    <button type="submit">SHOW ALL</button>
+  </form> -->
+
+  <section id="blog-content">
+    <h2>Blog Posts</h2>
+  </section>
+
+</body>
+
 </html>
