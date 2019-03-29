@@ -2,6 +2,7 @@
 const showCommentTemplate = require('../templates/comment-listing.handlebars')
 
 const onCreateCommentSuccess = (responseData) => {
+  // console.log('onCreateCommentSuccess')
   $('#user-message').text('successfully created post!')
   const showCommentHtml = showCommentTemplate({ comment: responseData })
   $('input').trigger('reset')
@@ -11,6 +12,7 @@ const onCreateCommentSuccess = (responseData) => {
 }
 
 const onIndexCommentSuccess = (responseData) => {
+  // console.log('onIndexCommentSuccess')
   $('#user-message').text('successfully got posts!')
   const showCommentHtml = showCommentTemplate({ comment: responseData.comment })
   $('form').trigger('reset')
@@ -30,16 +32,18 @@ const onUpdateCommentSuccess = (responseData) => {
   $('form').trigger('reset')
   $('#user-message').text('successfully updated post!')
 }
-const onDeleteCommentSuccess = (responseData) => {
+const onDeleteCommentSuccess = (responseData, element) => {
+  // console.log('onDeleteCommentSuccess')
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#user-message').text('successfully deleted post!')
+  $(`#comment-${element}`).hide()
 }
 
 const onCommentFailure = (responseData) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#user-message').text('something went wrong...')
+  $('#user-message').text('Something went wrong with Comment...')
 }
 
 module.exports = {
