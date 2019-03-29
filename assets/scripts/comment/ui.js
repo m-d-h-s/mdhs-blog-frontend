@@ -1,14 +1,15 @@
 'use strict'
 const showCommentTemplate = require('../templates/comment-listing.handlebars')
+const view = require('../view/view')
 
-const onCreateCommentSuccess = (responseData) => {
+const onCreateCommentSuccess = (responseData, blog) => {
   // console.log('onCreateCommentSuccess')
-  $('#user-message').text('successfully created comment!')
-  const showCommentHtml = showCommentTemplate({ comment: responseData })
+  $('#user-message').text('successfully created post!')
+  const showCommentHtml = showCommentTemplate({ comment: responseData, blog: blog })
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#comment-content').empty()
-  $('#comment-content').append(showCommentHtml)
+  $(`#comments-of-blog-${blog}`).append(showCommentHtml)
+  view.showOwnership()
 }
 
 const onIndexCommentSuccess = (responseData) => {
@@ -26,16 +27,25 @@ const onShowCommentSuccess = (responseData) => {
   $('#comment-content').empty()
   $('#comment-content').append(showCommentHtml)
 }
-const onUpdateCommentSuccess = (responseData) => {
+const onUpdateCommentSuccess = (responseData, comment, blog) => {
+  // console.log(comment)
+  // console.log(responseData)
+  $('#user-message').text('successfully updated post!')
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#user-message').text('successfully updated comment!')
+
+
+  $(`#comment-text-${comment}`).text(responseData.comment.text)
+  $(`#comment-textarea-${comment}`).text(responseData.comment.text)
+
+  view.showOwnership()
+
 }
 const onDeleteCommentSuccess = (responseData, element) => {
   // console.log('onDeleteCommentSuccess')
+  $('#user-message').text('successfully deleted comment!')
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#user-message').text('successfully deleted comment!')
   $(`#comment-${element}`).hide()
 }
 

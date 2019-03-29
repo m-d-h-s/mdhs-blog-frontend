@@ -22,7 +22,6 @@ const onIndexBlogSuccess = (responseData) => {
   $('#blog-content').append(showBlogHtml)
 
   view.showOwnership()
-  // console.log(store)
   store.user ? $('.post-login').show() : $('.post-login').hide()
 }
 const onShowBlogSuccess = (responseData) => {

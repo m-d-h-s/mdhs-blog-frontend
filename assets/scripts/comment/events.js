@@ -2,7 +2,6 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
-const blog = require('../blog/events')
 
 const onCommentCrud = {
   create: () => {
@@ -11,8 +10,7 @@ const onCommentCrud = {
     const formData = getFormFields(event.target)
     const blogId = $(event.target).data('blog-id')
     api.createComment(formData, blogId)
-      .then(ui.onCreateCommentSuccess)
-      .then(() => blog.onBlogCrud.index())
+      .then(data => ui.onCreateCommentSuccess(data, blogId))
       .catch(ui.onCommentFailure)
   },
   index: () => {
@@ -27,8 +25,7 @@ const onCommentCrud = {
     event.preventDefault()
     const data = $(event.target).data('comment-id')
     api.deleteComment(data)
-      .then(() => blog.onBlogCrud.index())
-      .then(ui.onDeleteCommentSuccess)
+      .then(responseData => ui.onDeleteCommentSuccess(responseData, data))
       .catch(ui.onCommentFailure)
   },
   show: function (event) {
@@ -41,12 +38,11 @@ const onCommentCrud = {
   update: () => {
     // console.log('onCommentCrudUpdate')
     event.preventDefault()
-    const data = $(event.target).data('comment-id')
+    const comment = $(event.target).data('comment-id')
+    const blog = $(event.target).data('blog-id')
     const formData = getFormFields(event.target)
-    // console.log(data)
-    api.updateComment(formData, data)
-      .then(ui.onUpdateCommentSuccess)
-      .then(() => blog.onBlogCrud.index())
+    api.updateComment(formData, comment)
+      .then(() => ui.onUpdateCommentSuccess(formData, comment, blog))
       .catch(ui.onCommentFailure)
   }
 }

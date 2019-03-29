@@ -53,7 +53,7 @@ const updateComment = (formData, id) => {
 }
 
 const deleteComment = id => {
-  // console.log('deleteComment')
+// console.log('deleteComment')
   return $.ajax({
     url: config.apiUrl + `/comments/${id}`,
     method: 'DELETE',
