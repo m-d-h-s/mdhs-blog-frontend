@@ -6,30 +6,37 @@
     <h2>ID: {{blog._id}}</h2>
     <h2>Blog Owner: {{blog.owner}} </h2>
 
-    <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} class="blog-crud-form" data-action="update">
-      <input name="blog[title]" type="text" placeholder="text" required>
-      <input name="blog[body]" type="text" placeholder="text" required>
-      <button type="submit">Update</button>
-    </form>
-    <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} class="blog-crud-form" data-action="delete">
-      <button type="submit">Delete</button>
-    </form>
+    <div class="owned" data-owner="{{blog.owner}}">
+      <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} class="blog-crud-form" data-action="update">
+        <input name="blog[title]" type="text" placeholder="text" required>
+        <input name="blog[body]" type="text" placeholder="text" required>
+        <button type="submit">Update</button>
+      </form>
+      <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} class="blog-crud-form" data-action="delete">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
 
 
     {{#each blog.comments as |comment|}}
-    <div id="comment-{{comment._id}}" class="bg-success p-5 my-2" data-owner="{{comment.owner}}">
-        <h4>{{comment.owner}} says </h4>
+      <div id="comment-{{comment._id}}" class="bg-success p-5 my-2" data-owner="{{comment.owner}}">
+
+        <h4>{{comment.owner}} says</h4>
         <h4>"{{comment.text}}"</h4>
 
-        <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
-          <input name="comment[text]" type="text" placeholder="text" required>
-          <button type="submit">Update</button>
-        </form>
-        <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="delete">
-          <button type="submit">Delete</button>
-        </form>
+        <div class="owned" data-owner="{{blog.owner}}">
 
-    </div>
+          <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
+            <input name="comment[text]" type="text" placeholder="text" required>
+            <button type="submit">Update</button>
+          </form>
+          <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="delete">
+            <button type="submit">Delete</button>
+          </form>
+
+        </div>
+      </div>
+
 
 
     {{/each}}

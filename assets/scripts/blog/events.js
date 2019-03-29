@@ -34,6 +34,7 @@ const onBlogCrud = {
     const formData = getFormFields(event.target)
     api.updateBlog(formData, blogId)
       .then(ui.onUpdateBlogSuccess)
+      .then(this.index)
       .catch(ui.onBlogFailure)
   },
   delete: function (event) {
