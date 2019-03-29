@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
   <h1>MDHS Blog</h1>
   <h2 id="user-message"></h2>
   <div class="pre-login">
@@ -30,6 +31,59 @@
       <input type="submit" value="Sign In" class="button">
     </form>
   </div>
+
+  <!-- bootstrap test start -->
+  <div class=flex-center>
+    <div class="card m-4">
+      <div class="card-header">
+        <h5 class="card-title">What are your favorite bakeries in Boston?</h5>
+      </div>
+      <div class="card-body">
+        <label for="exampleFormControlTextarea1">Userhandle1 posts:</label>
+        <p class="card-text">I really think Boston has a lot of hidden gems, especially in the bakery department. Below I will list my favorites and why I like them. Please feel free to comment and like below! </p>
+        <div class="flex-right editable">
+          <a href=#>Edit</a>
+          <p>&nbsp;|&nbsp;</p>
+          <a href=#>Delete</a>
+        </div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <form>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Userhandle2 says:</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="This is where their comments will go"></textarea>
+            </div>
+          </form>
+          <form>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Userhandle1 says:</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="This is where our comments will go"></textarea>
+              <div class="flex-right">
+                <!-- <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
+                  <input href=# class="clean-btn editable" type="submit" value="Edit">
+                </form> -->
+                <form></form>
+                <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
+                  <input href=# class="clean-btn editable" type="submit" value="Edit">
+                </form>
+                <p>&nbsp;|&nbsp;</p>
+                <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="delete">
+                  <input href=# class="clean-btn editable" type="submit" value="Delete">
+                </form>
+              </div>
+            </div>
+          </form>
+        </li>
+      </ul>
+      <div class="card-body flex-between">
+        <a href="#" class="card-link">Another Comment</a>
+        <a href="#" class="card-link">Like</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- bootstrap test END -->
 
   <div class="post-login">
     <form id="change-password-form">
