@@ -49,7 +49,7 @@ const onBlogCrud = {
 }
 
 const onToggleComments = () => {
-  // console.log('onToggleComments')
+  console.log('onToggleComments')
   event.preventDefault()
   const blog = $(event.target).data('blog-id')
   $(`.comment[data-blog-id=${blog}]`).toggleClass('d-none')
@@ -67,7 +67,7 @@ const addHandlers = () => {
     const crudAction = $(event.target).data('action')
     onBlogCrud[crudAction](event)
   })
-  $('body').on('click', onToggleComments)
+  $('body').on('click', '.toggle-comments', onToggleComments)
 }
 
 module.exports = {
