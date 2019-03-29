@@ -1,10 +1,10 @@
 {{#each blogs as |blog|}}
 
-  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="bg-dark text-light m-5 p-5 d-flex flex-column">
+  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="blog bg-dark text-light m-5 p-5 d-flex flex-column">
 
 
     <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form owned ml-auto" data-action="delete">
-      <button class="btn-danger" type="submit">Delete</button>
+      <button class="btn-danger" type="submit">Delete Blog</button>
     </form>
 
     <h2>Title: {{blog.title}} </h2>
@@ -15,15 +15,16 @@
 
     <div class="owned" data-owner="{{blog.owner}}">
       <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form" data-action="update" >
-        <textarea name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40"required></textarea>
-        <textarea name="blog[body]" type="text" placeholder="Enter a blog body" maxlength="10000" required></textarea>
+        <textarea name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40"required>{{blog.title}}</textarea>
+        <textarea name="blog[body]" type="text" placeholder="Enter a blog body" maxlength="10000" required>{{blog.body}}</textarea>
         <button type="submit">Update</button>
       </form>
     </div>
 
+    <button class="toggle-comments" data-blog-id={{blog._id}}>Show Comments</button>
 
     {{#each blog.comments as |comment|}}
-      <div id="comment-{{comment._id}}" class="bg-success p-5 my-2" data-owner="{{comment.owner}}">
+      <div id="comment-{{comment._id}}" class="comment bg-success p-5 my-2 d-none" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
         <h4>{{comment.owner}} says</h4>
         <h4>"{{comment.text}}"</h4>
@@ -35,7 +36,7 @@
             <button type="submit">Update</button>
           </form>
           <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="delete">
-            <button type="submit">Delete</button>
+            <button class="bg-danger" type="submit">Delete Comment</button>
           </form>
 
         </div>

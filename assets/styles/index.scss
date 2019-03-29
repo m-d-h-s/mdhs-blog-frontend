@@ -9,3 +9,9 @@ body {}
 .owned {
   display: none;
 }
+
+.blog,
+.comment {
+  overflow: hidden;
+  word-break: break-word;
+}

@@ -48,12 +48,26 @@ const onBlogCrud = {
   }
 }
 
+const onToggleComments = () => {
+  // console.log('onToggleComments')
+  event.preventDefault()
+  const blog = $(event.target).data('blog-id')
+  $(`.comment[data-blog-id=${blog}]`).toggleClass('d-none')
+
+  if ($(event.target).text() === 'Hide Comments') {
+    $(event.target).text('Show Comments')
+  } else {
+    $(event.target).text('Hide Comments')
+  }
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.blog-crud-form', (event) => {
     event.preventDefault()
     const crudAction = $(event.target).data('action')
     onBlogCrud[crudAction](event)
   })
+  $('body').on('click', onToggleComments)
 }
 
 module.exports = {
