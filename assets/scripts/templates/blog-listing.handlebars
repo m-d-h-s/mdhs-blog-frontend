@@ -27,7 +27,7 @@
         <div class="owned" data-owner="{{comment.owner}}">
 
           <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
-            <textarea name="comment[text]" type="text" placeholder="Update your comment" maxlength="1000" required></textarea>
+            <textarea name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
             <button type="submit">Update</button>
           </form>
           <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="delete">
