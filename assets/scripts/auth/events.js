@@ -14,7 +14,7 @@ const onSignUp = (event) => {
 }
 
 const onSignIn = (event) => {
-  // console.log('onSignIn')
+console.log('onSignIn')
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
@@ -35,7 +35,7 @@ const onChangePassword = (event) => {
 }
 
 const onSignOut = (event) => {
-  // console.log('onSignOut')
+console.log('onSignOut')
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)

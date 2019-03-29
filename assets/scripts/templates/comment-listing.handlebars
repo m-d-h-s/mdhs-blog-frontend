@@ -1,12 +1,21 @@
-<div>
-  <h2> Comments </h2>
-</div>
 {{#each comment as |comment|}}
-  <div>
-    <h3>
-      <small>Text:</small> {{comment.text}}
-    </h3>
-    <p><small>ID: </small> {{comment._id}}</p>
+
+  <div id="comment-{{comment._id}}" class="comment bg-success p-5 my-2" data-blog-id={{blog}} data-owner="{{comment.owner}}">
+
+    <h4>{{comment.owner}} says</h4>
+    <h4 id="comment-text-{{comment.id}}">"{{comment.text}}"</h4>
+
+    <div class="owned" data-owner="{{comment.owner}}">
+
+      <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
+        <textarea name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
+        <button type="submit">Update</button>
+      </form>
+      <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="delete">
+        <button class="bg-danger" type="submit">Delete Comment</button>
+      </form>
+
+    </div>
   </div>
 
 {{/each}}

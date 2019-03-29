@@ -10,7 +10,7 @@ const showOwnership = () => {
 const hideOwnership = () => { $('.owned').hide() }
 
 const onPageLoad = () => {
-  // console.log('onPageLoad')
+console.log('onPageLoad')
   $('.post-login').hide()
 }
 
