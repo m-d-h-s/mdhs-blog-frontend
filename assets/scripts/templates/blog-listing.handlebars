@@ -1,5 +1,6 @@
 {{#each blogs as |blog|}}
 
+
   <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="blog bg-dark text-light m-5 p-5">
 
 
@@ -37,6 +38,7 @@
         <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} data-owner="{{comment.owner}}" class="comment-crud-form owned ml-auto" data-action="delete">
           <button class="bg-danger text-light" type="submit">Delete Comment</button>
         </form>
+
 
 
         <h4>{{comment.owner}} says</h4>

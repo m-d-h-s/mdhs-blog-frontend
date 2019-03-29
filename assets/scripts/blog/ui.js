@@ -15,7 +15,6 @@ const onCreateBlogSuccess = (responseData) => {
 
 const onIndexBlogSuccess = (responseData) => {
   // console.log('onIndexBlogSuccess')
-  $('#user-message').text('successfully got posts!')
   const showBlogHtml = showBlogTemplate({ blogs: responseData.blog })
   $('form').trigger('reset')
   $('input').trigger('reset')

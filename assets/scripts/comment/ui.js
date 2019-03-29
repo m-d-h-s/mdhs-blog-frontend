@@ -14,7 +14,6 @@ const onCreateCommentSuccess = (responseData, blog) => {
 
 const onIndexCommentSuccess = (responseData) => {
   // console.log('onIndexCommentSuccess')
-  $('#user-message').text('successfully got posts!')
   const showCommentHtml = showCommentTemplate({ comment: responseData.comment })
   $('form').trigger('reset')
   $('input').trigger('reset')
@@ -35,14 +34,16 @@ const onUpdateCommentSuccess = (responseData, comment, blog) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
 
+
   $(`#comment-text-${comment}`).text(responseData.comment.text)
   $(`#comment-textarea-${comment}`).text(responseData.comment.text)
 
   view.showOwnership()
+
 }
 const onDeleteCommentSuccess = (responseData, element) => {
   // console.log('onDeleteCommentSuccess')
-  $('#user-message').text('successfully deleted post!')
+  $('#user-message').text('successfully deleted comment!')
   $('input').trigger('reset')
   $('form').trigger('reset')
   $(`#comment-${element}`).hide()
