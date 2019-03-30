@@ -23,6 +23,7 @@ const onIndexBlogSuccess = (responseData) => {
 
   view.showOwnership()
   store.user ? $('.post-login').show() : $('.post-login').hide()
+  console.log(responseData)
 }
 const onShowBlogSuccess = (responseData) => {
   const showBlogHtml = showBlogTemplate({ blogs: responseData })

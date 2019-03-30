@@ -1,7 +1,7 @@
 {{#each blogs as |blog|}}
 
   <!-- BLOG START -->
-  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="blog m-5 p-5">
+  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="blog my-1 bg-dark">
 
     <!-- CARD START   -->
     <div class="card m-4">
@@ -60,7 +60,7 @@
           <div id="comments-of-blog-{{blog.id}}" class="comment collapse" data-blog-id={{blog._id}}>
 
             <!-- CREATE COMMENT TEXTAREA FORM -->
-            <form class="comment-crud-form post-login m-5 p-5 bg-primary" data-blog-id={{blog._id}} data-action="create">
+            <form class="comment-crud-form post-login my-2 bg-primary" data-blog-id={{blog._id}} data-action="create">
               <textarea class="w-100" name="comment[text]" type="text" placeholder="Post your comment" maxlength="1000" required></textarea>
               <button type="submit">Create Comment</button>
             </form>
@@ -71,14 +71,18 @@
 
               {{#each blog.comments as |comment|}}
 
-                <div id="comment-{{comment._id}}" class="comment border-bottom p-5 my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
+                <!-- COMMENT START -->
+                <div id="comment-{{comment._id}}" class="comment border-bottom my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
-                  <p>{{comment.owner}} commented:</p>
+                  <!-- COMMENT OWNER HANDLE -->
+                  <p>{{comment.handle}} commented:</p>
+                  <!-- COMMENT TEXT -->
                   <p id="comment-text-{{comment._id}}">{{comment.text}}</p>
 
                   <!-- UPDATE/DELETE COMMENT FORMS START -->
                   <div class="owned" data-owner="{{comment.owner}}">
 
+                    <!-- UPDATE COMMENT FORM -->
                     <div id="comment-owned-{{comment._id}}" class="owned d-none w-100" data-owner="{{comment.owner}}">
                       <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update" data-blog-id={{blog._id}}>
                         <textarea id="comment-textarea-{{comment._id}}" class="w-100" name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
@@ -99,6 +103,7 @@
                     <button id="edit-comment-{{comment._id}}" class="edit-comment-btn owned" data-comment-id={{comment._id}} data-owner="{{comment.owner}}">Edit Comment</button>
                   </div>
 
+                  <!-- COMMENT END -->
                 </div>
 
                 <!-- LIST ITEM END -->
@@ -111,7 +116,7 @@
         </ul>
 
         <div class="card-body flex-between post-login">
-          <a href="#" class="card-link">Another Comment</a>
+          <!-- <a href="#" class="card-link">Another Comment</a> -->
           <a href="#" class="card-link">Like</a>
         </div>
 
@@ -120,8 +125,8 @@
 
       <!-- CARD END -->
     </div>
+
     <!-- BLOG END -->
   </div>
-
 
 {{/each}}

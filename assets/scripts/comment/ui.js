@@ -28,17 +28,20 @@ const onShowCommentSuccess = (responseData) => {
   $('#comment-content').append(showCommentHtml)
 }
 const onUpdateCommentSuccess = (responseData, comment, blog) => {
-  // console.log(comment)
-  // console.log(responseData)
+  console.log('onUpdateCommentSuccess')
   $('#user-message').text('successfully updated post!')
   $('input').trigger('reset')
   $('form').trigger('reset')
 
+  console.log(responseData)
+
   $(`#comment-text-${comment}`).text(responseData.comment.text)
   $(`#comment-textarea-${comment}`).text(responseData.comment.text)
 
-  $(`#edit-comment-${comment}`).show()
   view.showOwnership()
+  $(`#edit-comment-${comment}`).show()
+  $(`#comment-text-${comment}`).show()
+  $(`#comment-owned-${comment}`).toggleClass('d-none')
 }
 const onDeleteCommentSuccess = (responseData, element) => {
   // console.log('onDeleteCommentSuccess')

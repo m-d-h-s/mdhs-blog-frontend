@@ -1,13 +1,17 @@
 {{#each comment as |comment|}}
 
+  <!-- COMMENT START -->
   <div id="comment-{{comment._id}}" class="comment border-bottom p-5 my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
-    <p>{{comment.owner}} commented:</p>
+    <!-- COMMENT OWNER HANDLE -->
+    <p>{{comment.handle}} commented:</p>
+    <!-- COMMENT TEXT -->
     <p id="comment-text-{{comment._id}}">{{comment.text}}</p>
 
     <!-- UPDATE/DELETE COMMENT FORMS START -->
     <div class="owned" data-owner="{{comment.owner}}">
 
+      <!-- UPDATE COMMENT FORM -->
       <div id="comment-owned-{{comment._id}}" class="owned d-none w-100" data-owner="{{comment.owner}}">
         <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update" data-blog-id={{blog._id}}>
           <textarea id="comment-textarea-{{comment._id}}" class="w-100" name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
@@ -28,6 +32,8 @@
       <button id="edit-comment-{{comment._id}}" class="edit-comment-btn owned" data-comment-id={{comment._id}} data-owner="{{comment.owner}}">Edit Comment</button>
     </div>
 
+    <!-- COMMENT END -->
   </div>
+
   <!-- LIST ITEM END -->
 {{/each}}

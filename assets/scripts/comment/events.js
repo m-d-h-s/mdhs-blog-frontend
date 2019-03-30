@@ -51,7 +51,7 @@ const toggleEditComment = () => {
   event.preventDefault()
   const comment = $(event.target).data('comment-id')
   $(`#comment-owned-${comment}`).toggleClass('d-none')
-  $(`#comment-text-${comment}`).toggleClass('d-none')
+  $(`#comment-text-${comment}`).hide()
   $(event.target).hide()
 }
 
