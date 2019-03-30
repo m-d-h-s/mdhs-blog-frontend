@@ -1,23 +1,33 @@
 {{#each comment as |comment|}}
 
-  <div id="comment-{{comment._id}}" class="comment bg-success p-5 my-2" data-blog-id={{blog}} data-owner="{{comment.owner}}">
+  <div id="comment-{{comment._id}}" class="comment border-bottom p-5 my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
-    <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form ml-auto" data-action="delete">
-      <button class="bg-danger text-light" type="submit">Delete Comment</button>
-    </form>
+    <p>{{comment.owner}} commented:</p>
+    <p id="comment-text-{{comment._id}}">{{comment.text}}</p>
 
-    <h4>{{comment.owner}} says</h4>
-    <h4 id="comment-text-{{comment._id}}">"{{comment.text}}"</h4>
-
+    <!-- UPDATE/DELETE COMMENT FORMS START -->
     <div class="owned" data-owner="{{comment.owner}}">
 
-      <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update">
-        <textarea id="comment-textarea-{{comment._id}}" class="w-100" name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
-        <button type="submit">Update</button>
-      </form>
+      <div id="comment-owned-{{comment._id}}" class="owned d-none w-100" data-owner="{{comment.owner}}">
+        <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update" data-blog-id={{blog._id}}>
+          <textarea id="comment-textarea-{{comment._id}}" class="w-100" name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
+          <button class="ml-auto" type="submit">Update Comment</button>
+        </form>
 
+        <!-- DELETE COMMENT BUTTON -->
+        <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} data-owner="{{comment.owner}}" class="comment-crud-form owned ml-auto" data-action="delete">
+          <button class="bg-danger text-light" type="submit">Delete Comment</button>
+        </form>
+      </div>
 
+      <!-- UPDATE/DELETE COMMENT FORMS END -->
     </div>
-  </div>
 
+    <!-- COMMENT EDIT BUTTON -->
+    <div class="d-flex">
+      <button id="edit-comment-{{comment._id}}" class="edit-comment-btn owned" data-comment-id={{comment._id}} data-owner="{{comment.owner}}">Edit Comment</button>
+    </div>
+
+  </div>
+  <!-- LIST ITEM END -->
 {{/each}}

@@ -47,7 +47,7 @@ const onCommentCrud = {
   }
 }
 
-const toggleEdit = () => {
+const toggleEditComment = () => {
   event.preventDefault()
   const comment = $(event.target).data('comment-id')
   $(`#comment-owned-${comment}`).toggleClass('d-none')
@@ -61,7 +61,7 @@ const addHandlers = () => {
     const crudAction = $(event.target).data('action')
     onCommentCrud[crudAction](event)
   })
-  $('body').on('click', '.edit-comment-btn', toggleEdit)
+  $('body').on('click', '.edit-comment-btn', toggleEditComment)
 }
 
 module.exports = {

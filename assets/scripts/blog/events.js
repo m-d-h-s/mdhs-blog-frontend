@@ -61,7 +61,7 @@ const onToggleComments = () => {
   }
 }
 
-const toggleEdit = () => {
+const toggleEditBlog = () => {
   event.preventDefault()
   const blog = $(event.target).data('blog-id')
   $(`#blog-owned-${blog}`).toggleClass('d-none')
@@ -77,7 +77,7 @@ const addHandlers = () => {
     onBlogCrud[crudAction](event)
   })
   $('body').on('click', '.toggle-comments', onToggleComments)
-  $('body').on('click', '.edit-blog-btn', toggleEdit)
+  $('body').on('click', '.edit-blog-btn', toggleEditBlog)
 }
 
 module.exports = {
