@@ -41,7 +41,7 @@ const onUpdateCommentSuccess = (responseData, comment, blog) => {
   // $(`#comment-${comment}`).replaceWith(showCommentHtml)
 
   view.showOwnership()
-  $(`#edit-comment-${comment}`).show()
+  $(`#edit-comment-${comment}`).toggleClass('d-none')
   $(`#comment-text-${comment}`).show()
   $(`#comment-owned-${comment}`).toggleClass('d-none')
 }

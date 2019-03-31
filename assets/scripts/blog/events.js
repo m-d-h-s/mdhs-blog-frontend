@@ -61,7 +61,7 @@ const toggleEditBlog = () => {
   $(`#blog-owned-${blog}`).toggleClass('d-none')
   $(`#blog-title-${blog}`).toggleClass('d-none')
   $(`#blog-body-${blog}`).toggleClass('d-none')
-  $(event.target).hide()
+  $(`#edit-blog-${blog}`).toggleClass('d-none')
 }
 
 const addHandlers = () => {

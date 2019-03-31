@@ -48,7 +48,7 @@ const toggleEditComment = () => {
   const comment = $(event.target).data('comment-id')
   $(`#comment-owned-${comment}`).toggleClass('d-none')
   $(`#comment-text-${comment}`).hide()
-  $(event.target).hide()
+  $(`#edit-comment-${comment}`).toggleClass('d-none')
 }
 
 const addHandlers = () => {
