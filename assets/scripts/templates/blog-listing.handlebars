@@ -1,7 +1,7 @@
 {{#each blogs as |blog|}}
 
   <!-- BLOG START -->
-  <div id="blog-{{blog.id}}" data-blog-id={{blog.id}} data-owner="{{blog.owner}}" class="blog my-1 bg-dark">
+  <div id="blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog my-1 bg-dark">
 
     <!-- CARD START   -->
     <div class="card m-4">
@@ -57,7 +57,7 @@
           </div>
 
           <!-- SHOW/HIDE COMMENTS COLLAPSE START-->
-          <div id="comments-of-blog-{{blog.id}}" class="comment collapse" data-blog-id={{blog._id}}>
+          <div id="comments-of-blog-{{blog._id}}" class="comment collapse" data-blog-id={{blog._id}}>
 
             <!-- CREATE COMMENT TEXTAREA FORM -->
             <form class="comment-crud-form post-login my-2" data-blog-id={{blog._id}} data-action="create">
@@ -67,7 +67,7 @@
 
 
             <!-- LIST ITEM START -->
-            <li id="comments-list-{{blog.id}}" class="list-group-item">
+            <li id="comments-list-{{blog._id}}" class="list-group-item">
 
               {{#each blog.comments as |comment|}}
 

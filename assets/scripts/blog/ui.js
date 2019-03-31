@@ -4,7 +4,6 @@ const store = require('../store')
 const view = require('../view/view')
 
 const onCreateBlogSuccess = (responseData) => {
-  // console.log('onCreateBlogSuccess')
   $('#user-message').text('successfully created post!')
   const showBlogHtml = showBlogTemplate({ blog: responseData })
   $('input').trigger('reset')
@@ -14,7 +13,6 @@ const onCreateBlogSuccess = (responseData) => {
 }
 
 const onIndexBlogSuccess = (responseData) => {
-  // console.log('onIndexBlogSuccess')
   const showBlogHtml = showBlogTemplate({ blogs: responseData.blog })
   $('form').trigger('reset')
   $('input').trigger('reset')
@@ -23,7 +21,6 @@ const onIndexBlogSuccess = (responseData) => {
 
   view.showOwnership()
   store.user ? $('.post-login').show() : $('.post-login').hide()
-  console.log(responseData)
 }
 const onShowBlogSuccess = (responseData) => {
   const showBlogHtml = showBlogTemplate({ blogs: responseData })

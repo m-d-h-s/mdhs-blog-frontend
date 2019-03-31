@@ -5,7 +5,6 @@ const ui = require('./ui.js')
 
 const onCommentCrud = {
   create: () => {
-    // console.log('onCommentCrudCreate')
     event.preventDefault()
     const formData = getFormFields(event.target)
     const blogId = $(event.target).data('blog-id')
@@ -14,14 +13,12 @@ const onCommentCrud = {
       .catch(ui.onCommentFailure)
   },
   index: () => {
-    // console.log('onCommentCrudIndex')
     if (event) { event.preventDefault() }
     api.indexComment()
       .then(ui.onIndexCommentSuccess)
       .catch(ui.onCommentFailure)
   },
   delete: function () {
-    // console.log('onCommentCrudDelete')
     event.preventDefault()
     const data = $(event.target).data('comment-id')
     api.deleteComment(data)
@@ -36,7 +33,6 @@ const onCommentCrud = {
       .catch(ui.onCommentFailure)
   },
   update: () => {
-    // console.log('onCommentCrudUpdate')
     event.preventDefault()
     const comment = $(event.target).data('comment-id')
     const blog = $(event.target).data('blog-id')
