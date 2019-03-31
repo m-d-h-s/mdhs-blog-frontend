@@ -4,7 +4,8 @@
   <div id="comment-{{comment._id}}" class="comment border-bottom my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
     <!-- COMMENT OWNER HANDLE -->
-    <p>{{comment.handle}} commented:</p>
+
+    <p id="comment-handle-{{comment._id}}">commented:</p>
     <!-- COMMENT TEXT -->
     <p id="comment-text-{{comment._id}}">{{comment.text}}</p>
 
