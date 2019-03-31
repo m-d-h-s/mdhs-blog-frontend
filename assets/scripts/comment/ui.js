@@ -8,7 +8,7 @@ const onCreateCommentSuccess = (responseData, blog) => {
   const showCommentHtml = showCommentTemplate({ comment: responseData, blog: blog })
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $(`#comments-of-blog-${blog}`).append(showCommentHtml)
+  $(`#comments-list-${blog}`).append(showCommentHtml)
   view.showOwnership()
 }
 

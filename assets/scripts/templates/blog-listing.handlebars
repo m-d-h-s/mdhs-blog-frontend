@@ -15,7 +15,7 @@
       <div class="card-body">
 
         <!-- USER HANDLE -->
-        <label>User handle placeholder: {{blog.handle}}</label>
+        <label>User handle placeholder: {{blog.handle.0.handle}}</label>
 
         <!-- BLOG BODY TEXT-->
         <p id="blog-body-{{blog._id}}" class="card-text">{{blog.body}}</p>
@@ -60,14 +60,14 @@
           <div id="comments-of-blog-{{blog.id}}" class="comment collapse" data-blog-id={{blog._id}}>
 
             <!-- CREATE COMMENT TEXTAREA FORM -->
-            <form class="comment-crud-form post-login my-2 bg-primary" data-blog-id={{blog._id}} data-action="create">
+            <form class="comment-crud-form post-login my-2" data-blog-id={{blog._id}} data-action="create">
               <textarea class="w-100" name="comment[text]" type="text" placeholder="Post your comment" maxlength="1000" required></textarea>
               <button type="submit">Create Comment</button>
             </form>
 
 
             <!-- LIST ITEM START -->
-            <li class="list-group-item">
+            <li id="comments-list-{{blog.id}}" class="list-group-item">
 
               {{#each blog.comments as |comment|}}
 
@@ -75,7 +75,7 @@
                 <div id="comment-{{comment._id}}" class="comment border-bottom my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
                   <!-- COMMENT OWNER HANDLE -->
-                  <p>{{comment.handle}} commented:</p>
+                  <p>{{comment.handle.0.handle}} commented:</p>
                   <!-- COMMENT TEXT -->
                   <p id="comment-text-{{comment._id}}">{{comment.text}}</p>
 
