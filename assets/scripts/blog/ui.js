@@ -4,17 +4,16 @@ const store = require('../store')
 const view = require('../view/view')
 
 const onCreateBlogSuccess = (responseData) => {
-  // console.log('onCreateBlogSuccess')
   $('#user-message').text('successfully created post!')
   const showBlogHtml = showBlogTemplate({ blog: responseData })
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#blog-content').empty()
   $('#blog-content').append(showBlogHtml)
+  // $(`#edit-blog-${responseData.blog._id}`).toggleClass('d-none')
 }
 
 const onIndexBlogSuccess = (responseData) => {
-  // console.log('onIndexBlogSuccess')
   const showBlogHtml = showBlogTemplate({ blogs: responseData.blog })
   $('form').trigger('reset')
   $('input').trigger('reset')
@@ -31,10 +30,12 @@ const onShowBlogSuccess = (responseData) => {
   $('#blog-content').empty()
   $('#blog-content').append(showBlogHtml)
 }
-const onUpdateBlogSuccess = (responseData) => {
+const onUpdateBlogSuccess = (responseData, blog) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#user-message').text('successfully updated post!')
+  $(`#edit-blog-${blog}`).show()
+  $(`#edit-blog-${blog}`).toggleClass('d-none')
 }
 const onDeleteBlogSuccess = id => {
   $('input').trigger('reset')

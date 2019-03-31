@@ -1,11 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
 
-body {}
-//
-// form {
-//   display: block;
-// }
-
 .owned {
   display: none;
 }
@@ -22,4 +16,25 @@ body {}
   flex-direction: column;
   overflow: hidden;
   word-break: break-word;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.clean-btn {
+  background: none;
+  border: none;
+  color: blue;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

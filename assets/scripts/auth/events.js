@@ -2,6 +2,7 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const blog = require('../blog/events')
 
 const onSignUp = (event) => {
   event.preventDefault()
@@ -14,7 +15,6 @@ const onSignUp = (event) => {
 }
 
 const onSignIn = (event) => {
-// console.log('onSignIn')
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
@@ -35,9 +35,9 @@ const onChangePassword = (event) => {
 }
 
 const onSignOut = (event) => {
-// console.log('onSignOut')
   event.preventDefault()
   api.signOut()
+    .then(blog.onBlogCrud.index)
     .then(ui.signOutSuccess)
     .catch(ui.failure)
 }

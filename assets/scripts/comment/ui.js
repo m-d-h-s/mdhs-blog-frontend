@@ -1,19 +1,20 @@
 'use strict'
 const showCommentTemplate = require('../templates/comment-listing.handlebars')
 const view = require('../view/view')
+const store = require('../store')
 
 const onCreateCommentSuccess = (responseData, blog) => {
-  // console.log('onCreateCommentSuccess')
   $('#user-message').text('successfully created post!')
+  const handle = store.user.handle
   const showCommentHtml = showCommentTemplate({ comment: responseData, blog: blog })
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $(`#comments-of-blog-${blog}`).append(showCommentHtml)
+  $(`#comments-list-${blog}`).append(showCommentHtml)
+  $(`#comment-handle-${responseData.comment._id}`).text(`${handle} comments:`)
   view.showOwnership()
 }
 
 const onIndexCommentSuccess = (responseData) => {
-  // console.log('onIndexCommentSuccess')
   const showCommentHtml = showCommentTemplate({ comment: responseData.comment })
   $('form').trigger('reset')
   $('input').trigger('reset')
@@ -28,21 +29,22 @@ const onShowCommentSuccess = (responseData) => {
   $('#comment-content').append(showCommentHtml)
 }
 const onUpdateCommentSuccess = (responseData, comment, blog) => {
-  // console.log(comment)
-  // console.log(responseData)
   $('#user-message').text('successfully updated post!')
   $('input').trigger('reset')
   $('form').trigger('reset')
 
-
   $(`#comment-text-${comment}`).text(responseData.comment.text)
   $(`#comment-textarea-${comment}`).text(responseData.comment.text)
 
-  view.showOwnership()
+  // const showCommentHtml = showCommentTemplate({ comment: responseData, blog: blog })
+  // $(`#comment-${comment}`).replaceWith(showCommentHtml)
 
+  view.showOwnership()
+  $(`#edit-comment-${comment}`).toggleClass('d-none')
+  $(`#comment-text-${comment}`).show()
+  $(`#comment-owned-${comment}`).toggleClass('d-none')
 }
 const onDeleteCommentSuccess = (responseData, element) => {
-  // console.log('onDeleteCommentSuccess')
   $('#user-message').text('successfully deleted comment!')
   $('input').trigger('reset')
   $('form').trigger('reset')
