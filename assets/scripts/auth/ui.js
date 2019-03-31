@@ -5,6 +5,7 @@ const view = require('../view/view')
 const signUpSuccess = () => {
   $('#user-message').text('Successfully signed up!')
   $('form').trigger('reset')
+  $('#sign-up-modal').modal('hide')
 }
 
 const signInSuccess = (responseData) => {
@@ -13,6 +14,7 @@ const signInSuccess = (responseData) => {
   $('form').trigger('reset')
   $('.post-login').show()
   $('.pre-login').hide()
+  $('#sign-in-modal').modal('hide')
   view.showOwnership()
 }
 
