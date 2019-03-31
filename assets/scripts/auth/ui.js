@@ -22,6 +22,7 @@ const changePasswordSuccess = () => {
   $('#user-message').show()
   $('#user-message').text('Successfully changed password!')
   $('form').trigger('reset')
+  $('#change-password-modal').modal('hide')
 }
 
 const signOutSuccess = () => {
@@ -30,6 +31,7 @@ const signOutSuccess = () => {
   $('form').trigger('reset')
   $('.post-login').hide()
   $('.pre-login').show()
+  $('#sign-out-modal').modal('hide')
   view.hideOwnership()
   store.user = null
 }

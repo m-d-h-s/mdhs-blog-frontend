@@ -18,7 +18,7 @@
         <label>User handle placeholder: {{blog.handle.0.handle}}</label>
 
         <!-- BLOG BODY TEXT-->
-        <p id="blog-body-{{blog._id}}" class="card-text">{{blog.body}}</p>
+        <p id="blog-body-{{blog._id}}" class="card-text text-justify">{{blog.body}}</p>
 
         <!-- BLOG UPDATE/DELETE FORMS START -->
         <div class="flex-right my-1">
@@ -77,7 +77,7 @@
                   <!-- COMMENT OWNER HANDLE -->
                   <p>{{comment.handle.0.handle}} commented:</p>
                   <!-- COMMENT TEXT -->
-                  <p id="comment-text-{{comment._id}}">{{comment.text}}</p>
+                  <p id="comment-text-{{comment._id}}" class="text-justify">{{comment.text}}</p>
 
                   <!-- UPDATE/DELETE COMMENT FORMS START -->
                   <div class="owned" data-owner="{{comment.owner}}">
