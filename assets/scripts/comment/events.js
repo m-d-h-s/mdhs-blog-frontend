@@ -9,7 +9,7 @@ const onCommentCrud = {
     const formData = getFormFields(event.target)
     const blogId = $(event.target).data('blog-id')
     api.createComment(formData, blogId)
-      .then(data => ui.onCreateCommentSuccess(data, blogId))
+      .then(responseData => ui.onCreateCommentSuccess(responseData, blogId))
       .catch(ui.onCommentFailure)
   },
   index: () => {
