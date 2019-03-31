@@ -6,7 +6,6 @@ const store = require('../store')
 const onCreateCommentSuccess = (responseData, blog) => {
   $('#user-message').text('successfully created post!')
   const handle = store.user.handle
-  console.log(responseData)
   const showCommentHtml = showCommentTemplate({ comment: responseData, blog: blog })
   $('input').trigger('reset')
   $('form').trigger('reset')
