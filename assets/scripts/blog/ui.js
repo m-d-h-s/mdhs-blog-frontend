@@ -11,6 +11,7 @@ const onCreateBlogSuccess = (responseData) => {
   $('#blog-content').empty()
   $('#blog-content').append(showBlogHtml)
   // $(`#edit-blog-${responseData.blog._id}`).toggleClass('d-none')
+  $('#create-blog-modal').modal('hide')
 }
 
 const onIndexBlogSuccess = (responseData) => {
@@ -34,8 +35,10 @@ const onUpdateBlogSuccess = (responseData, blog) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#user-message').text('successfully updated post!')
-  $(`#edit-blog-${blog}`).show()
+
+  // remove class d-none to show
   $(`#edit-blog-${blog}`).toggleClass('d-none')
+  $(`#blog-owned-${blog}`).toggleClass('d-none')
 }
 const onDeleteBlogSuccess = id => {
   $('input').trigger('reset')

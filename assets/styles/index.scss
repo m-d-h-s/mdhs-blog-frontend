@@ -7,6 +7,14 @@
   word-break: break-word;
 }
 
+.card-header > * {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .clean-btn {
   background: none;
   border: none;

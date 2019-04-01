@@ -7,45 +7,49 @@
     <div class="card m-4">
 
       <!-- CARD HEADER -->
-      <div class="card-header">
-        <h5 id="blog-title-{{blog._id}}" class="card-title">{{blog.title}}</h5>
+      <div class="card-header" data-blog-id={{blog._id}} data-toggle="collapse" data-target="#card-body-blog-{{blog._id}}">
+        <h5 id="blog-title-{{blog._id}}" class="card-title m-0 d-inline-block" >{{blog.title}}</h5>
+        <p class="text-primary">{{blog.handle.0.handle}}</p>
       </div>
 
       <!-- CARD BODY START -->
-      <div class="card-body">
-
-        <!-- USER HANDLE -->
-        <label>User handle placeholder: {{blog.handle.0.handle}}</label>
+      <div id="card-body-blog-{{blog._id}}" class="card-body collapse py-0">
 
         <!-- BLOG BODY TEXT-->
         <p id="blog-body-{{blog._id}}" class="card-text text-justify">{{blog.body}}</p>
 
         <!-- BLOG UPDATE/DELETE FORMS START -->
-        <div class="flex-right my-1">
+        <div class="my-1">
 
           <!-- UPDATE BLOG FORM TEXTAREA  -->
-          <div id="blog-owned-{{blog._id}}" class="owned d-none w-100" data-owner="{{blog.owner}}">
+          <div id="blog-owned-{{blog._id}}" class="owned w-100 collapse d-none" data-owner="{{blog.owner}}">
             <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form d-flex flex-column" data-action="update">
               <textarea class="d-inline" name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>{{blog.title}}</textarea>
-              <textarea class="d-inline" name="blog[body]" type="text" placeholder="Enter a blog body" maxlength="10000" required>{{blog.body}}</textarea>
+              <textarea class="d-inline my-2" name="blog[body]" type="text" placeholder="Enter a blog body" maxlength="10000" required>{{blog.body}}</textarea>
               <div class="d-flex">
-                <button class="ml-auto" type="submit">Update Blog</button>
+                <button class="btn btn-success my-2 ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}" type="submit">Update Blog</button>
               </div>
             </form>
 
             <!-- DELETE BLOG BUTTON -->
             <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form owned d-flex" data-action="delete">
-              <button class="bg-danger text-light ml-auto" type="submit">Delete Blog</button>
+              <button class="btn bg-danger text-light ml-auto" type="submit">Delete Blog</button>
             </form>
             <!-- UPDATE BLOG FORM TEXTAREA END -->
           </div>
 
-          <!-- EDIT BUTTON SHOW/HIDE FORMS -->
-          <button id="edit-blog-{{blog._id}}" class="edit-blog-btn owned" data-blog-id={{blog._id}} data-owner="{{blog.owner}}">Edit Blog</button>
+          <!-- EDIT BUTTON SHOW/HIDE FORMS AND LIKE BUTTON-->
+          <div class="d-flex my-2">
+            <!-- BLOG LIKE BUTTON -->
+            <button class="btn btn-light card-link post-login mr-auto">👍</button>
+
+            <!-- BLOG EDIT BUTTON -->
+            <button id="edit-blog-{{blog._id}}" class="btn btn-info edit-blog-btn owned ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}">Edit Blog</button>
+
+          </div>
 
           <!-- BLOG UPDATE/DELETE FORMS END -->
         </div>
-
 
 
         <!-- LIST START -->
@@ -115,10 +119,7 @@
           <!-- LIST END -->
         </ul>
 
-        <div class="card-body flex-between post-login">
-          <!-- <a href="#" class="card-link">Another Comment</a> -->
-          <a href="#" class="card-link">Like</a>
-        </div>
+
 
         <!-- CARD BODY END -->
       </div>

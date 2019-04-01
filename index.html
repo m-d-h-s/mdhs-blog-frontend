@@ -15,24 +15,34 @@
 
 <body>
 
-  <nav class="navbar navbar-light bg-primary fixed-top">
-    <span class="navbar-brand mb-0 h1  text-light">Navbar</span>
-    <button id="sign-in-btn" class="pre-login" data-toggle="modal" data-target="#sign-in-modal">Sign In</button>
-    <button id="sign-up-btn" class="pre-login" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
+  <!-- NAVBAR START -->
+  <nav class="navbar navbar-light bg-primary fixed-top d-flex">
+    <!-- NAVBAR TITLE -->
+    <span class="navbar-brand mb-0 h1 text-light">MDHS Blog</span>
 
-    <button id="create-log-btn" class="post-login" data-toggle="modal" data-target="#create-blog-modal">Create Blog</button>
+    <!-- NAVBAR SIGN IN/UP MODAL SHOW BUTTONS -->
+    <div class="ml-auto">
+      <button id="sign-in-btn" class="pre-login btn btn-dark text-light" data-toggle="modal" data-target="#sign-in-modal">Sign In</button>
+      <button id="sign-up-btn" class="pre-login btn btn-dark text-light" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
+    </div>
 
+    <!-- NAVBAR CREATE BLOG MODAL SHOW BUTTON -->
+    <button id="create-log-btn" class="post-login btn btn-light mr-auto" data-toggle="modal" data-target="#create-blog-modal">Create Blog</button>
 
-    <div class="dropdown post-login dropleft">
+    <!-- NAVBAR CHANGE PASSWORD/SIGN OUT DROPDOWN BUTTONS -->
+    <div class="dropdown post-login">
       <button id="settings-button" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Settings
       </button>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu dropdown-menu-right">
         <button id="change-password-btn" class="post-login clean-btn" data-toggle="modal" data-target="#change-password-modal">Change Password</button>
         <div class="dropdown-divider"></div>
         <button id="sign-out-btn" class="post-login clean-btn" data-toggle="modal" data-target="#sign-out-modal">Sign Out</button>
       </div>
+      <!-- NAVBAR CHANGE PASSWORD/SIGN OUT DROPDOWN BUTTONS END-->
     </div>
+
+    <!-- NAVBAR END -->
   </nav>
 
   <!-- SIGN IN MODAL -->
@@ -176,16 +186,6 @@
 
   <h1 class="pt-5 text-center">Maryland HighSchool Blog</h1>
   <h2 id="user-message" class="m-0"></h2>
-
-  <!-- <div class="post-login">
-    <h2>Create A Blog</h2>
-    <form id="new-blog" class="blog-crud-form" data-action="create">
-      <input name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>
-      <textarea name="blog[body]" placeholder="Enter a blog body" maxlength="10000" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </div> -->
-
 
   <!-- <form id="index-blog" class="blog-crud-form" data-action="index">
     <button type="submit">SHOW ALL</button>
