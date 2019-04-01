@@ -24,8 +24,10 @@
     <button id="collapse-all-comments" class="btn btn-dark mx-2">Open All</button>
 
     <form id="index-blog" class="blog-crud-form" data-action="index">
-      <button class="btn btn-dark" type="submit">Reload Page</button>
+      <button class="btn btn-dark" type="submit">Show All Blogs</button>
     </form>
+
+    <button id="search-btn" class="btn btn-dark text-light mx-2" data-toggle="modal" data-target="#search-modal">Search Blogs</button>
 
     <!-- NAVBAR SIGN IN/UP MODAL SHOW BUTTONS -->
     <div class="ml-auto">
@@ -52,25 +54,77 @@
     <!-- NAVBAR END -->
   </nav>
 
+  <!-- SEARCH MODAL -->
+  <div id="search-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Search Blogs</h5>
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- SEARCH FORM -->
+        <form id="search-blogs-title-form" class="search-blogs-title-form">
+          <div class="modal-body d-flex flex-column form-group">
+            <label for="">Search by Title</label>
+            <input name="blog[title]" required type="text" placeholder="Enter Title">
+            <div>
+              <input class="btn btn-secondary my-1" type="submit" value="Search">
+            </div>
+          </div>
+        </form>
+
+        <form id="search-blogs-body-form" class="search-blogs-body-form my-1">
+          <div class="modal-body d-flex flex-column form-group">
+            <label for="">Search by Content</label>
+            <input name="blog[body]" required type="text" placeholder="Enter Content">
+            <div>
+              <input class="btn btn-secondary my-1" type="submit" value="Search">
+            </div>
+          </div>
+        </form>
+
+        <form id="search-blogs-handle-form" class="search-blogs-handle-form">
+          <div class="modal-body d-flex flex-column form-group">
+            <label for="">Search by Handle</label>
+            <input name="blog[handle]" required type="text" placeholder="Enter Handle">
+            <div>
+              <input class="btn btn-secondary my-1" type="submit" value="Search">
+            </div>
+          </div>
+        </form>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- SEARCH MODAL END -->
+  </div>
+
   <!-- SIGN IN MODAL -->
   <div id="sign-in-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Sign In</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <!-- SIGN IN FORM -->
         <form id="sign-in-form">
           <div class="modal-body d-flex flex-column form-group">
-            <input class="form-control my-1" name="credentials[email]" required type="email" placeholder="email">
-            <input class="form-control my-1" name="credentials[password]" required type="password" placeholder="password">
+            <label for="">Email</label>
+            <input class="form-control my-1" name="credentials[email]" required type="email" placeholder="Enter Here">
+            <label for="">Password</label>
+            <input class="form-control my-1" name="credentials[password]" required type="password" placeholder="Enter Here">
+            <div id="sign-in-form-feedback" class="bg-danger text-light my-2"></div>
           </div>
           <div class="modal-footer">
             <input class="button btn btn-success" type="submit" value="Sign In">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
           </div>
         </form>
       </div>
@@ -84,22 +138,26 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Sign Up</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <!-- SIGN UP FORM -->
         <form id="sign-up-form">
           <div class="modal-body d-flex flex-column form-group">
-            <input class="form-control my-1" name="credentials[email]" required type="email" placeholder="email">
-            <input class="form-control my-1" name="credentials[handle]" required type="text" placeholder="handle">
-            <input class="form-control my-1" name="credentials[password]" required type="password" placeholder="password">
-            <input class="form-control my-1" name="credentials[password_confirmation]" required type="password" placeholder="password confirmation">
+            <label for="">Email</label>
+            <input class="form-control my-1" name="credentials[email]" required type="email" placeholder="Enter Here">
+            <label for="">Handle</label>
+            <input class="form-control my-1" name="credentials[handle]" required type="text" placeholder="Enter Here">
+            <label for="">Password</label>
+            <input class="form-control my-1" name="credentials[password]" required type="password" placeholder="Enter Here">
+            <label for="">Password Confirmation</label>
+            <input class="form-control my-1" name="credentials[password_confirmation]" required type="password" placeholder="Enter Here">
             <div id="sign-up-form-feedback" class="bg-danger text-light my-2"></div>
           </div>
           <div class="modal-footer">
             <input class="button btn btn-success" type="submit" value="Sign Up">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
           </div>
         </form>
       </div>
@@ -114,7 +172,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Change Password Form</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -122,13 +180,15 @@
         <!-- CHANGE PASSWORD FORM -->
         <form id="change-password-form">
           <div class="modal-body">
-            <input class="form-control" name="passwords[old]" required type="password" placeholder="Old password">
-            <input class="form-control my-2" name="passwords[new]" required type="password" placeholder="New password">
+            <label for="">Old Password</label>
+            <input class="form-control" name="passwords[old]" required type="password" placeholder="Enter Here">
+            <label for="">New Password</label>
+            <input class="form-control my-2" name="passwords[new]" required type="password" placeholder="Enter Here">
             <div id="change-password-form-feedback" class="bg-danger text-light my-2"></div>
           </div>
           <div class="modal-footer">
             <input class="button btn btn-success" type="submit" value="Change Password">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
           </div>
         </form>
 
@@ -145,7 +205,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Sign Out</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -157,7 +217,7 @@
           </div>
           <div class="modal-footer">
             <input class="btn btn-danger" type="submit" value="Yes">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">No</button>
           </div>
         </form>
 
@@ -172,7 +232,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Write Your Blog</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -187,7 +247,7 @@
 
           <div class="modal-footer">
             <button class="btn btn-success" type="submit">Post your Blog</button>
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
           </div>
         </form>
       </div>
@@ -201,7 +261,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Something went wrong!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -212,7 +272,7 @@
 
         <div class="modal-footer">
           <button id="refresh-button" class="btn btn-success" type="submit">Get up to date</button>
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
@@ -222,7 +282,9 @@
   <h1 class="pt-5 mt-3 text-center">Maryland HighSchool Blog</h1>
   <h2 id="user-message" class="mx-5 my-0"></h2>
 
-  <section id="blog-content"></section>
+  <div id="blog-content"></div>
+
+  <div id="blog-search-content"></div>
 
 </body>
 

@@ -42,18 +42,6 @@ const onBlogCrud = {
   }
 }
 
-const onToggleComments = () => {
-  event.preventDefault()
-  const blog = $(event.target).data('blog-id')
-  $(`.collapse[data-blog-id=${blog}]`).collapse('toggle')
-
-  if ($(event.target).text() === 'Hide Comments') {
-    $(event.target).text('Show Comments')
-  } else {
-    $(event.target).text('Hide Comments')
-  }
-}
-
 const toggleEditBlog = () => {
   event.preventDefault()
   const blog = $(event.target).data('blog-id')
@@ -69,6 +57,18 @@ const toggleEditBlog = () => {
 
   // toggle edit button to hide
   $(`#edit-blog-${blog}`).toggleClass('d-none')
+}
+
+const onToggleComments = () => {
+  event.preventDefault()
+  const blog = $(event.target).data('blog-id')
+  $(`.collapse[data-blog-id=${blog}]`).collapse('toggle')
+
+  if ($(event.target).text() === 'Hide Comments') {
+    $(event.target).text('Show Comments')
+  } else {
+    $(event.target).text('Hide Comments')
+  }
 }
 
 const onLikeBlog = () => {
@@ -96,10 +96,67 @@ const addHandlers = () => {
     const crudAction = $(event.target).data('action')
     onBlogCrud[crudAction](event)
   })
-  $('body').on('click', '.toggle-comments', onToggleComments)
   $('body').on('click', '.edit-blog-btn', toggleEditBlog)
   $('body').on('click', '.like-blog-btn', onLikeBlog)
+  $('body').on('click', '.toggle-comments', onToggleComments)
   $('#refresh-button').on('click', onModalFailure)
+
+  $('#search-blogs-title-form').on('submit', onSearchBlogsByTitle)
+  $('#search-blogs-body-form').on('submit', onSearchBlogsByBody)
+  $('#search-blogs-handle-form').on('submit', onSearchBlogsByHandle)
+}
+
+const onSearchBlogsByTitle = (event) => {
+  event.preventDefault()
+  const form = event.target
+  const blogData = getFormFields(form)
+
+  $('.blog').hide()
+  const titles = $('.card-title')
+  titles.each(index => {
+    if ($(titles[index]).text().includes(blogData.blog.title)) {
+      const blogId = $(titles[index]).data('blog-id')
+      $(`#blog-${blogId}`).show()
+    }
+  })
+
+  $('#search-modal').modal('hide')
+  $('form').trigger('reset')
+}
+
+const onSearchBlogsByBody = (event) => {
+  event.preventDefault()
+  const form = event.target
+  const blogData = getFormFields(form)
+
+  $('.blog').hide()
+  const bodies = $('.card-text')
+  bodies.each(index => {
+    if ($(bodies[index]).text().includes(blogData.blog.body)) {
+      const blogId = $(bodies[index]).data('blog-id')
+      $(`#blog-${blogId}`).show()
+      $(`#card-body-blog-${blogId}`).collapse('show')
+    }
+  })
+  $('#search-modal').modal('hide')
+  $('form').trigger('reset')
+}
+
+const onSearchBlogsByHandle = (event) => {
+  event.preventDefault()
+  const form = event.target
+  const blogData = getFormFields(form)
+  $('.blog').hide()
+  const handles = $('.handle-text')
+  handles.each(index => {
+    if ($(handles[index]).data('handle') === blogData.blog.handle) {
+      const blogId = $(handles[index]).data('blog-id')
+      $(`#blog-${blogId}`).show()
+      $(`#card-body-blog-${blogId}`).collapse('show')
+    }
+  })
+  $('#search-modal').modal('hide')
+  $('form').trigger('reset')
 }
 
 module.exports = {
