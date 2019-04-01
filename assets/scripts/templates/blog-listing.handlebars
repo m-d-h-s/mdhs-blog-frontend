@@ -46,7 +46,7 @@
           <!-- EDIT BUTTON SHOW/HIDE FORMS AND LIKE BUTTON-->
           <div class="d-flex my-2">
             <!-- BLOG LIKE BUTTON -->
-            <button class="btn btn-light card-link post-login mr-auto">Like this post 👍</button>
+            <button id="like-blog={{blog._id}}" class="like-blog-btn btn btn-light card-link post-login mr-auto">Like this post 👍</button>
 
             <!-- BLOG EDIT BUTTON -->
             <button id="edit-blog-{{blog._id}}" class="btn btn-info edit-blog-btn owned ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}">Edit Blog</button>

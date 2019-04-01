@@ -55,11 +55,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <!-- SIGN IN FORM -->
         <form id="sign-in-form">
-          <div class="modal-body">
-            <!-- SIGN IN FORM -->
-            <input name="credentials[email]" required type="email" placeholder="email">
-            <input name="credentials[password]" required type="password" placeholder="password">
+          <div class="modal-body d-flex flex-column form-group">
+            <input class="form-control my-1" name="credentials[email]" required type="email" placeholder="email">
+            <input class="form-control my-1" name="credentials[password]" required type="password" placeholder="password">
           </div>
           <div class="modal-footer">
             <input class="button btn btn-success" type="submit" value="Sign In">
@@ -81,13 +81,14 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <!-- SIGN UP FORM -->
         <form id="sign-up-form">
-          <div class="modal-body">
-            <!-- SIGN UP FORM -->
-            <input name="credentials[email]" required type="email" placeholder="email">
-            <input name="credentials[handle]" required type="text" placeholder="handle">
-            <input name="credentials[password]" required type="password" placeholder="password">
-            <input name="credentials[password_confirmation]" required type="password" placeholder="password confirmation">
+          <div class="modal-body d-flex flex-column form-group">
+            <input class="form-control my-1" name="credentials[email]" required type="email" placeholder="email">
+            <input class="form-control my-1" name="credentials[handle]" required type="text" placeholder="handle">
+            <input class="form-control my-1" name="credentials[password]" required type="password" placeholder="password">
+            <input class="form-control my-1" name="credentials[password_confirmation]" required type="password" placeholder="password confirmation">
+            <div id="sign-up-form-feedback" class="bg-danger text-light my-2"></div>
           </div>
           <div class="modal-footer">
             <input class="button btn btn-success" type="submit" value="Sign Up">
@@ -116,6 +117,7 @@
           <div class="modal-body">
             <input name="passwords[old]" required type="password" placeholder="old password">
             <input name="passwords[new]" required type="password" placeholder="new password">
+            <div id="change-password-form-feedback" class="bg-danger text-light my-2"></div>
           </div>
           <div class="modal-footer">
             <input class="button btn btn-success" type="submit" value="Change Password">

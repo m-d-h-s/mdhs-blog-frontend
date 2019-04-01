@@ -71,6 +71,10 @@ const toggleEditBlog = () => {
   $(`#edit-blog-${blog}`).toggleClass('d-none')
 }
 
+const onLikeBlog = () => {
+  event.preventDefault()
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.blog-crud-form', (event) => {
     event.preventDefault()
@@ -79,6 +83,7 @@ const addHandlers = () => {
   })
   $('body').on('click', '.toggle-comments', onToggleComments)
   $('body').on('click', '.edit-blog-btn', toggleEditBlog)
+  $('body').on('click', '.like-blog-btn', onLikeBlog)
 }
 
 module.exports = {

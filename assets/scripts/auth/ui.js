@@ -42,10 +42,22 @@ const failure = () => {
   $('form').trigger('reset')
 }
 
+const signUpFailure = () => {
+  $('#sign-up-form-feedback').text('Your username and email must be unique! Try a different one.')
+  setTimeout(() => $('#sign-up-form-feedback').hide(), 3000)
+}
+
+const changePasswordFailure = () => {
+  $('#change-password-form-feedback').text('Your old password must be correct. Try again.')
+  setTimeout(() => $('#change-password-form-feedback').hide(), 3000)
+}
+
 module.exports = {
   signUpSuccess,
   signInSuccess,
   signOutSuccess,
   changePasswordSuccess,
-  failure
+  changePasswordFailure,
+  failure,
+  signUpFailure
 }
