@@ -10,11 +10,11 @@
       <div class="card-header" data-blog-id={{blog._id}} data-toggle="collapse" data-target="#card-body-blog-{{blog._id}}">
 
         <div class="d-flex">
-          <h4 id="blog-title-{{blog._id}}" class="card-title m-0 d-inline-block">{{blog.title}}</h4>
+          <h4 id="blog-title-{{blog._id}}" class="card-title m-0 d-inline-block" data-blog-id={{blog._id}}>{{blog.title}}</h4>
           <p class="owned editable ml-auto text-light bg-success rounded px-2" data-blog-id={{blog._id}} data-owner="{{blog.owner}}"></p>
         </div>
 
-        <p class="text-secondary">By: {{blog.handle.0.handle}}</p>
+        <p id="card-handle-{{blog._id}}" class="handle-text text-secondary" data-blog-id={{blog._id}} data-handle="{{blog.handle.0.handle}}">By: {{blog.handle.0.handle}}</p>
 
         <div class="d-flex">
           <p id="like-count-{{blog._id}}" class="text-secondary border-right pr-2">{{blog.likes.length}} likes</p>
@@ -28,7 +28,7 @@
         <!-- EDIT BUTTON SHOW/HIDE FORMS AND LIKE BUTTON-->
         <div class="d-flex my-2">
           <!-- BLOG LIKE BUTTON -->
-          <button id="like-blog-{{blog._id}}" data-blog-id="{{blog._id}}" class="like-blog-btn btn btn-light card-link post-login mr-auto">{{ifLiked blog.likes}}</button>
+          <button id="like-blog={{blog._id}}" data-blog-id="{{blog._id}}" class="like-blog-btn btn btn-light card-link post-login mr-auto">{{ifLiked blog.likes}}</button>
 
           <!-- BLOG EDIT BUTTON -->
           <button id="edit-blog-{{blog._id}}" class="btn btn-info edit-blog-btn owned ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}">Edit Blog</button>
@@ -36,7 +36,7 @@
         </div>
 
         <!-- BLOG BODY TEXT-->
-        <p id="blog-body-{{blog._id}}" class="card-text text-justify mt-3"><span class="mx-4"></span>{{blog.body}}</p>
+        <p id="blog-body-{{blog._id}}" class="card-text text-justify mt-3" data-blog-id={{blog._id}}><span class="mx-4"></span>{{blog.body}}</p>
 
         <!-- BLOG UPDATE/DELETE FORMS START -->
         <div class="my-1">
@@ -105,7 +105,7 @@
 
                   <!-- COMMENT OWNER HANDLE -->
                   <div class="d-flex">
-                    <p id="comment-handle-{{comment._id}}">{{comment.handle.0.handle}} commented:</p>
+                    <p id="comment-handle-{{comment._id}}" class="text-secondary">{{comment.handle.0.handle}} commented:</p>
                     <p class="owned editable ml-auto text-light bg-success rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
                   </div>
                   <!-- COMMENT TEXT -->
