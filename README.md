@@ -1,8 +1,8 @@
- # Blogging Platform
- Hi all and welcome to the GitHub Repo for our Blogging Platform.
+ # LetterBox
+ Hi all and welcome to the GitHub Repo for Letterbox.
  This project is designed to be a place for users to blog, and comment on their
  blog or other users blogs.
- This repos is for the front end of our Blogging Platford. For the back end please visit https://github.com/m-d-h-s/mdhs-blog-backend
+ This repos is for the front end of Letterbox. For the back end please visit https://github.com/m-d-h-s/mdhs-blog-backend
  the deployed api is available at https://mdhs-blog-backend.herokuapp.com/
 
  ## Description
@@ -14,7 +14,9 @@
  their own comments and blogs, with the exception that when a user deletes their blog,
  all the related comments are deleted with it regardless of user ownership. Anyone
  may view the blog posts and their comments at any time, however one may only interact
- with the blogs and comments when signed in.
+ with the blogs and comments when signed in. Users are able to like blogs, and
+ blogs are sorted by amount of likes versus how old the post has been listed.
+
  ## Technology
  ### Front End
  - [HTML 5](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)
@@ -48,9 +50,8 @@ comments. We kept them separate, and planned to connect them at a later date.
 Once these were completed, we created our sign up/in/out features that includes
 change password. We then worked on connecting to comments to blogs, and both to users.
 While these are connected on the backend, we wanted to be able to show them appropriately
-on the page. We utilized hide show features on their appropriate buttons for
-correct user feedback. Once we were able to correctly show and hide features,
-and that we met all requirements for the site, we worked on the styling and higher functionalities of the site, mainly through bootstrap and handlebars.
+on the page. We also planned on having a like button for blogs, that would be connected to individual users so they may only like or unlike a blog once (toggle feature). We planned to do this in the sameway as a user owns a comment, but just feature in the UI as a like. We utilized hide show features on their appropriate buttons for correct user feedback. Once we were able to correctly show and hide features, and that we met all requirements for the site, we worked on the styling and higher functionalities of the site, mainly through bootstrap and handlebars. Lastly,
+after adding all the features we wanted, we planned on doing bug fixing.
 
  ## Problem solving
  - Check that the problem is a requirment
@@ -68,15 +69,16 @@ and that we met all requirements for the site, we worked on the styling and high
  - Whiteboarding out the problem, to help connect dots and understand the process
 
  ## Entity Relationship Diagram
- [Initial ERD](https://imgur.com/CjyIGyF)
+[Initial ERD is located in the planning doc](https://docs.google.com/document/d/1TxQ9B5Qk-sSy-RYfSC8yyhHI-wttremlUV2TkMCKOP0/edit?usp=sharing)
+See last page
 
  Current ERD
  ```
- |users|-|-<|events|
+user|-has many<|Blogs|-has many<|Comments|-owned by-|user
  ```
 
  ## Known Issues
- Console Field is currently not able to be populated without introducing weirdness. Currently, this must be selected every time an event is altered which isn't great UI.
+ None for now.
 
  ## Wireframe
  https://imgur.com/B7RXasm
@@ -97,11 +99,9 @@ and that we met all requirements for the site, we worked on the styling and high
  - Meta
    - find a better way to identify and catalog necessary UX improvements
  - UI Improvements
-   - ~~Create Nav Bar~~
-   - ~~Add Color~~
-   - Only show my own blogs
    - Only show my own comments
  - Features
-   - Have a handler
+   - Sort by all-time likes
    - Be able to attach images to blogs and comments
-   - Be able to like other users blogs and comments
+   - Be able to like other users comments
+   - User can change styling of own blog
