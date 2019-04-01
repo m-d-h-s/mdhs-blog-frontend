@@ -30,7 +30,7 @@ const onBlogCrud = {
     const blogId = $(event.target).data('blog-id')
     const formData = getFormFields(event.target)
     api.updateBlog(formData, blogId)
-      .then(data => ui.onUpdateBlogSuccess(data, blogId))
+      .then(data => ui.onUpdateBlogSuccess(data, blogId, formData))
       .catch(ui.onBlogFailure)
   },
   delete: function (event) {
@@ -62,10 +62,10 @@ const toggleEditBlog = () => {
   $(`#blog-owned-${blog}`).toggleClass('d-none')
 
   // toggle title to hide
-  $(`#blog-title-${blog}`).toggleClass('d-none')
+  $(`#blog-title-${blog}`).hide()
 
   // toggle body to hide
-  $(`#blog-body-${blog}`).toggleClass('d-none')
+  $(`#blog-body-${blog}`).hide()
 
   // toggle edit button to hide
   $(`#edit-blog-${blog}`).toggleClass('d-none')

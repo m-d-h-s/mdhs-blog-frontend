@@ -33,8 +33,13 @@ const onUpdateCommentSuccess = (responseData, comment, blog) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
 
+  // right now theres not responseData to replace the current blog with a handlebar
+  // work around: inject new data directly into html
+  // start work around
+
   $(`#comment-text-${comment}`).text(responseData.comment.text)
   $(`#comment-textarea-${comment}`).text(responseData.comment.text)
+  // end work around
 
   // const showCommentHtml = showCommentTemplate({ comment: responseData, blog: blog })
   // $(`#comment-${comment}`).replaceWith(showCommentHtml)

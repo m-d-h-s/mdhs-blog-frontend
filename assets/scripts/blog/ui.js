@@ -31,14 +31,30 @@ const onShowBlogSuccess = (responseData) => {
   $('#blog-content').empty()
   $('#blog-content').append(showBlogHtml)
 }
-const onUpdateBlogSuccess = (responseData, blog) => {
+const onUpdateBlogSuccess = (responseData, blog, formData) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#user-message').text('successfully updated post!')
 
   // remove class d-none to show
   $(`#edit-blog-${blog}`).toggleClass('d-none')
+
+  // add class d-none to hide
   $(`#blog-owned-${blog}`).toggleClass('d-none')
+
+  // right now theres not responseData to replace the current blog with a handlebar
+  // work around: inject new data directly into html
+  // start work around
+  $(`#blog-title-${blog}`).text(formData.blog.title)
+  $(`#blog-body-${blog}`).text(formData.blog.body)
+
+  $(`#update-blog-textarea-title-${blog}`).text(formData.blog.title)
+  $(`#update-blog-textarea-body-${blog}`).text(formData.blog.body)
+
+  // end work around
+
+  $(`#blog-title-${blog}`).show()
+  $(`#blog-body-${blog}`).show()
 }
 const onDeleteBlogSuccess = id => {
   $('input').trigger('reset')
