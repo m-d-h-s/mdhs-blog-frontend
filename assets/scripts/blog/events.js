@@ -75,6 +75,18 @@ const onLikeBlog = () => {
   event.preventDefault()
 }
 
+const toggleCollapseAllBlogs = () => {
+  event.preventDefault()
+
+  if ($('#collapse-all-blogs').text() === 'Open all Blogs') {
+    $('#collapse-all-blogs').text('Close all Blogs')
+    $('.card-body').collapse('show')
+  } else {
+    $('#collapse-all-blogs').text('Open all Blogs')
+    $('.card-body').collapse('hide')
+  }
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.blog-crud-form', (event) => {
     event.preventDefault()
@@ -84,6 +96,7 @@ const addHandlers = () => {
   $('body').on('click', '.toggle-comments', onToggleComments)
   $('body').on('click', '.edit-blog-btn', toggleEditBlog)
   $('body').on('click', '.like-blog-btn', onLikeBlog)
+  $('#collapse-all-blogs').on('click', toggleCollapseAllBlogs)
 }
 
 module.exports = {
