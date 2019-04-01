@@ -48,7 +48,7 @@ const signInFailure = () => {
 
 const signUpFailure = () => {
   $('form').trigger('reset')
-  $('#sign-up-form-feedback').text('Your username and email must be unique! Try a different one.')
+  $('#sign-up-form-feedback').text('Remember your username and email must be unique! Your username and email must be available. Your passwords must match.')
   setTimeout(() => $('#sign-up-form-feedback').text(''), 3000)
 }
 
