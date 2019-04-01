@@ -44,18 +44,21 @@ const failure = () => {
 }
 
 const signInFailure = () => {
+  $('form').trigger('reset')
   $('#sign-in-form-feedback').text('Your username must exist already and password must be correct. Try again.')
-  setTimeout(() => $('#sign-up-form-feedback').hide(), 3000)
+  setTimeout(() => $('#sign-up-form-feedback').text(''), 3000)
 }
 
 const signUpFailure = () => {
+  $('form').trigger('reset')
   $('#sign-up-form-feedback').text('Your username and email must be unique! Try a different one.')
-  setTimeout(() => $('#sign-up-form-feedback').hide(), 3000)
+  setTimeout(() => $('#sign-up-form-feedback').text(''), 3000)
 }
 
 const changePasswordFailure = () => {
+  $('form').trigger('reset')
   $('#change-password-form-feedback').text('Your old password must be correct. Try again.')
-  setTimeout(() => $('#change-password-form-feedback').hide(), 3000)
+  setTimeout(() => $('#change-password-form-feedback').text(''), 3000)
 }
 
 module.exports = {
