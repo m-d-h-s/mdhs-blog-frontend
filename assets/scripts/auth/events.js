@@ -49,6 +49,7 @@ const addHandlers = () => {
   $('#sign-out-form').on('submit', onSignOut)
   $('#change-password-form').on('submit', onChangePassword)
   $('.cancel').on('click', () => $('form').trigger('reset'))
+  $('.modal').on('hidden.bs.modal', function () { $(this).find('form').trigger('reset') })
 }
 
 module.exports = {
