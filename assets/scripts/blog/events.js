@@ -42,18 +42,6 @@ const onBlogCrud = {
   }
 }
 
-const onToggleComments = () => {
-  event.preventDefault()
-  const blog = $(event.target).data('blog-id')
-  $(`.collapse[data-blog-id=${blog}]`).collapse('toggle')
-
-  if ($(event.target).text() === 'Hide Comments') {
-    $(event.target).text('Show Comments')
-  } else {
-    $(event.target).text('Hide Comments')
-  }
-}
-
 const toggleEditBlog = () => {
   event.preventDefault()
   const blog = $(event.target).data('blog-id')
@@ -96,11 +84,9 @@ const addHandlers = () => {
     const crudAction = $(event.target).data('action')
     onBlogCrud[crudAction](event)
   })
-  $('body').on('click', '.toggle-comments', onToggleComments)
   $('body').on('click', '.edit-blog-btn', toggleEditBlog)
   $('body').on('click', '.like-blog-btn', onLikeBlog)
   $('#refresh-button').on('click', onModalFailure)
-
   $('#search-blogs-title-form').on('submit', onSearchBlogsByTitle)
   $('#search-blogs-body-form').on('submit', onSearchBlogsByBody)
   $('#search-blogs-handle-form').on('submit', onSearchBlogsByHandle)
@@ -120,7 +106,8 @@ const onSearchBlogsByTitle = (event) => {
     }
   })
 
-  $('#search-title-modal').modal('hide')
+  $('#search-modal').modal('hide')
+  $('form').trigger('reset')
 }
 
 const onSearchBlogsByBody = (event) => {
@@ -137,7 +124,8 @@ const onSearchBlogsByBody = (event) => {
       $(`#card-body-blog-${blogId}`).collapse('show')
     }
   })
-  $('#search-content-modal').modal('hide')
+  $('#search-modal').modal('hide')
+  $('form').trigger('reset')
 }
 
 const onSearchBlogsByHandle = (event) => {
@@ -153,7 +141,8 @@ const onSearchBlogsByHandle = (event) => {
       $(`#card-body-blog-${blogId}`).collapse('show')
     }
   })
-  $('#search-handle-modal').modal('hide')
+  $('#search-modal').modal('hide')
+  $('form').trigger('reset')
 }
 
 module.exports = {

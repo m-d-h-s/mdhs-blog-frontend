@@ -24,11 +24,10 @@
     <button id="collapse-all-comments" class="btn btn-dark mx-2">Open All</button>
 
     <form id="index-blog" class="blog-crud-form" data-action="index">
-      <button class="btn btn-dark" type="submit">Reload Page</button>
+      <button class="btn btn-dark" type="submit">Show All Blogs</button>
     </form>
-    <button id="search-title-btn" class="btn btn-dark text-light mx-2" data-toggle="modal" data-target="#search-title-modal">Search By Title</button>
-    <button id="search-content-btn" class="btn btn-dark text-light mx-2" data-toggle="modal" data-target="#search-content-modal">Search By Content</button>
-    <button id="search-handle-btn" class="btn btn-dark text-light" data-toggle="modal" data-target="#search-handle-modal">Search By Handle</button>
+
+    <button id="search-btn" class="btn btn-dark text-light mx-2" data-toggle="modal" data-target="#search-modal">Search Blogs</button>
 
     <!-- NAVBAR SIGN IN/UP MODAL SHOW BUTTONS -->
     <div class="ml-auto">
@@ -55,79 +54,53 @@
     <!-- NAVBAR END -->
   </nav>
 
-  <!-- SEARCH TITLE MODAL -->
-  <div id="search-title-modal" class="modal fade" tabindex="-1" role="dialog">
+  <!-- SEARCH MODAL -->
+  <div id="search-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Search By Title</h5>
+          <h5 class="modal-title">Search Blogs</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <!-- SEARCH TITLE FORM -->
+        <!-- SEARCH FORM -->
         <form id="search-blogs-title-form" class="search-blogs-title-form">
           <div class="modal-body d-flex flex-column form-group">
-              <input name="blog[title]" required type="text" placeholder="Search Titles">
-          </div>
-          <div class="modal-footer">
-            <input class="btn btn-secondary" type="submit" value="Search">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <label for="">Search by Title</label>
+              <input name="blog[title]" required type="text" placeholder="Enter Title">
+            <div>
+              <input class="btn btn-secondary my-1" type="submit" value="Search">
+            </div>
           </div>
         </form>
-      </div>
-    </div>
-    <!-- SEARCH TITLE MODAL END -->
-  </div>
 
-  <!-- SEARCH BODY MODAL -->
-  <div id="search-content-modal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-body">Search By Content</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <!-- SEARCH BODY FORM -->
-        <form id="search-blogs-body-form" class="search-blogs-body-form">
+        <form id="search-blogs-body-form" class="search-blogs-body-form my-1">
           <div class="modal-body d-flex flex-column form-group">
-              <input name="blog[body]" required type="text" placeholder="Search By Content">
-          </div>
-          <div class="modal-footer">
-            <input class="btn btn-secondary" type="submit" value="Search">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <label for="">Search by Content</label>
+              <input name="blog[body]" required type="text" placeholder="Enter Content">
+            <div>
+              <input class="btn btn-secondary my-1" type="submit" value="Search">
+            </div>
           </div>
         </form>
-      </div>
-    </div>
-    <!-- SEARCH BODY MODAL END -->
-  </div>
 
-  <!-- SEARCH HANDLE MODAL -->
-  <div id="search-handle-modal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Search By Handle</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <!-- SEARCH HANDLE FORM -->
         <form id="search-blogs-handle-form" class="search-blogs-handle-form">
           <div class="modal-body d-flex flex-column form-group">
-              <input name="blog[handle]" required type="text" placeholder="Search By Handle">
-          </div>
-          <div class="modal-footer">
-            <input class="btn btn-secondary" type="submit" value="Search">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <label for="">Search by Handle</label>
+              <input name="blog[handle]" required type="text" placeholder="Enter Handle">
+              <div>
+              <input class="btn btn-secondary my-1" type="submit" value="Search">
+            </div>
           </div>
         </form>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          </div>
       </div>
     </div>
-    <!-- SEARCH HANDLE MODAL END -->
+    <!-- SEARCH MODAL END -->
   </div>
 
   <!-- SIGN IN MODAL -->
