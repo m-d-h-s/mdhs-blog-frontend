@@ -59,6 +59,18 @@ const toggleEditBlog = () => {
   $(`#edit-blog-${blog}`).toggleClass('d-none')
 }
 
+const onToggleComments = () => {
+  event.preventDefault()
+  const blog = $(event.target).data('blog-id')
+  $(`.collapse[data-blog-id=${blog}]`).collapse('toggle')
+
+  if ($(event.target).text() === 'Hide Comments') {
+    $(event.target).text('Show Comments')
+  } else {
+    $(event.target).text('Hide Comments')
+  }
+}
+
 const onLikeBlog = () => {
   event.preventDefault()
   // on click do patch request to blog
@@ -86,6 +98,7 @@ const addHandlers = () => {
   })
   $('body').on('click', '.edit-blog-btn', toggleEditBlog)
   $('body').on('click', '.like-blog-btn', onLikeBlog)
+  $('body').on('click', '.toggle-comments', onToggleComments)
   $('#refresh-button').on('click', onModalFailure)
   $('#search-blogs-title-form').on('submit', onSearchBlogsByTitle)
   $('#search-blogs-body-form').on('submit', onSearchBlogsByBody)
