@@ -5,7 +5,7 @@
 
     <!-- COMMENT OWNER HANDLE -->
     <div class="d-flex">
-      <p>{{comment.handle.0.handle}} commented:</p>
+      <p id="comment-handle-{{comment._id}}"> commented:</p>
       <p class="owned editable ml-auto text-light bg-success rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
     </div>
     <!-- COMMENT TEXT -->

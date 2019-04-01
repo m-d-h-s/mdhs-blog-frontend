@@ -5,6 +5,7 @@ const store = require('../store')
 
 const onCreateCommentSuccess = (responseData, blog) => {
   $('#user-message').text('successfully created post!')
+  console.log(responseData)
   const handle = store.user.handle
   const showCommentHtml = showCommentTemplate({ comment: responseData, blog: blog })
   $('input').trigger('reset')
@@ -32,6 +33,8 @@ const onUpdateCommentSuccess = (responseData, comment, blog) => {
   $('#user-message').text('successfully updated post!')
   $('input').trigger('reset')
   $('form').trigger('reset')
+
+  console.log(responseData)
 
   // right now theres not responseData to replace the current blog with a handlebar
   // work around: inject new data directly into html
