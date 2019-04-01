@@ -59,10 +59,12 @@ const toggleCollapseAllComments = () => {
     $('#collapse-all-comments').text('Close All')
     $('.card-body').collapse('show')
     $('.comment').collapse('show')
+    $('.toggle-comments').text('Hide Comments')
   } else {
     $('#collapse-all-comments').text('Open All')
     $('.comment').collapse('hide')
     $('.card-body').collapse('hide')
+    $('.toggle-comments').text('Show Comments')
   }
 }
 

@@ -15,6 +15,7 @@ const onCreateCommentSuccess = (responseData, blog) => {
   commentCount++
   $(`#comment-count-${blog}`).text(`${commentCount} comments`)
   view.showOwnership()
+  $(`#no-comment-message-${blog}`).text('')
 }
 
 const onIndexCommentSuccess = (responseData) => {
