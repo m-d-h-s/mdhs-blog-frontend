@@ -100,6 +100,7 @@ const addHandlers = () => {
   $('body').on('click', '.like-blog-btn', onLikeBlog)
   $('body').on('click', '.toggle-comments', onToggleComments)
   $('#refresh-button').on('click', onModalFailure)
+
   $('#search-blogs-title-form').on('submit', onSearchBlogsByTitle)
   $('#search-blogs-body-form').on('submit', onSearchBlogsByBody)
   $('#search-blogs-handle-form').on('submit', onSearchBlogsByHandle)
