@@ -2,10 +2,11 @@
 <html>
 
 <head>
-  <title>MDHS Blog</title>
+  <title>LetterBox</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Do not add `link` tags-->
+  <link href="https://fonts.googleapis.com/css?family=Mrs+Sheppards|Open+Sans" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
   <!-- Do not add `script` tags-->
@@ -16,9 +17,9 @@
 <body>
 
   <!-- NAVBAR START -->
-  <nav class="navbar navbar-light bg-primary fixed-top d-flex">
+  <nav class="navbar navbar-light fixed-top main-nav">
     <!-- NAVBAR TITLE -->
-    <span class="navbar-brand mb-0 h1 text-light">MDHS Blog</span>
+    <span class="navbar-brand mb-0 h1 text-light"></span>
 
     <!-- <button id="collapse-all-blogs" class="btn btn-dark text-light">Open all Blogs</button> -->
     <button id="collapse-all-comments" class="btn btn-dark mx-2">Open All</button>
@@ -30,13 +31,11 @@
     <button id="search-btn" class="btn btn-dark text-light mx-2" data-toggle="modal" data-target="#search-modal">Search Blogs</button>
 
     <!-- NAVBAR SIGN IN/UP MODAL SHOW BUTTONS -->
-    <div class="ml-auto">
-      <button id="sign-in-btn" class="pre-login btn btn-dark text-light" data-toggle="modal" data-target="#sign-in-modal">Sign In</button>
-      <button id="sign-up-btn" class="pre-login btn btn-dark text-light" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
-    </div>
+    <button id="sign-in-btn" class="pre-login btn btn-dark text-light mx-1" data-toggle="modal" data-target="#sign-in-modal">Sign In</button>
+    <button id="sign-up-btn" class="pre-login btn btn-dark text-light mx-1" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
 
     <!-- NAVBAR CREATE BLOG MODAL SHOW BUTTON -->
-    <button id="create-log-btn" class="post-login btn btn-light mx-2 ml-auto" data-toggle="modal" data-target="#create-blog-modal">Write your own blog</button>
+    <button id="create-log-btn" class="post-login btn btn-outline-light mx-2 ml-auto" data-toggle="modal" data-target="#create-blog-modal">Write your own blog</button>
 
     <!-- NAVBAR CHANGE PASSWORD/SIGN OUT DROPDOWN BUTTONS -->
     <div class="dropdown post-login">
@@ -50,8 +49,12 @@
       </div>
       <!-- NAVBAR CHANGE PASSWORD/SIGN OUT DROPDOWN BUTTONS END-->
     </div>
-
+    <button class="mobile-only btn btn-dark text-light mx-2 hide-nav">Close</button>
     <!-- NAVBAR END -->
+  </nav>
+
+  <nav class="collapsed-nav navbar">
+    <button class="mobile-only btn btn-dark text-light mx-2 show-nav">Options</button>
   </nav>
 
   <!-- SEARCH MODAL -->
@@ -184,7 +187,7 @@
             <input class="form-control" name="passwords[old]" required type="password" placeholder="Enter Here">
             <label for="">New Password</label>
             <input class="form-control my-2" name="passwords[new]" required type="password" placeholder="Enter Here">
-            <div id="change-password-form-feedback" class="bg-danger text-light my-2"></div>
+            <div id="change-password-form-feedback" class="text-light my-2"></div>
           </div>
           <div class="modal-footer">
             <input class="button btn btn-success" type="submit" value="Change Password">
@@ -279,7 +282,9 @@
     <!-- FAILURE MODAL END -->
   </div>
 
-  <h1 class="pt-5 mt-3 text-center">Maryland HighSchool Blog</h1>
+  <h1 class="title pt-5 mt-3 text-center">LetterBox</h1>
+  <h3 class="subhead">A text-only social media platform</h3>
+
   <h2 id="user-message" class="mx-5 my-0"></h2>
 
   <div id="blog-content"></div>

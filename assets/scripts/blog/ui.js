@@ -94,7 +94,7 @@ const onBlogLikeSuccess = (blogId) => {
 const onBlogFailure = (responseData) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#user-message').text('Something went wrong with Blog...')
+  $('#user-message').text('Something went wrong with the blog...')
   $('#failure-modal').modal('show')
 }
 
