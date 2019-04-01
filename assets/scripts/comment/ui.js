@@ -12,6 +12,7 @@ const onCreateCommentSuccess = (responseData, blog) => {
   $(`#comments-list-${blog}`).append(showCommentHtml)
   $(`#comment-handle-${responseData.comment._id}`).text(`${handle} comments:`)
   view.showOwnership()
+  $(`#no-comment-message-${blog}`).text('')
 }
 
 const onIndexCommentSuccess = (responseData) => {
