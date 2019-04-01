@@ -8,7 +8,7 @@
 
       <!-- CARD HEADER -->
       <div class="card-header">
-        <h5 id="blog-title-{{blog._id}}" class="card-title">{{blog.title}}</h5>
+        <h5 id="blog-title-{{blog._id}}" class="card-title"  data-blog-id={{blog._id}}>{{blog.title}}</h5>
       </div>
 
       <!-- CARD BODY START -->
@@ -18,7 +18,7 @@
         <label>User handle placeholder: {{blog.handle.0.handle}}</label>
 
         <!-- BLOG BODY TEXT-->
-        <p id="blog-body-{{blog._id}}" class="card-text">{{blog.body}}</p>
+        <p id="blog-body-{{blog._id}}" class="card-text" data-blog-id={{blog._id}}>{{blog.body}}</p>
 
         <!-- BLOG UPDATE/DELETE FORMS START -->
         <div class="flex-right my-1">

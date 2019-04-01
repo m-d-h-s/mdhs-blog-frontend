@@ -72,9 +72,42 @@ const addHandlers = () => {
   })
   $('body').on('click', '.toggle-comments', onToggleComments)
   $('body').on('click', '.edit-blog-btn', toggleEditBlog)
+
+  $('#search-blogs-title-form').on('submit', onSearchBlogsByTitle)
+  $('#search-blogs-body-form').on('submit', onSearchBlogsByBody)
 }
 
+const onSearchBlogsByTitle = (event) => {
+  event.preventDefault()
+  const form = event.target
+  const blogData = getFormFields(form)
+
+  $('.blog').hide()
+  const titles = $('.card-title')
+  titles.each(index => {
+    if ($(titles[index]).text().includes(blogData.blog.title)) {
+      $(`#blog-${$(titles[index]).data('blog-id')}`).show()
+    }
+  })
+}
+
+const onSearchBlogsByBody = (event) => {
+  event.preventDefault()
+  const form = event.target
+  const blogData = getFormFields(form)
+  console.log(blogData)
+  $('.blog').hide()
+  const bodies = $('.card-text')
+  bodies.each(index => {
+    console.log($(bodies[index]).text())
+    if ($(bodies[index]).text().includes(blogData.blog.body)) {
+      $(`#blog-${$(bodies[index]).data('blog-id')}`).show()
+    }
+  })
+}
 module.exports = {
   addHandlers,
-  onBlogCrud
+  onBlogCrud,
+  onSearchBlogsByTitle,
+  onSearchBlogsByBody
 }
