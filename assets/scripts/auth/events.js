@@ -2,24 +2,23 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const blog = require('../blog/events')
 
-const onSignUp = (event) => {
+const onSignUp = () => {
   event.preventDefault()
-  const form = event.target
-  const formData = getFormFields(form)
-
-  api.signUp(formData)
+  const data = getFormFields(event.target)
+  api.signUp(data)
+    .then(() => { onSignIn(data) })
     .then(ui.signUpSuccess)
-    .catch(ui.failure)
+    .catch(ui.signUpFailure)
 }
 
-const onSignIn = (event) => {
-  // console.log('onSignIn')
-  event.preventDefault()
-  const form = event.target
-  const formData = getFormFields(form)
-
-  api.signIn(formData)
+const onSignIn = data => {
+  if (event) {
+    event.preventDefault()
+    data = getFormFields(event.target)
+  }
+  api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.failure)
 }
@@ -31,13 +30,13 @@ const onChangePassword = (event) => {
 
   api.changePassword(formData)
     .then(ui.changePasswordSuccess)
-    .catch(ui.failure)
+    .catch(ui.changePasswordFailure)
 }
 
 const onSignOut = (event) => {
-  // console.log('onSignOut')
   event.preventDefault()
   api.signOut()
+    .then(blog.onBlogCrud.index)
     .then(ui.signOutSuccess)
     .catch(ui.failure)
 }

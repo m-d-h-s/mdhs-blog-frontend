@@ -1,16 +1,14 @@
 const store = require('../store')
 
 const showOwnership = () => {
-  $('.owned').each(index => {
-    const ownedElement = $($('.owned')[index])
-    if (store.user._id === ownedElement.data('owner')) { ownedElement.show() }
-  })
+  if (!store.user) { return }
+  $(`.owned[data-owner=${store.user._id}]`).show()
+  $(`.editable[data-owner=${store.user._id}]`).text('editable')
 }
 
 const hideOwnership = () => { $('.owned').hide() }
 
 const onPageLoad = () => {
-  // console.log('onPageLoad')
   $('.post-login').hide()
 }
 

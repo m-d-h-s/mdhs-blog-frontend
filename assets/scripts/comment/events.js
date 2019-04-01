@@ -2,33 +2,27 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
-const blog = require('../blog/events')
 
 const onCommentCrud = {
   create: () => {
-    // console.log('onCommentCrudCreate')
     event.preventDefault()
     const formData = getFormFields(event.target)
     const blogId = $(event.target).data('blog-id')
     api.createComment(formData, blogId)
-      .then(ui.onCreateCommentSuccess)
-      .then(() => blog.onBlogCrud.index())
+      .then(responseData => ui.onCreateCommentSuccess(responseData, blogId))
       .catch(ui.onCommentFailure)
   },
   index: () => {
-    // console.log('onCommentCrudIndex')
     if (event) { event.preventDefault() }
     api.indexComment()
       .then(ui.onIndexCommentSuccess)
       .catch(ui.onCommentFailure)
   },
   delete: function () {
-    // console.log('onCommentCrudDelete')
     event.preventDefault()
     const data = $(event.target).data('comment-id')
     api.deleteComment(data)
-      .then(() => blog.onBlogCrud.index())
-      .then(ui.onDeleteCommentSuccess)
+      .then(responseData => ui.onDeleteCommentSuccess(responseData, data))
       .catch(ui.onCommentFailure)
   },
   show: function (event) {
@@ -39,15 +33,35 @@ const onCommentCrud = {
       .catch(ui.onCommentFailure)
   },
   update: () => {
-    // console.log('onCommentCrudUpdate')
     event.preventDefault()
-    const data = $(event.target).data('comment-id')
+    const comment = $(event.target).data('comment-id')
+    const blog = $(event.target).data('blog-id')
     const formData = getFormFields(event.target)
-    // console.log(data)
-    api.updateComment(formData, data)
-      .then(ui.onUpdateCommentSuccess)
-      .then(() => blog.onBlogCrud.index())
+    api.updateComment(formData, comment)
+      .then(() => ui.onUpdateCommentSuccess(formData, comment, blog))
       .catch(ui.onCommentFailure)
+  }
+}
+
+const toggleEditComment = () => {
+  event.preventDefault()
+  const comment = $(event.target).data('comment-id')
+  $(`#comment-owned-${comment}`).toggleClass('d-none')
+  $(`#comment-text-${comment}`).hide()
+  $(`#edit-comment-${comment}`).toggleClass('d-none')
+}
+
+const toggleCollapseAllComments = () => {
+  event.preventDefault()
+
+  if ($('#collapse-all-comments').text() === 'Open All') {
+    $('#collapse-all-comments').text('Close All')
+    $('.card-body').collapse('show')
+    $('.comment').collapse('show')
+  } else {
+    $('#collapse-all-comments').text('Open All')
+    $('.comment').collapse('hide')
+    $('.card-body').collapse('hide')
   }
 }
 
@@ -57,6 +71,8 @@ const addHandlers = () => {
     const crudAction = $(event.target).data('action')
     onCommentCrud[crudAction](event)
   })
+  $('body').on('click', '.edit-comment-btn', toggleEditComment)
+  $('#collapse-all-comments').on('click', toggleCollapseAllComments)
 }
 
 module.exports = {

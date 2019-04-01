@@ -1,21 +1,56 @@
 @import '~bootstrap/scss/bootstrap';
 
-body {}
-//
-// form {
-//   display: block;
-// }
+.blog {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.blog-textarea {
+  height: 10rem;
+}
+
+.card-header {
+  cursor: pointer;
+}
+
+.clean-btn {
+  background: none;
+  border: none;
+  color: blue;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
 
 .owned {
   display: none;
 }
 
-.blog {
-  overflow: hidden;
-  word-break: break-word;
+#user-message {
+  height: 38px;
 }
 
-.comment {
-  overflow: hidden;
-  word-break: break-word;
+#blog-body-textarea {
+  min-height: 10rem;
 }

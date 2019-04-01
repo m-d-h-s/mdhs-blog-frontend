@@ -13,7 +13,6 @@ const createBlog = (formData) => {
 }
 
 const indexBlog = () => {
-  // console.log('indexBlog')
   return $.ajax({
     url: config.apiUrl + '/blogs',
     method: 'GET'
@@ -37,7 +36,6 @@ const showBlog = (formData) => {
 }
 
 const updateBlog = (formData, id) => {
-  // console.log('updateBlog')
   return $.ajax({
     url: config.apiUrl + `/blogs/${id}`,
     method: 'PATCH',
@@ -58,11 +56,24 @@ const deleteBlog = id => {
   })
 }
 
+const likeBlog = (id) => {
+  return $.ajax({
+    url: config.apiUrl + `/likes/${id}`,
+    method: 'PATCH',
+    headers: { Authorization: 'Token token=' + store.user.token },
+    data: {
+      blog: {
+        likes: store.user._id
+      }}
+  })
+}
+
 module.exports = {
   createBlog,
   indexBlog,
   showBlog,
   updateBlog,
   deleteBlog,
+  likeBlog,
   indexMyBlogs
 }

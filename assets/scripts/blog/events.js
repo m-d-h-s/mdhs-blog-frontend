@@ -5,7 +5,6 @@ const ui = require('./ui.js')
 
 const onBlogCrud = {
   create: function (event) {
-    // console.log('onBlogCrudCreate')
     event.preventDefault()
     const formData = getFormFields(event.target)
     api.createBlog(formData)
@@ -14,14 +13,12 @@ const onBlogCrud = {
       .catch(ui.onBlogFailure)
   },
   index: function (event) {
-    // console.log('onBlogCrudIndex')
     if (event) { event.preventDefault() }
     api.indexBlog()
       .then(ui.onIndexBlogSuccess)
       .catch(ui.onBlogFailure)
   },
   show: function (event) {
-    // console.log('onBlogCrudShow')
     if (event) { event.preventDefault() }
     const formData = getFormFields(event.target)
     api.showBlog(formData)
@@ -29,17 +26,14 @@ const onBlogCrud = {
       .catch(ui.onBlogFailure)
   },
   update: function (event) {
-    // console.log('onBlogCrudUpdate')
     event.preventDefault()
     const blogId = $(event.target).data('blog-id')
     const formData = getFormFields(event.target)
     api.updateBlog(formData, blogId)
-      .then(ui.onUpdateBlogSuccess)
-      .then(this.index)
+      .then(data => ui.onUpdateBlogSuccess(data, blogId, formData))
       .catch(ui.onBlogFailure)
   },
   delete: function (event) {
-    // console.log('onBlogCrudDelete')
     event.preventDefault()
     const id = $(event.target).data('blog-id')
     api.deleteBlog(id)
@@ -48,12 +42,64 @@ const onBlogCrud = {
   }
 }
 
+const onToggleComments = () => {
+  event.preventDefault()
+  const blog = $(event.target).data('blog-id')
+  $(`.collapse[data-blog-id=${blog}]`).collapse('toggle')
+
+  if ($(event.target).text() === 'Hide Comments') {
+    $(event.target).text('Show Comments')
+  } else {
+    $(event.target).text('Hide Comments')
+  }
+}
+
+const toggleEditBlog = () => {
+  event.preventDefault()
+  const blog = $(event.target).data('blog-id')
+
+  // toggle owned buttons (update/delete) to show
+  $(`#blog-owned-${blog}`).toggleClass('d-none')
+
+  // toggle title to hide
+  $(`#blog-title-${blog}`).hide()
+
+  // toggle body to hide
+  $(`#blog-body-${blog}`).hide()
+
+  // toggle edit button to hide
+  $(`#edit-blog-${blog}`).toggleClass('d-none')
+}
+
+const onLikeBlog = () => {
+  event.preventDefault()
+  const blogId = $(event.target).data('blog-id')
+
+  api.likeBlog(blogId)
+    .then(() => ui.onBlogLikeSuccess(blogId))
+    .catch(ui.onBlogFailure)
+}
+
+const onModalFailure = (event) => {
+  if (event) { event.preventDefault() }
+
+  $('#failure-modal').modal('hide')
+
+  api.indexBlog()
+    .then(ui.onIndexBlogSuccess)
+    .catch(ui.onBlogFailure)
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.blog-crud-form', (event) => {
     event.preventDefault()
     const crudAction = $(event.target).data('action')
     onBlogCrud[crudAction](event)
   })
+  $('body').on('click', '.toggle-comments', onToggleComments)
+  $('body').on('click', '.edit-blog-btn', toggleEditBlog)
+  $('body').on('click', '.like-blog-btn', onLikeBlog)
+  $('#refresh-button').on('click', onModalFailure)
 }
 
 module.exports = {
