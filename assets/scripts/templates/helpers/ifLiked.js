@@ -9,11 +9,7 @@ const store = require('../../store.js')
 const ifLiked = (blogLikes) => {
   let liked = false
   if (blogLikes.some(like => like.toString() === store.user._id)) { liked = true }
-  if (liked) {
-    return 'Unlike 👎'
-  } else {
-    return 'Like 👍'
-  }
+  return liked ? 'Unlike 👎' : 'Like 👍'
 }
 
 module.exports = ifLiked
