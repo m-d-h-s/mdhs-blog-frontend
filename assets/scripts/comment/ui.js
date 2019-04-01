@@ -34,8 +34,6 @@ const onUpdateCommentSuccess = (responseData, comment, blog) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
 
-  console.log(responseData)
-
   // right now theres not responseData to replace the current blog with a handlebar
   // work around: inject new data directly into html
   // start work around

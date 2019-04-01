@@ -84,12 +84,16 @@
           <!-- SHOW/HIDE COMMENTS COLLAPSE START-->
           <div id="comments-of-blog-{{blog._id}}" class="comment-collapse comment collapse" data-blog-id={{blog._id}}>
 
+
+            {{#unless blog.comments}}
+            <p id="no-comment-message-{{blog._id}}" class="bg-dark text-light px-2 rounded">This blog has no comments, be the first to leave a comment!</p>
+            {{/unless}}
+
             <!-- CREATE COMMENT TEXTAREA FORM -->
             <form class="comment-crud-form post-login my-2" data-blog-id={{blog._id}} data-action="create">
               <textarea class="w-100" name="comment[text]" type="text" placeholder="Post your comment" maxlength="1000" required></textarea>
               <button class="btn btn-success" type="submit">Respond to the blog</button>
             </form>
-
 
             <!-- LIST ITEM START -->
             <li id="comments-list-{{blog._id}}" class="list-group-item">
