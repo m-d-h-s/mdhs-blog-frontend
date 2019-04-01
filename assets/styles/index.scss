@@ -16,6 +16,10 @@ p {
   background-color: #E2D09C;
 }
 
+.bg-orange-fix {
+  background-color: #E59606;
+}
+
 .blog {
   display: flex;
   flex-direction: column;
@@ -24,7 +28,7 @@ p {
   font-family: 'Open Sans', sans-serif;
   background-color: #E2D09C;
   margin: 1.5rem auto;
-  box-shadw: -2rem .5rem .5rem #E0E5D0;
+  box-shadow: -1rem .5rem .25rem rgba(224,229,208,.7);
 }
 
 .blog-textarea {
