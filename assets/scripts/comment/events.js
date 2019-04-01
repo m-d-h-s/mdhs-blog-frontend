@@ -53,7 +53,6 @@ const toggleEditComment = () => {
 
 const toggleCollapseAllComments = () => {
   event.preventDefault()
-
   if ($('#collapse-all-comments').text() === 'Open All') {
     $('#collapse-all-comments').text('Close All')
     $('.card-body').collapse('show')
