@@ -20,7 +20,7 @@ const onSignIn = data => {
   }
   api.signIn(data)
     .then(ui.signInSuccess)
-    .catch(ui.failure)
+    .catch(ui.signInFailure)
 }
 
 const onChangePassword = (event) => {
@@ -46,6 +46,7 @@ const addHandlers = () => {
   $('#sign-in-form').on('submit', onSignIn)
   $('#sign-out-form').on('submit', onSignOut)
   $('#change-password-form').on('submit', onChangePassword)
+  $('.cancel').on('click', () => $('form').trigger('reset'))
 }
 
 module.exports = {

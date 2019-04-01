@@ -38,9 +38,14 @@ const signOutSuccess = () => {
 
 const failure = () => {
   $('#user-message').show()
-  $('#user-message').text('SOMETHING WENT WRONG')
+  $('#user-message').text('Something went wrong')
   $('form').trigger('reset')
   $('#failure-modal').modal('show')
+}
+
+const signInFailure = () => {
+  $('#sign-in-form-feedback').text('Your username must exist already and password must be correct. Try a again.')
+  setTimeout(() => $('#sign-up-form-feedback').hide(), 3000)
 }
 
 const signUpFailure = () => {
@@ -59,6 +64,7 @@ module.exports = {
   signOutSuccess,
   changePasswordSuccess,
   changePasswordFailure,
+  signInFailure,
   failure,
   signUpFailure
 }
