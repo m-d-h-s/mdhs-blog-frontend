@@ -3,6 +3,17 @@ const showBlogTemplate = require('../templates/blog-listing.handlebars')
 const store = require('../store')
 const view = require('../view/view')
 
+const scoreSort = (blogs) => {
+  return blogs.sort((a, b) => {
+    const value = a.score - b.score
+    if (value > 0) {
+      return 1
+    } else if (value < 0) {
+      return -1
+    } else { return 0 }
+  })
+}
+
 const onCreateBlogSuccess = (responseData) => {
   $('#user-message').text('successfully created post!')
   const showBlogHtml = showBlogTemplate({ blog: responseData })
@@ -15,7 +26,8 @@ const onCreateBlogSuccess = (responseData) => {
 }
 
 const onIndexBlogSuccess = (responseData) => {
-  const showBlogHtml = showBlogTemplate({ blogs: responseData.blog })
+  const sortedBlogs = scoreSort(responseData.blog)
+  const showBlogHtml = showBlogTemplate({ blogs: sortedBlogs })
   $('form').trigger('reset')
   $('input').trigger('reset')
   $('#blog-content').empty()
