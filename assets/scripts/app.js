@@ -17,4 +17,11 @@ $(() => {
   commentEvents.addHandlers()
   view.onPageLoad()
   blogEvents.onBlogCrud.index()
+  $('.show-nav').on('click', () => $('.main-nav').css('display', 'flex'))
+  $('.hide-nav').on('click', () => $('.main-nav').css('display', 'none'))
+  $(window).resize(() => {
+    if ($(window).width() > 705) {
+      $('.main-nav').css('display', 'flex')
+    } else { $('.main-nav').css('display', 'none') }
+  })
 })

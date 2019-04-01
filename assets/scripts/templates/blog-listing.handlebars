@@ -1,7 +1,7 @@
 {{#each blogs as |blog|}}
 
   <!-- BLOG START -->
-  <div id="blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog mt-1 mx-5 rounded bg-dark">
+  <div id="blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog mt-1 mx-5">
 
     <!-- CARD START   -->
     <div class="card m-4">
@@ -11,7 +11,7 @@
 
         <div class="d-flex">
           <h4 id="blog-title-{{blog._id}}" class="card-title m-0 d-inline-block" data-blog-id={{blog._id}}>{{blog.title}}</h4>
-          <p class="owned editable ml-auto text-light bg-success rounded px-2" data-blog-id={{blog._id}} data-owner="{{blog.owner}}"></p>
+          <p class="owned editable ml-auto bg-success rounded px-2" data-blog-id={{blog._id}} data-owner="{{blog.owner}}"></p>
         </div>
 
         <p id="card-handle-{{blog._id}}" class="handle-text text-secondary" data-blog-id={{blog._id}} data-handle="{{blog.handle.0.handle}}">By: {{blog.handle.0.handle}}</p>
@@ -28,7 +28,7 @@
         <!-- EDIT BUTTON SHOW/HIDE FORMS AND LIKE BUTTON-->
         <div class="d-flex my-2">
           <!-- BLOG LIKE BUTTON -->
-          <button id="like-blog-{{blog._id}}" data-blog-id="{{blog._id}}" class="like-blog-btn btn btn-light card-link post-login mr-auto">{{ifLiked blog.likes}}</button>
+          <button id="like-blog-{{blog._id}}" data-blog-id="{{blog._id}}" class="like-blog-btn btn btn-outline-light card-link post-login mr-auto">{{ifLiked blog.likes}}</button>
 
           <!-- BLOG EDIT BUTTON -->
           <button id="edit-blog-{{blog._id}}" class="btn btn-info edit-blog-btn owned ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}">Edit Blog</button>
@@ -46,7 +46,7 @@
 
             <!-- DELETE BLOG BUTTON -->
             <form id="delete-blog-{{blog._id}}" class="blog-crud-form owned d-flex" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-action="delete">
-              <button class="btn bg-danger text-light my-2 ml-auto" type="submit">Delete Blog</button>
+              <button class="btn btn-outline-light my-2 ml-auto" type="submit">Delete Blog</button>
             </form>
 
             <!-- UPDATE BLOG FORM -->
@@ -54,7 +54,7 @@
 
               <div class="text-right">
                 <!-- UPDATE BLOG BUTTON -->
-                  <button class="btn btn-success" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}" type="submit">Update Blog</button>
+                  <button class="btn btn-outline-light" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}" type="submit">Update Blog</button>
               </div>
 
               <!-- BLOG FORM TEXTAREA INPUTS -->
@@ -78,7 +78,7 @@
 
           <!-- HIDE/SHOW COMMENTS OPEN/CLOSE COLLAPSE BUTTON -->
           <div class="ml-auto">
-            <button class="toggle-comments clean-btn m-2" data-blog-id={{blog._id}} data-toggle="collapse" data-target=".comment[data-blog-id={{blog._id}}]">Show Comments</button>
+            <button class="toggle-comments btn btn-outline-light m-2" data-blog-id={{blog._id}} data-toggle="collapse" data-target=".comment[data-blog-id={{blog._id}}]">Show Comments</button>
           </div>
 
           <!-- SHOW/HIDE COMMENTS COLLAPSE START-->
@@ -86,17 +86,17 @@
 
 
             {{#unless blog.comments}}
-            <p id="no-comment-message-{{blog._id}}" class="bg-dark text-light px-2 rounded">This blog has no comments, be the first to leave a comment!</p>
+            <p id="no-comment-message-{{blog._id}}" class=" px-2 rounded">This blog has no comments, be the first to leave a comment!</p>
             {{/unless}}
 
             <!-- CREATE COMMENT TEXTAREA FORM -->
             <form class="comment-crud-form post-login my-2" data-blog-id={{blog._id}} data-action="create">
               <textarea class="w-100" name="comment[text]" type="text" placeholder="Post your comment" maxlength="1000" required></textarea>
-              <button class="btn btn-success" type="submit">Respond to the blog</button>
+              <button class="btn btn-outline-light" type="submit">Respond to the blog</button>
             </form>
 
             <!-- LIST ITEM START -->
-            <li id="comments-list-{{blog._id}}" class="list-group-item">
+            <li id="comments-list-{{blog._id}}" class="background-fix-light list-group-item">
 
               {{#each blog.comments as |comment|}}
 
@@ -106,7 +106,7 @@
                   <!-- COMMENT OWNER HANDLE -->
                   <div class="d-flex">
                     <p id="comment-handle-{{comment._id}}" class="text-secondary">{{comment.handle.0.handle}} commented:</p>
-                    <p class="owned editable ml-auto text-light bg-success rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
+                    <p class="owned editable ml-auto bg-fix-medium rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
                   </div>
                   <!-- COMMENT TEXT -->
                   <p id="comment-text-{{comment._id}}" class="text-justify">{{comment.text}}</p>
@@ -118,12 +118,12 @@
                     <div id="comment-owned-{{comment._id}}" class="owned d-none w-100" data-owner="{{comment.owner}}">
                       <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update" data-blog-id={{blog._id}}>
                         <textarea id="comment-textarea-{{comment._id}}" class="w-100" name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
-                        <button class="btn btn-success ml-auto" type="submit">Update Comment</button>
+                        <button class="btn btn-outline-light ml-auto" type="submit">Update Comment</button>
                       </form>
 
                       <!-- DELETE COMMENT BUTTON -->
                       <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} data-owner="{{comment.owner}}" class="comment-crud-form owned ml-auto" data-action="delete">
-                        <button class="btn btn-danger my-2 text-light" type="submit">Delete Comment</button>
+                        <button class="btn btn-danger my-2 btn-outline-light" type="submit">Delete Comment</button>
                       </form>
                     </div>
 
