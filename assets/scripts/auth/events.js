@@ -10,6 +10,7 @@ const onSignUp = () => {
   api.signUp(data)
     .then(() => { onSignIn(data) })
     .then(ui.signUpSuccess)
+    .then(blog.onBlogCrud.index)
     .catch(ui.signUpFailure)
 }
 
@@ -20,6 +21,7 @@ const onSignIn = data => {
   }
   api.signIn(data)
     .then(ui.signInSuccess)
+    .then(blog.onBlogCrud.index)
     .catch(ui.signInFailure)
 }
 
