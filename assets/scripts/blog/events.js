@@ -80,6 +80,15 @@ const onLikeBlog = () => {
   // regular background if not in array
 }
 
+const onModalFailure = () => {
+  if (event) { event.preventDefault() }
+
+  api.indexBlog()
+    .then(ui.onIndexBlogSuccess)
+    .then(() => $('#failure-modal').modal('hide'))
+    .catch(ui.onBlogFailure)
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.blog-crud-form', (event) => {
     event.preventDefault()
@@ -89,6 +98,7 @@ const addHandlers = () => {
   $('body').on('click', '.toggle-comments', onToggleComments)
   $('body').on('click', '.edit-blog-btn', toggleEditBlog)
   $('body').on('click', '.like-blog-btn', onLikeBlog)
+  $('#refresh-button').on('click', onModalFailure)
 }
 
 module.exports = {

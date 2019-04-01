@@ -69,6 +69,7 @@ const onBlogFailure = (responseData) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#user-message').text('Something went wrong with Blog...')
+  $('#failure-modal').modal('show')
 }
 
 module.exports = {

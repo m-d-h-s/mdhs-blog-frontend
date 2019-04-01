@@ -63,6 +63,7 @@ const onCommentFailure = (responseData) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#user-message').text('Something went wrong with Comment...')
+  $('#failure-modal').modal('show')
 }
 
 module.exports = {

@@ -40,6 +40,7 @@ const failure = () => {
   $('#user-message').show()
   $('#user-message').text('SOMETHING WENT WRONG')
   $('form').trigger('reset')
+  $('#failure-modal').modal('show')
 }
 
 const signUpFailure = () => {

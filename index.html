@@ -195,6 +195,30 @@
     <!-- CREATE BLOG MODAL END -->
   </div>
 
+  <!-- FAILURE MODAL -->
+  <div id="failure-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Something went wrong!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- FAILURE MESSAGE BODY -->
+        <div class="modal-body col-12">
+          <p class="my-1">The resource you have done an action on might have been deleted by its owner already. Please refresh the blog resources.</p>
+        </div>
+
+        <div class="modal-footer">
+          <button id="refresh-button" class="btn btn-success" type="submit">Get up to date</button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- FAILURE MODAL END -->
+  </div>
+
   <h1 class="pt-5 mt-3 text-center">Maryland HighSchool Blog</h1>
   <h2 id="user-message" class="mx-5 my-0"></h2>
 
