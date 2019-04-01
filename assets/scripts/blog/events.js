@@ -30,8 +30,7 @@ const onBlogCrud = {
     const blogId = $(event.target).data('blog-id')
     const formData = getFormFields(event.target)
     api.updateBlog(formData, blogId)
-      .then(data => ui.onUpdateBlogSuccess(data, blogId))
-      .then(this.index)
+      .then(data => ui.onUpdateBlogSuccess(data, blogId, formData))
       .catch(ui.onBlogFailure)
   },
   delete: function (event) {
@@ -58,10 +57,37 @@ const onToggleComments = () => {
 const toggleEditBlog = () => {
   event.preventDefault()
   const blog = $(event.target).data('blog-id')
+
+  // toggle owned buttons (update/delete) to show
   $(`#blog-owned-${blog}`).toggleClass('d-none')
-  $(`#blog-title-${blog}`).toggleClass('d-none')
-  $(`#blog-body-${blog}`).toggleClass('d-none')
+
+  // toggle title to hide
+  $(`#blog-title-${blog}`).hide()
+
+  // toggle body to hide
+  $(`#blog-body-${blog}`).hide()
+
+  // toggle edit button to hide
   $(`#edit-blog-${blog}`).toggleClass('d-none')
+}
+
+const onLikeBlog = () => {
+  event.preventDefault()
+  // on click do patch request to blog
+  // add current user to blog.likes array
+
+  // make button bg green if in array
+  // regular background if not in array
+}
+
+const onModalFailure = () => {
+  if (event) { event.preventDefault() }
+
+  $('#failure-modal').modal('hide')
+
+  api.indexBlog()
+    .then(ui.onIndexBlogSuccess)
+    .catch(ui.onBlogFailure)
 }
 
 const addHandlers = () => {
@@ -72,6 +98,8 @@ const addHandlers = () => {
   })
   $('body').on('click', '.toggle-comments', onToggleComments)
   $('body').on('click', '.edit-blog-btn', toggleEditBlog)
+  $('body').on('click', '.like-blog-btn', onLikeBlog)
+  $('#refresh-button').on('click', onModalFailure)
 }
 
 module.exports = {

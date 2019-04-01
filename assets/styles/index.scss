@@ -1,14 +1,29 @@
 @import '~bootstrap/scss/bootstrap';
 
-.owned {
-  display: none;
-}
-
 .blog {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   word-break: break-word;
+}
+
+.blog-textarea {
+  height: 10rem;
+}
+
+.card-header {
+  cursor: pointer;
+}
+
+.clean-btn {
+  background: none;
+  border: none;
+  color: blue;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .comment {
@@ -28,13 +43,14 @@
   justify-content: flex-end;
 }
 
-.clean-btn {
-  background: none;
-  border: none;
-  color: blue;
-  cursor: pointer;
+.owned {
+  display: none;
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+#user-message {
+  height: 38px;
+}
+
+#blog-body-textarea {
+  min-height: 10rem;
 }

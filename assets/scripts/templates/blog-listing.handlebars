@@ -1,70 +1,99 @@
 {{#each blogs as |blog|}}
 
   <!-- BLOG START -->
-  <div id="blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog my-1 bg-dark">
+  <div id="blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog mt-1 mx-5 rounded bg-dark">
 
     <!-- CARD START   -->
     <div class="card m-4">
 
       <!-- CARD HEADER -->
-      <div class="card-header">
-        <h5 id="blog-title-{{blog._id}}" class="card-title">{{blog.title}}</h5>
+      <div class="card-header" data-blog-id={{blog._id}} data-toggle="collapse" data-target="#card-body-blog-{{blog._id}}">
+
+        <div class="d-flex">
+          <h4 id="blog-title-{{blog._id}}" class="card-title m-0 d-inline-block">{{blog.title}}</h4>
+          <p class="owned editable ml-auto text-light bg-success rounded px-2" data-blog-id={{blog._id}} data-owner="{{blog.owner}}"></p>
+        </div>
+
+        <p class="text-secondary">{{blog.handle.0.handle}}</p>
+
+        <div class="d-flex">
+          <p class="text-secondary border-right pr-2">{{blog.likes.length}} likes</p>
+          <p class="text-secondary px-2">{{blog.comments.length}} comments</p>
+        </div>
       </div>
 
       <!-- CARD BODY START -->
-      <div class="card-body">
+      <div id="card-body-blog-{{blog._id}}" class="card-body collapse py-0">
 
-        <!-- USER HANDLE -->
-        <label>User handle placeholder: {{blog.handle.0.handle}}</label>
+        <!-- EDIT BUTTON SHOW/HIDE FORMS AND LIKE BUTTON-->
+        <div class="d-flex my-2">
+          <!-- BLOG LIKE BUTTON -->
+          <button id="like-blog={{blog._id}}" class="like-blog-btn btn btn-light card-link post-login mr-auto">Like this post 👍</button>
+
+          <!-- BLOG EDIT BUTTON -->
+          <button id="edit-blog-{{blog._id}}" class="btn btn-info edit-blog-btn owned ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}">Edit Blog</button>
+
+        </div>
 
         <!-- BLOG BODY TEXT-->
-        <p id="blog-body-{{blog._id}}" class="card-text">{{blog.body}}</p>
+        <p id="blog-body-{{blog._id}}" class="card-text text-justify mt-3"><span class="mx-4"></span>{{blog.body}}</p>
 
         <!-- BLOG UPDATE/DELETE FORMS START -->
-        <div class="flex-right my-1">
+        <div class="my-1">
 
           <!-- UPDATE BLOG FORM TEXTAREA  -->
-          <div id="blog-owned-{{blog._id}}" class="owned d-none w-100" data-owner="{{blog.owner}}">
-            <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form d-flex flex-column" data-action="update">
-              <textarea class="d-inline" name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>{{blog.title}}</textarea>
-              <textarea class="d-inline" name="blog[body]" type="text" placeholder="Enter a blog body" maxlength="10000" required>{{blog.body}}</textarea>
-              <div class="d-flex">
-                <button class="ml-auto" type="submit">Update Blog</button>
-              </div>
-            </form>
+          <div id="blog-owned-{{blog._id}}" class="owned w-100 collapse d-none" data-owner="{{blog.owner}}">
 
             <!-- DELETE BLOG BUTTON -->
-            <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form owned d-flex" data-action="delete">
-              <button class="bg-danger text-light ml-auto" type="submit">Delete Blog</button>
+            <form id="delete-blog-{{blog._id}}" class="blog-crud-form owned d-flex" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-action="delete">
+              <button class="btn bg-danger text-light my-2 ml-auto" type="submit">Delete Blog</button>
             </form>
+
+            <!-- UPDATE BLOG FORM -->
+            <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form" data-action="update">
+
+              <div class="text-right">
+                <!-- UPDATE BLOG BUTTON -->
+                  <button class="btn btn-success" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}" type="submit">Update Blog</button>
+              </div>
+
+              <!-- BLOG FORM TEXTAREA INPUTS -->
+              <div class="w-100 d-flex flex-column">
+                <label class="d-inline my-1">Title</label>
+                <textarea id="update-blog-textarea-title-{{blog._id}}" class="" name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>{{blog.title}}</textarea>
+                <label class="d-inline my-1">Body</label>
+                <textarea id="update-blog-textarea-body-{{blog._id}}" class="my-2 blog-textarea" name="blog[body]" type="text" placeholder="Enter a blog body" maxlength="10000" required>{{blog.body}}</textarea>
+              </div>
+
+            </form>
+
             <!-- UPDATE BLOG FORM TEXTAREA END -->
           </div>
-
-          <!-- EDIT BUTTON SHOW/HIDE FORMS -->
-          <button id="edit-blog-{{blog._id}}" class="edit-blog-btn owned" data-blog-id={{blog._id}} data-owner="{{blog.owner}}">Edit Blog</button>
 
           <!-- BLOG UPDATE/DELETE FORMS END -->
         </div>
 
-
-
         <!-- LIST START -->
         <ul class="list-group list-group-flush">
 
-          <!-- SHOW COMMENTS OPEN/CLOSE COLLAPSE BUTTON -->
+          <!-- HIDE/SHOW COMMENTS OPEN/CLOSE COLLAPSE BUTTON -->
           <div class="ml-auto">
             <button class="toggle-comments clean-btn m-2" data-blog-id={{blog._id}} data-toggle="collapse" data-target=".comment[data-blog-id={{blog._id}}]">Show Comments</button>
           </div>
 
           <!-- SHOW/HIDE COMMENTS COLLAPSE START-->
-          <div id="comments-of-blog-{{blog._id}}" class="comment collapse" data-blog-id={{blog._id}}>
+          <div id="comments-of-blog-{{blog._id}}" class="comment-collapse comment collapse" data-blog-id={{blog._id}}>
+
+
+            {{#unless blog.comments}}
+            <p id="no-comment-message-{{blog._id}}" class="bg-dark text-light px-2 rounded">This blog has no comments, be the first to leave a comment!</p>
+            {{/unless}}
 
             <!-- CREATE COMMENT TEXTAREA FORM -->
             <form class="comment-crud-form post-login my-2" data-blog-id={{blog._id}} data-action="create">
               <textarea class="w-100" name="comment[text]" type="text" placeholder="Post your comment" maxlength="1000" required></textarea>
-              <button type="submit">Create Comment</button>
+              <button class="btn btn-success" type="submit">Respond to the blog</button>
             </form>
-
 
             <!-- LIST ITEM START -->
             <li id="comments-list-{{blog._id}}" class="list-group-item">
@@ -75,9 +104,12 @@
                 <div id="comment-{{comment._id}}" class="comment border-bottom my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
                   <!-- COMMENT OWNER HANDLE -->
-                  <p>{{comment.handle.0.handle}} commented:</p>
+                  <div class="d-flex">
+                    <p id="comment-handle-{{comment._id}}">{{comment.handle.0.handle}} commented:</p>
+                    <p class="owned editable ml-auto text-light bg-success rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
+                  </div>
                   <!-- COMMENT TEXT -->
-                  <p id="comment-text-{{comment._id}}">{{comment.text}}</p>
+                  <p id="comment-text-{{comment._id}}" class="text-justify">{{comment.text}}</p>
 
                   <!-- UPDATE/DELETE COMMENT FORMS START -->
                   <div class="owned" data-owner="{{comment.owner}}">
@@ -86,12 +118,12 @@
                     <div id="comment-owned-{{comment._id}}" class="owned d-none w-100" data-owner="{{comment.owner}}">
                       <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update" data-blog-id={{blog._id}}>
                         <textarea id="comment-textarea-{{comment._id}}" class="w-100" name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
-                        <button class="ml-auto" type="submit">Update Comment</button>
+                        <button class="btn btn-success ml-auto" type="submit">Update Comment</button>
                       </form>
 
                       <!-- DELETE COMMENT BUTTON -->
                       <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} data-owner="{{comment.owner}}" class="comment-crud-form owned ml-auto" data-action="delete">
-                        <button class="bg-danger text-light" type="submit">Delete Comment</button>
+                        <button class="btn btn-danger my-2 text-light" type="submit">Delete Comment</button>
                       </form>
                     </div>
 
@@ -100,25 +132,22 @@
 
                   <!-- COMMENT EDIT BUTTON -->
                   <div class="d-flex">
-                    <button id="edit-comment-{{comment._id}}" class="edit-comment-btn owned" data-comment-id={{comment._id}} data-owner="{{comment.owner}}">Edit Comment</button>
+                    <button id="edit-comment-{{comment._id}}" class="edit-comment-btn btn btn-info owned my-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}">Edit Comment</button>
                   </div>
 
                   <!-- COMMENT END -->
                 </div>
 
-                <!-- LIST ITEM END -->
               {{/each}}
+
+              <!-- LIST ITEM END -->
             </li>
 
             <!-- SHOW/HIDE COMMENTS COLLAPSE START-->
           </div>
+
           <!-- LIST END -->
         </ul>
-
-        <div class="card-body flex-between post-login">
-          <!-- <a href="#" class="card-link">Another Comment</a> -->
-          <a href="#" class="card-link">Like</a>
-        </div>
 
         <!-- CARD BODY END -->
       </div>

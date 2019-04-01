@@ -4,10 +4,12 @@
   <div id="comment-{{comment._id}}" class="comment border-bottom my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
     <!-- COMMENT OWNER HANDLE -->
-
-    <p id="comment-handle-{{comment._id}}"> {{comment.handle}} commented:</p>
+    <div class="d-flex">
+      <p id="comment-handle-{{comment._id}}"> commented:</p>
+      <p class="owned editable ml-auto text-light bg-success rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
+    </div>
     <!-- COMMENT TEXT -->
-    <p id="comment-text-{{comment._id}}">{{comment.text}}</p>
+    <p id="comment-text-{{comment._id}}" class="text-justify">{{comment.text}}</p>
 
     <!-- UPDATE/DELETE COMMENT FORMS START -->
     <div class="owned" data-owner="{{comment.owner}}">
@@ -16,12 +18,12 @@
       <div id="comment-owned-{{comment._id}}" class="owned d-none w-100" data-owner="{{comment.owner}}">
         <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update" data-blog-id={{blog._id}}>
           <textarea id="comment-textarea-{{comment._id}}" class="w-100" name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
-          <button class="ml-auto" type="submit">Update Comment</button>
+          <button class="btn btn-success ml-auto" type="submit">Update Comment</button>
         </form>
 
         <!-- DELETE COMMENT BUTTON -->
         <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} data-owner="{{comment.owner}}" class="comment-crud-form owned ml-auto" data-action="delete">
-          <button class="bg-danger text-light" type="submit">Delete Comment</button>
+          <button class="btn btn-danger my-2 text-light" type="submit">Delete Comment</button>
         </form>
       </div>
 
@@ -30,11 +32,11 @@
 
     <!-- COMMENT EDIT BUTTON -->
     <div class="d-flex">
-      <button id="edit-comment-{{comment._id}}" class="edit-comment-btn owned" data-comment-id={{comment._id}} data-owner="{{comment.owner}}">Edit Comment</button>
+      <button id="edit-comment-{{comment._id}}" class="edit-comment-btn btn btn-info owned my-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}">Edit Comment</button>
     </div>
 
     <!-- COMMENT END -->
   </div>
 
-  <!-- LIST ITEM END -->
+
 {{/each}}
