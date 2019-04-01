@@ -1,24 +1,52 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  background-color: #51445F;
+}
+
+p {
+  white-space: pre-line;
+}
+
+.btn {
+  background-color: #51445F;
+}
+
+.card {
+  background-color: #E2D09C;
+}
+
+.bg-orange-fix {
+  background-color: #E59606;
+}
+
 .blog {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   word-break: break-word;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #E2D09C;
+  margin: 1.5rem auto;
+  box-shadow: -1rem .5rem .25rem rgba(224,229,208,.7);
 }
 
 .blog-textarea {
   height: 10rem;
 }
 
+.card {
+  border: none;
+}
+
 .card-header {
   cursor: pointer;
+  border: none;
 }
 
 .clean-btn {
   background: none;
   border: none;
-  color: blue;
   cursor: pointer;
 
   &:hover {
@@ -31,6 +59,8 @@
   flex-direction: column;
   overflow: hidden;
   word-break: break-word;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #E0E5D0;
 }
 
 .flex-center {
@@ -43,12 +73,76 @@
   justify-content: flex-end;
 }
 
+.nav {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #9597B1;
+}
+
+.navbar {
+  display: flex;
+  background-color: #9597B1;
+  flex-direction: column;
+  justify-content: center;
+  @media (min-width:705px) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+.main-nav {
+    display: none;
+  @media(min-width:705px){
+  display:flex;
+  }
+}
+.collapsed-nav {
+  display: flex;
+  align-items:flex-end;
+  @media(min-width:705px){
+    display: none;
+  }
+}
+
+.mobile-only {
+  @media(min-width:705px){
+    display:none;
+  }
+}
+
+.navbar {
+  & .btn {
+    margin-top: 1rem;
+  }
+}
+
+.background-fix-light {
+  background-color: #E0E5D0;
+}
+
+.bg-fix-medium {
+  background-color: #9597B1;
+}
+
 .owned {
   display: none;
 }
 
+.subhead {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto;
+  padding: 0 0 2rem;
+  text-align: center;
+  color: #E2D09C;
+}
+
+.title {
+  font-family: 'Mrs Sheppards', cursive;
+  font-size: 5rem;
+  color: #E59606;
+}
+
 #user-message {
-  height: 38px;
+  color: #E2D09C;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #blog-body-textarea {

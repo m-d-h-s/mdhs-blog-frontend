@@ -42,7 +42,7 @@ const failure = () => {
 
 const signInFailure = () => {
   $('form').trigger('reset')
-  $('#sign-in-form-feedback').text('Your username must exist already and password must be correct. Try again.')
+  $('#sign-in-form-feedback').text('Are you sure your username and password are correct?')
   setTimeout(() => $('#sign-in-form-feedback').text(''), 3000)
 }
 
