@@ -83,9 +83,10 @@ const onLikeBlog = () => {
 const onModalFailure = () => {
   if (event) { event.preventDefault() }
 
+  $('#failure-modal').modal('hide')
+
   api.indexBlog()
     .then(ui.onIndexBlogSuccess)
-    .then(() => $('#failure-modal').modal('hide'))
     .catch(ui.onBlogFailure)
 }
 
