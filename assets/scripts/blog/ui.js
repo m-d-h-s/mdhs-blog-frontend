@@ -65,6 +65,23 @@ const onDeleteBlogSuccess = id => {
   $(`#blog-${id}`).hide()
 }
 
+const onBlogLikeSuccess = (blogId) => {
+  $('input').trigger('reset')
+  $('form').trigger('reset')
+
+  const buttonText = $(`#like-blog-${blogId}`).text()
+  let likeCount = parseInt($(`#like-count-${blogId}`).text(), 10)
+  if (buttonText.includes('Unlike')) {
+    $(`#like-blog-${blogId}`).text('Like 👍')
+    likeCount--
+    $(`#like-count-${blogId}`).text(`${likeCount} likes`)
+  } else {
+    $(`#like-blog-${blogId}`).text('Unlike 👎')
+    likeCount++
+    $(`#like-count-${blogId}`).text(`${likeCount} likes`)
+  }
+}
+
 const onBlogFailure = (responseData) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
@@ -78,5 +95,6 @@ module.exports = {
   onShowBlogSuccess,
   onUpdateBlogSuccess,
   onDeleteBlogSuccess,
+  onBlogLikeSuccess,
   onBlogFailure
 }

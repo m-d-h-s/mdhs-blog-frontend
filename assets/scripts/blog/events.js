@@ -73,14 +73,14 @@ const toggleEditBlog = () => {
 
 const onLikeBlog = () => {
   event.preventDefault()
-  // on click do patch request to blog
-  // add current user to blog.likes array
+  const blogId = $(event.target).data('blog-id')
 
-  // make button bg green if in array
-  // regular background if not in array
+  api.likeBlog(blogId)
+    .then(() => ui.onBlogLikeSuccess(blogId))
+    .catch(ui.onBlogFailure)
 }
 
-const onModalFailure = () => {
+const onModalFailure = (event) => {
   if (event) { event.preventDefault() }
 
   $('#failure-modal').modal('hide')
