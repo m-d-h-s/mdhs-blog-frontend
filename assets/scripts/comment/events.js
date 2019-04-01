@@ -51,6 +51,20 @@ const toggleEditComment = () => {
   $(`#edit-comment-${comment}`).toggleClass('d-none')
 }
 
+const toggleCollapseAllComments = () => {
+  event.preventDefault()
+
+  if ($('#collapse-all-comments').text() === 'Open All') {
+    $('#collapse-all-comments').text('Close All')
+    $('.card-body').collapse('show')
+    $('.comment').collapse('show')
+  } else {
+    $('#collapse-all-comments').text('Open All')
+    $('.comment').collapse('hide')
+    $('.card-body').collapse('hide')
+  }
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.comment-crud-form', (event) => {
     event.preventDefault()
@@ -58,6 +72,7 @@ const addHandlers = () => {
     onCommentCrud[crudAction](event)
   })
   $('body').on('click', '.edit-comment-btn', toggleEditComment)
+  $('#collapse-all-comments').on('click', toggleCollapseAllComments)
 }
 
 module.exports = {

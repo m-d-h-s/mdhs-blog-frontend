@@ -73,18 +73,11 @@ const toggleEditBlog = () => {
 
 const onLikeBlog = () => {
   event.preventDefault()
-}
+  // on click do patch request to blog
+  // add current user to blog.likes array
 
-const toggleCollapseAllBlogs = () => {
-  event.preventDefault()
-
-  if ($('#collapse-all-blogs').text() === 'Open all Blogs') {
-    $('#collapse-all-blogs').text('Close all Blogs')
-    $('.card-body').collapse('show')
-  } else {
-    $('#collapse-all-blogs').text('Open all Blogs')
-    $('.card-body').collapse('hide')
-  }
+  // make button bg green if in array
+  // regular background if not in array
 }
 
 const addHandlers = () => {
@@ -96,7 +89,6 @@ const addHandlers = () => {
   $('body').on('click', '.toggle-comments', onToggleComments)
   $('body').on('click', '.edit-blog-btn', toggleEditBlog)
   $('body').on('click', '.like-blog-btn', onLikeBlog)
-  $('#collapse-all-blogs').on('click', toggleCollapseAllBlogs)
 }
 
 module.exports = {

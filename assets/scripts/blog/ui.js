@@ -23,6 +23,8 @@ const onIndexBlogSuccess = (responseData) => {
 
   view.showOwnership()
   store.user ? $('.post-login').show() : $('.post-login').hide()
+  $('#user-message').text('successfully got most recent posts!')
+  setTimeout(() => $('#user-message').text(''), 3000)
 }
 const onShowBlogSuccess = (responseData) => {
   const showBlogHtml = showBlogTemplate({ blogs: responseData })

@@ -20,7 +20,12 @@
     <!-- NAVBAR TITLE -->
     <span class="navbar-brand mb-0 h1 text-light">MDHS Blog</span>
 
-    <button id="collapse-all-blogs" class="btn btn-dark text-light">Open all Blogs</button>
+    <!-- <button id="collapse-all-blogs" class="btn btn-dark text-light">Open all Blogs</button> -->
+    <button id="collapse-all-comments" class="btn btn-dark mx-2">Open All</button>
+
+    <form id="index-blog" class="blog-crud-form" data-action="index">
+      <button class="btn btn-dark" type="submit">Reload Page</button>
+    </form>
 
     <!-- NAVBAR SIGN IN/UP MODAL SHOW BUTTONS -->
     <div class="ml-auto">
@@ -189,11 +194,7 @@
   </div>
 
   <h1 class="pt-5 mt-3 text-center">Maryland HighSchool Blog</h1>
-  <h2 id="user-message" class="m-0"></h2>
-
-  <!-- <form id="index-blog" class="blog-crud-form" data-action="index">
-    <button type="submit">SHOW ALL</button>
-  </form> -->
+  <h2 id="user-message" class="mx-5 my-0"></h2>
 
   <section id="blog-content"></section>
 

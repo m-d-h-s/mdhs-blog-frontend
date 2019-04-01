@@ -10,7 +10,7 @@
       <div class="card-header" data-blog-id={{blog._id}} data-toggle="collapse" data-target="#card-body-blog-{{blog._id}}">
 
         <div class="d-flex">
-          <p id="blog-title-{{blog._id}}" class="card-title m-0 d-inline-block">{{blog.title}}</p>
+          <h4 id="blog-title-{{blog._id}}" class="card-title m-0 d-inline-block">{{blog.title}}</h4>
           <p class="owned editable ml-auto text-light bg-success rounded px-2" data-blog-id={{blog._id}} data-owner="{{blog.owner}}"></p>
         </div>
 
@@ -25,42 +25,53 @@
       <!-- CARD BODY START -->
       <div id="card-body-blog-{{blog._id}}" class="card-body collapse py-0">
 
+        <!-- EDIT BUTTON SHOW/HIDE FORMS AND LIKE BUTTON-->
+        <div class="d-flex my-2">
+          <!-- BLOG LIKE BUTTON -->
+          <button id="like-blog={{blog._id}}" class="like-blog-btn btn btn-light card-link post-login mr-auto">Like this post 👍</button>
+
+          <!-- BLOG EDIT BUTTON -->
+          <button id="edit-blog-{{blog._id}}" class="btn btn-info edit-blog-btn owned ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}">Edit Blog</button>
+
+        </div>
+
         <!-- BLOG BODY TEXT-->
-        <p id="blog-body-{{blog._id}}" class="card-text text-justify">{{blog.body}}</p>
+        <p id="blog-body-{{blog._id}}" class="card-text text-justify mt-3"><span class="mx-4"></span>{{blog.body}}</p>
 
         <!-- BLOG UPDATE/DELETE FORMS START -->
         <div class="my-1">
 
           <!-- UPDATE BLOG FORM TEXTAREA  -->
           <div id="blog-owned-{{blog._id}}" class="owned w-100 collapse d-none" data-owner="{{blog.owner}}">
-            <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form d-flex flex-column" data-action="update">
-              <textarea id="update-blog-textarea-title-{{blog._id}}" class="d-inline" name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>{{blog.title}}</textarea>
-              <textarea id="update-blog-textarea-body-{{blog._id}}" class="d-inline my-2" name="blog[body]" type="text" placeholder="Enter a blog body" maxlength="10000" required>{{blog.body}}</textarea>
-              <div class="d-flex">
-                <button class="btn btn-success my-2 ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}" type="submit">Update Blog</button>
-              </div>
-            </form>
 
             <!-- DELETE BLOG BUTTON -->
-            <form id="delete-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form owned d-flex" data-action="delete">
-              <button class="btn bg-danger text-light ml-auto" type="submit">Delete Blog</button>
+            <form id="delete-blog-{{blog._id}}" class="blog-crud-form owned d-flex" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-action="delete">
+              <button class="btn bg-danger text-light my-2 ml-auto" type="submit">Delete Blog</button>
             </form>
+
+            <!-- UPDATE BLOG FORM -->
+            <form id="update-blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog-crud-form" data-action="update">
+
+              <div class="text-right">
+                <!-- UPDATE BLOG BUTTON -->
+                  <button class="btn btn-success" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}" type="submit">Update Blog</button>
+              </div>
+
+              <!-- BLOG FORM TEXTAREA -->
+              <div class="w-100 d-flex flex-column">
+                <label class="d-inline my-1">Title</label>
+                <textarea id="update-blog-textarea-title-{{blog._id}}" class="" name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>{{blog.title}}</textarea>
+                <label class="d-inline my-1">Body</label>
+                <textarea id="update-blog-textarea-body-{{blog._id}}" class="my-2 blog-textarea" name="blog[body]" type="text" placeholder="Enter a blog body" maxlength="10000" required>{{blog.body}}</textarea>
+              </div>
+
+            </form>
+
             <!-- UPDATE BLOG FORM TEXTAREA END -->
-          </div>
-
-          <!-- EDIT BUTTON SHOW/HIDE FORMS AND LIKE BUTTON-->
-          <div class="d-flex my-2">
-            <!-- BLOG LIKE BUTTON -->
-            <button id="like-blog={{blog._id}}" class="like-blog-btn btn btn-light card-link post-login mr-auto">Like this post 👍</button>
-
-            <!-- BLOG EDIT BUTTON -->
-            <button id="edit-blog-{{blog._id}}" class="btn btn-info edit-blog-btn owned ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}">Edit Blog</button>
-
           </div>
 
           <!-- BLOG UPDATE/DELETE FORMS END -->
         </div>
-
 
         <!-- LIST START -->
         <ul class="list-group list-group-flush">
@@ -71,7 +82,7 @@
           </div>
 
           <!-- SHOW/HIDE COMMENTS COLLAPSE START-->
-          <div id="comments-of-blog-{{blog._id}}" class="comment collapse" data-blog-id={{blog._id}}>
+          <div id="comments-of-blog-{{blog._id}}" class="comment-collapse comment collapse" data-blog-id={{blog._id}}>
 
             <!-- CREATE COMMENT TEXTAREA FORM -->
             <form class="comment-crud-form post-login my-2" data-blog-id={{blog._id}} data-action="create">
@@ -89,7 +100,10 @@
                 <div id="comment-{{comment._id}}" class="comment border-bottom my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
                   <!-- COMMENT OWNER HANDLE -->
-                  <p>{{comment.handle.0.handle}} commented:</p>
+                  <div class="d-flex">
+                    <p>{{comment.handle.0.handle}} commented:</p>
+                    <p class="owned editable ml-auto text-light bg-success rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
+                  </div>
                   <!-- COMMENT TEXT -->
                   <p id="comment-text-{{comment._id}}" class="text-justify">{{comment.text}}</p>
 
@@ -121,11 +135,13 @@
                 </div>
 
               {{/each}}
+
               <!-- LIST ITEM END -->
             </li>
 
             <!-- SHOW/HIDE COMMENTS COLLAPSE START-->
           </div>
+
           <!-- LIST END -->
         </ul>
 
