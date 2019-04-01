@@ -76,13 +76,8 @@ const onLikeBlog = () => {
   const blogId = $(event.target).data('blog-id')
 
   api.likeBlog(blogId)
-    .then(ui.onBlogLikeSuccess)
+    .then(() => ui.onBlogLikeSuccess(blogId))
     .catch(ui.onBlogFailure)
-  // on click do patch request to blog
-  // add current user to blog.likes array
-
-  // make button bg green if in array
-  // regular background if not in array
 }
 
 const onModalFailure = (event) => {
