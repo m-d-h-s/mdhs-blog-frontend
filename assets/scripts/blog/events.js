@@ -114,7 +114,7 @@ const onSearchBlogsByTitle = (event) => {
   const titles = $('.card-title')
   let counter = 0
   titles.each(index => {
-    if ($(titles[index]).text().includes(blogData.blog.title)) {
+    if ($(titles[index]).text().toLowerCase().includes(blogData.blog.title.toLowerCase())) {
       const blogId = $(titles[index]).data('blog-id')
       $(`#blog-${blogId}`).show()
       counter++
@@ -122,6 +122,7 @@ const onSearchBlogsByTitle = (event) => {
   })
 
   $('#collapse-all-comments').attr('disabled', false)
+  $('#user-message').text(`Search Results For: ${blogData.blog.title}`)
 
   if (!counter) {
     $('#user-message').text('No Blogs Found')
@@ -141,7 +142,7 @@ const onSearchBlogsByBody = (event) => {
   $('.blog').hide()
   const bodies = $('.card-text')
   bodies.each(index => {
-    if ($(bodies[index]).text().includes(blogData.blog.body)) {
+    if ($(bodies[index]).text().toLowerCase().includes(blogData.blog.body.toLowerCase())) {
       const blogId = $(bodies[index]).data('blog-id')
       $(`#blog-${blogId}`).show()
       $(`#card-body-blog-${blogId}`).collapse('show')
@@ -150,6 +151,7 @@ const onSearchBlogsByBody = (event) => {
   })
 
   $('#collapse-all-comments').attr('disabled', false)
+  $('#user-message').text(`Search Results For: ${blogData.blog.body}`)
 
   if (!counter) {
     $('#user-message').text('No Blogs Found')
@@ -178,6 +180,7 @@ const onSearchBlogsByHandle = (event) => {
   })
 
   $('#collapse-all-comments').attr('disabled', false)
+  $('#user-message').text(`Search Results For Handle: ${blogData.blog.handle}`)
 
   if (!counter) {
     $('#user-message').text('No Handle Found')
