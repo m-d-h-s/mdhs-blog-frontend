@@ -1,15 +1,20 @@
 {{#each blogs as |blog|}}
 
   <!-- BLOG START -->
-  <div id="blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog my-1 bg-dark">
+  <div id="blog-{{blog._id}}" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" class="blog mt-1 mx-5 rounded bg-dark">
 
     <!-- CARD START   -->
     <div class="card m-4">
 
       <!-- CARD HEADER -->
       <div class="card-header" data-blog-id={{blog._id}} data-toggle="collapse" data-target="#card-body-blog-{{blog._id}}">
-        <h5 id="blog-title-{{blog._id}}" class="card-title m-0 d-inline-block">{{blog.title}}</h5>
-        <p class="text-primary">{{blog.handle.0.handle}}</p>
+
+        <div class="d-flex">
+          <p id="blog-title-{{blog._id}}" class="card-title m-0 d-inline-block">{{blog.title}}</p>
+          <p class="owned editable ml-auto text-light bg-success rounded px-2" data-blog-id={{blog._id}} data-owner="{{blog.owner}}"></p>
+        </div>
+
+        <p class="text-secondary">{{blog.handle.0.handle}}</p>
 
         <div class="d-flex">
           <p class="text-primary">{{blog.likes.length}} likes</p>
@@ -115,8 +120,8 @@
                   <!-- COMMENT END -->
                 </div>
 
-                <!-- LIST ITEM END -->
               {{/each}}
+              <!-- LIST ITEM END -->
             </li>
 
             <!-- SHOW/HIDE COMMENTS COLLAPSE START-->
