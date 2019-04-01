@@ -14,7 +14,7 @@
           <p class="owned editable ml-auto text-light bg-success rounded px-2" data-blog-id={{blog._id}} data-owner="{{blog.owner}}"></p>
         </div>
 
-        <p id="card-handle-{{blog._id}}" class="handle-text text-secondary" data-blog-id={{blog._id}} data-handle={{blog.handle.0.handle}}>{{blog.handle.0.handle}}</p>
+        <p id="card-handle-{{blog._id}}" class="handle-text text-secondary" data-blog-id={{blog._id}} data-handle={{blog.handle.0.handle}}>By: {{blog.handle.0.handle}}</p>
 
         <div class="d-flex">
           <p class="text-secondary border-right pr-2">{{blog.likes.length}} likes</p>
@@ -28,7 +28,7 @@
         <!-- EDIT BUTTON SHOW/HIDE FORMS AND LIKE BUTTON-->
         <div class="d-flex my-2">
           <!-- BLOG LIKE BUTTON -->
-          <button id="like-blog={{blog._id}}" class="like-blog-btn btn btn-light card-link post-login mr-auto">Like this post 👍</button>
+          <button id="like-blog={{blog._id}}" data-blog-id="{{blog._id}}" class="like-blog-btn btn btn-light card-link post-login mr-auto">{{ifLiked blog.likes}}</button>
 
           <!-- BLOG EDIT BUTTON -->
           <button id="edit-blog-{{blog._id}}" class="btn btn-info edit-blog-btn owned ml-auto" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}">Edit Blog</button>
