@@ -15,13 +15,11 @@ const scoreSort = (blogs) => {
 }
 
 const onCreateBlogSuccess = (responseData) => {
-  $('#user-message').text('successfully created post!')
   const showBlogHtml = showBlogTemplate({ blog: responseData })
   $('input').trigger('reset')
   $('form').trigger('reset')
   $('#blog-content').empty()
   $('#blog-content').append(showBlogHtml)
-  // $(`#edit-blog-${responseData.blog._id}`).toggleClass('d-none')
   $('#create-blog-modal').modal('hide')
 }
 
@@ -36,7 +34,7 @@ const onIndexBlogSuccess = (responseData) => {
 
   view.showOwnership()
   store.user ? $('.post-login').show() : $('.post-login').hide()
-  $('#user-message').text('successfully got most recent posts!')
+  $('#user-message').text('Blogs are up to date')
   setTimeout(() => $('#user-message').text(''), 3000)
 }
 const onShowBlogSuccess = (responseData) => {
@@ -49,7 +47,6 @@ const onShowBlogSuccess = (responseData) => {
 const onUpdateBlogSuccess = (responseData, blog, formData) => {
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#user-message').text('successfully updated post!')
 
   // remove class d-none to show
   $(`#edit-blog-${blog}`).toggleClass('d-none')
@@ -74,7 +71,6 @@ const onUpdateBlogSuccess = (responseData, blog, formData) => {
 const onDeleteBlogSuccess = id => {
   $('input').trigger('reset')
   $('form').trigger('reset')
-  $('#user-message').text('successfully deleted post!')
   $(`#blog-${id}`).hide()
 }
 
