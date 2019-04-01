@@ -11,7 +11,11 @@ const onCreateCommentSuccess = (responseData, blog) => {
   $('form').trigger('reset')
   $(`#comments-list-${blog}`).append(showCommentHtml)
   $(`#comment-handle-${responseData.comment._id}`).text(`${handle} comments:`)
+  let commentCount = parseInt($(`#comment-count-${blog}`).text(), 10)
+  commentCount++
+  $(`#comment-count-${blog}`).text(`${commentCount} comments`)
   view.showOwnership()
+  $(`#no-comment-message-${blog}`).text('')
 }
 
 const onIndexCommentSuccess = (responseData) => {
@@ -49,11 +53,14 @@ const onUpdateCommentSuccess = (responseData, comment, blog) => {
   $(`#comment-text-${comment}`).show()
   $(`#comment-owned-${comment}`).toggleClass('d-none')
 }
-const onDeleteCommentSuccess = (responseData, element) => {
+const onDeleteCommentSuccess = (responseData, element, blog) => {
   $('#user-message').text('successfully deleted comment!')
   $('input').trigger('reset')
   $('form').trigger('reset')
   $(`#comment-${element}`).hide()
+  let commentCount = parseInt($(`#comment-count-${blog}`).text(), 10)
+  commentCount--
+  $(`#comment-count-${blog}`).text(`${commentCount} comments`)
 }
 
 const onCommentFailure = (responseData) => {
