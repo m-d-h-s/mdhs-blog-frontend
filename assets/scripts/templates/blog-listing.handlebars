@@ -17,7 +17,7 @@
         <p id="card-handle-{{blog._id}}" class="handle-text text-secondary" data-blog-id={{blog._id}} data-handle={{blog.handle.0.handle}}>By: {{blog.handle.0.handle}}</p>
 
         <div class="d-flex">
-          <p class="text-secondary border-right pr-2">{{blog.likes.length}} likes</p>
+          <p id="like-count-{{blog._id}}" class="text-secondary border-right pr-2">{{blog.likes.length}} likes</p>
           <p class="text-secondary px-2">{{blog.comments.length}} comments</p>
         </div>
       </div>
