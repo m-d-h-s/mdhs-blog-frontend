@@ -44,7 +44,7 @@ const failure = () => {
 }
 
 const signInFailure = () => {
-  $('#sign-in-form-feedback').text('Your username must exist already and password must be correct. Try a again.')
+  $('#sign-in-form-feedback').text('Your username must exist already and password must be correct. Try again.')
   setTimeout(() => $('#sign-up-form-feedback').hide(), 3000)
 }
 

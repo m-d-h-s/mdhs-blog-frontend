@@ -110,15 +110,23 @@ const onSearchBlogsByTitle = (event) => {
   event.preventDefault()
   const form = event.target
   const blogData = getFormFields(form)
-
   $('.blog').hide()
   const titles = $('.card-title')
+  let counter = 0
   titles.each(index => {
     if ($(titles[index]).text().includes(blogData.blog.title)) {
       const blogId = $(titles[index]).data('blog-id')
       $(`#blog-${blogId}`).show()
+      counter++
     }
   })
+
+  $('#collapse-all-comments').attr('disabled', false)
+
+  if (!counter) {
+    $('#user-message').text('No Blogs Found')
+    $('#collapse-all-comments').attr('disabled', true)
+  }
 
   $('#search-modal').modal('hide')
   $('form').trigger('reset')
@@ -128,6 +136,7 @@ const onSearchBlogsByBody = (event) => {
   event.preventDefault()
   const form = event.target
   const blogData = getFormFields(form)
+  let counter = 0
 
   $('.blog').hide()
   const bodies = $('.card-text')
@@ -136,8 +145,17 @@ const onSearchBlogsByBody = (event) => {
       const blogId = $(bodies[index]).data('blog-id')
       $(`#blog-${blogId}`).show()
       $(`#card-body-blog-${blogId}`).collapse('show')
+      counter++
     }
   })
+
+  $('#collapse-all-comments').attr('disabled', false)
+
+  if (!counter) {
+    $('#user-message').text('No Blogs Found')
+    $('#collapse-all-comments').attr('disabled', true)
+  }
+
   $('#search-modal').modal('hide')
   $('form').trigger('reset')
 }
@@ -146,6 +164,8 @@ const onSearchBlogsByHandle = (event) => {
   event.preventDefault()
   const form = event.target
   const blogData = getFormFields(form)
+  let counter = 0
+
   $('.blog').hide()
   const handles = $('.handle-text')
   handles.each(index => {
@@ -153,8 +173,17 @@ const onSearchBlogsByHandle = (event) => {
       const blogId = $(handles[index]).data('blog-id')
       $(`#blog-${blogId}`).show()
       $(`#card-body-blog-${blogId}`).collapse('show')
+      counter++
     }
   })
+
+  $('#collapse-all-comments').attr('disabled', false)
+
+  if (!counter) {
+    $('#user-message').text('No Handle Found')
+    $('#collapse-all-comments').attr('disabled', true)
+  }
+
   $('#search-modal').modal('hide')
   $('form').trigger('reset')
 }

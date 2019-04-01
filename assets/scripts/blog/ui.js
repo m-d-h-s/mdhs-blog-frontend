@@ -32,6 +32,7 @@ const onIndexBlogSuccess = (responseData) => {
   $('input').trigger('reset')
   $('#blog-content').empty()
   $('#blog-content').append(showBlogHtml)
+  $('#collapse-all-comments').attr('disabled', false)
 
   view.showOwnership()
   store.user ? $('.post-login').show() : $('.post-login').hide()
