@@ -70,10 +70,15 @@ const onBlogLikeSuccess = (blogId) => {
   $('form').trigger('reset')
 
   const buttonText = $(`#like-blog-${blogId}`).text()
+  let likeCount = parseInt($(`#like-count-${blogId}`).text(), 10)
   if (buttonText.includes('Unlike')) {
     $(`#like-blog-${blogId}`).text('Like 👍')
+    likeCount--
+    $(`#like-count-${blogId}`).text(`${likeCount} likes`)
   } else {
     $(`#like-blog-${blogId}`).text('Unlike 👎')
+    likeCount++
+    $(`#like-count-${blogId}`).text(`${likeCount} likes`)
   }
 }
 
