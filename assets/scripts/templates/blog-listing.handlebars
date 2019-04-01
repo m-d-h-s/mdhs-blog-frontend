@@ -17,8 +17,8 @@
         <p class="text-secondary">{{blog.handle.0.handle}}</p>
 
         <div class="d-flex">
-          <p class="text-primary border-right pr-2">{{blog.likes.length}} likes</p>
-          <p class="text-primary px-2">{{blog.comments.length}} comments</p>
+          <p class="text-secondary border-right pr-2">{{blog.likes.length}} likes</p>
+          <p class="text-secondary px-2">{{blog.comments.length}} comments</p>
         </div>
       </div>
 
@@ -57,7 +57,7 @@
                   <button class="btn btn-success" data-blog-id={{blog._id}} data-owner="{{blog.owner}}" data-toggle="collapse" data-target="#blog-owned-{{blog._id}}" type="submit">Update Blog</button>
               </div>
 
-              <!-- BLOG FORM TEXTAREA -->
+              <!-- BLOG FORM TEXTAREA INPUTS -->
               <div class="w-100 d-flex flex-column">
                 <label class="d-inline my-1">Title</label>
                 <textarea id="update-blog-textarea-title-{{blog._id}}" class="" name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>{{blog.title}}</textarea>

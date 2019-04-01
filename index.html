@@ -179,8 +179,10 @@
         <!-- CREATE BLOG FORM -->
         <form id="new-blog" class="blog-crud-form d-flex flex-column" data-action="create">
           <div class="modal-body col-12">
-            <input class="col-12" name="blog[title]" type="text" placeholder="Enter a blog title" maxlength="40" required>
-            <textarea id="blog-body-textarea" class="col-12 my-2" name="blog[body]" placeholder="Enter a blog body" maxlength="10000" required></textarea>
+            <p class="my-1">Title</p>
+            <input class="col-12 my-2" name="blog[title]" type="text" placeholder="Write your blog title here" maxlength="32" required>
+            <p class="my-1">Body</p>
+            <textarea id="blog-body-textarea" class="col-12 my-2" name="blog[body]" placeholder="Write about..." maxlength="10000" required></textarea>
           </div>
 
           <div class="modal-footer">

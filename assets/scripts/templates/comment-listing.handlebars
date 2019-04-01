@@ -4,7 +4,10 @@
   <div id="comment-{{comment._id}}" class="comment border-bottom my-2" data-blog-id={{blog._id}} data-owner="{{comment.owner}}">
 
     <!-- COMMENT OWNER HANDLE -->
-    <p id="comment-handle-{{comment._id}}">{{comment.handle}} commented:</p>
+    <div class="d-flex">
+      <p>{{comment.handle.0.handle}} commented:</p>
+      <p class="owned editable ml-auto text-light bg-success rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
+    </div>
     <!-- COMMENT TEXT -->
     <p id="comment-text-{{comment._id}}" class="text-justify">{{comment.text}}</p>
 
@@ -34,5 +37,6 @@
 
     <!-- COMMENT END -->
   </div>
+
 
 {{/each}}
