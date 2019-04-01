@@ -34,7 +34,6 @@ const onChangePassword = (event) => {
 }
 
 const onSignOut = (event) => {
-  console.log('onSignOut')
   event.preventDefault()
   api.signOut()
     .then(blog.onBlogCrud.index)
