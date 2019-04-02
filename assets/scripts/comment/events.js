@@ -60,11 +60,15 @@ const toggleCollapseAllComments = () => {
     $('.card-body').collapse('show')
     $('.comment').collapse('show')
     $('.toggle-comments').text('Hide Comments')
+    $('#user-message').text('All Elements Open')
+    setTimeout(() => $('#user-message').text(''), 3000)
   } else {
     $('#collapse-all-comments').text('Open All')
     $('.comment').collapse('hide')
     $('.card-body').collapse('hide')
     $('.toggle-comments').text('Show Comments')
+    $('#user-message').text('All Elements Closed')
+    setTimeout(() => $('#user-message').text(''), 3000)
   }
 }
 

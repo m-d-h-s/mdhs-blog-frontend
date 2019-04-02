@@ -36,7 +36,7 @@
         </div>
 
         <!-- BLOG BODY TEXT-->
-        <p id="blog-body-{{blog._id}}" class="card-text text-justify mt-3" data-blog-id={{blog._id}}><span class="mx-4"></span>{{blog.body}}</p>
+        <p id="blog-body-{{blog._id}}" class="blog-background-color rounded p-2 card-text text-justify mt-3" data-blog-id={{blog._id}}>{{blog.body}}</p>
 
         <!-- BLOG UPDATE/DELETE FORMS START -->
         <div class="my-1">
@@ -78,7 +78,7 @@
 
           <!-- HIDE/SHOW COMMENTS OPEN/CLOSE COLLAPSE BUTTON -->
           <div class="ml-auto">
-            <button class="toggle-comments btn btn-outline-light m-2" data-blog-id={{blog._id}} data-toggle="collapse" data-target=".comment[data-blog-id={{blog._id}}]">Show Comments</button>
+            <button class="toggle-comments btn btn-outline-light my-2" data-blog-id={{blog._id}} data-toggle="collapse" data-target=".comment[data-blog-id={{blog._id}}]">Show Comments</button>
           </div>
 
           <!-- SHOW/HIDE COMMENTS COLLAPSE START-->
@@ -86,7 +86,7 @@
 
 
             {{#unless blog.comments}}
-            <p id="no-comment-message-{{blog._id}}" class=" px-2 rounded">This blog has no comments, be the first to leave a comment!</p>
+            <p id="no-comment-message-{{blog._id}}" class="p-2 rounded">This blog has no comments, be the first to leave a comment!</p>
             {{/unless}}
 
             <!-- CREATE COMMENT TEXTAREA FORM -->

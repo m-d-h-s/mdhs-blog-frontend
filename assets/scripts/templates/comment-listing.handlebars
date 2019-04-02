@@ -6,7 +6,7 @@
   <!-- COMMENT OWNER HANDLE -->
   <div class="d-flex">
     <p id="comment-handle-{{comment._id}}" class="text-secondary">{{comment.handle.0.handle}} commented:</p>
-    <p class="owned editable ml-auto text-light bg-orange-fix rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
+    <p class="owned editable ml-auto bg-fix-medium rounded px-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}"></p>
   </div>
   <!-- COMMENT TEXT -->
   <p id="comment-text-{{comment._id}}" class="text-justify">{{comment.text}}</p>
@@ -18,12 +18,12 @@
     <div id="comment-owned-{{comment._id}}" class="owned d-none w-100" data-owner="{{comment.owner}}">
       <form id="update-comment-{{comment._id}}" data-comment-id={{comment._id}} class="comment-crud-form" data-action="update" data-blog-id={{blog._id}}>
         <textarea id="comment-textarea-{{comment._id}}" class="w-100" name="comment[text]" type="text" maxlength="1000" required>{{comment.text}}</textarea>
-        <button class="btn btn-success ml-auto" type="submit">Update Comment</button>
+        <button class="btn btn-outline-light ml-auto" type="submit">Update Comment</button>
       </form>
 
       <!-- DELETE COMMENT BUTTON -->
-      <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} data-blog-id-del={{comment.blog}} data-owner="{{comment.owner}}" class="comment-crud-form owned ml-auto" data-action="delete">
-        <button class="btn btn-danger my-2 text-light" type="submit">Delete Comment</button>
+      <form id="delete-comment-{{comment._id}}" data-comment-id={{comment._id}} data-owner="{{comment.owner}}" class="comment-crud-form owned ml-auto" data-action="delete">
+        <button class="btn btn-danger my-2 btn-outline-light" type="submit">Delete Comment</button>
       </form>
     </div>
 
@@ -34,6 +34,9 @@
   <div class="d-flex">
     <button id="edit-comment-{{comment._id}}" class="edit-comment-btn btn btn-info owned my-2" data-comment-id={{comment._id}} data-owner="{{comment.owner}}">Edit Comment</button>
   </div>
+
+  <!-- COMMENT END -->
+</div>
 
 
 {{/each}}
