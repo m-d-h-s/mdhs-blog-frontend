@@ -186,7 +186,7 @@ const addHandlers = () => {
   $('body').on('click', '.toggle-comments', onToggleComments)
 
   $('#refresh-button').on('click', onModalFailure)
-  $('#page-title').on('click', onBlogCrud.index)
+  // $('#page-title').on('click', onBlogCrud.index)
 
   $('#search-blogs-title-form').on('submit', onSearchBlogsByTitle)
   $('#search-blogs-body-form').on('submit', onSearchBlogsByBody)
