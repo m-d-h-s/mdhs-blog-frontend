@@ -4,8 +4,13 @@ body {
   background-color: #51445F;
 }
 
+div {
+  border-radius: 5px;
+}
+
 p {
   white-space: pre-line;
+  margin: 0 0 4px;
 }
 
 .btn {
@@ -28,7 +33,7 @@ p {
   font-family: 'Open Sans', sans-serif;
   background-color: #E2D09C;
   margin: 1.5rem auto;
-  box-shadow: -1rem .5rem .25rem rgba(224,229,208,.7);
+  box-shadow: -1rem 0.5rem 0.25rem rgba(224,229,208,.7);
 }
 
 .blog-textarea {
@@ -61,6 +66,7 @@ p {
   word-break: break-word;
   font-family: 'Open Sans', sans-serif;
   background-color: #E0E5D0;
+  padding: 0 0.5rem;
 }
 
 .flex-center {
@@ -88,23 +94,25 @@ p {
     justify-content: space-around;
   }
 }
+
 .main-nav {
-    display: none;
-  @media(min-width:705px){
-  display:flex;
+  display: none;
+  @media(min-width:705px) {
+    display: flex;
   }
 }
+
 .collapsed-nav {
   display: flex;
-  align-items:flex-end;
-  @media(min-width:705px){
+  align-items: flex-end;
+  @media(min-width:705px) {
     display: none;
   }
 }
 
 .mobile-only {
-  @media(min-width:705px){
-    display:none;
+  @media(min-width:705px) {
+    display: none;
   }
 }
 
@@ -140,7 +148,12 @@ p {
   color: #E59606;
 }
 
+#page-title {
+  cursor: pointer;
+}
+
 #user-message {
+  height: 40px;
   color: #E2D09C;
   font-family: 'Open Sans', sans-serif;
 }

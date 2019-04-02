@@ -90,22 +90,6 @@ const onModalFailure = (event) => {
     .catch(ui.onBlogFailure)
 }
 
-const addHandlers = () => {
-  $('body').on('submit', '.blog-crud-form', (event) => {
-    event.preventDefault()
-    const crudAction = $(event.target).data('action')
-    onBlogCrud[crudAction](event)
-  })
-  $('body').on('click', '.edit-blog-btn', toggleEditBlog)
-  $('body').on('click', '.like-blog-btn', onLikeBlog)
-  $('body').on('click', '.toggle-comments', onToggleComments)
-  $('#refresh-button').on('click', onModalFailure)
-
-  $('#search-blogs-title-form').on('submit', onSearchBlogsByTitle)
-  $('#search-blogs-body-form').on('submit', onSearchBlogsByBody)
-  $('#search-blogs-handle-form').on('submit', onSearchBlogsByHandle)
-}
-
 const onSearchBlogsByTitle = (event) => {
   event.preventDefault()
   const form = event.target
@@ -189,6 +173,24 @@ const onSearchBlogsByHandle = (event) => {
 
   $('#search-modal').modal('hide')
   $('form').trigger('reset')
+}
+
+const addHandlers = () => {
+  $('body').on('submit', '.blog-crud-form', (event) => {
+    event.preventDefault()
+    const crudAction = $(event.target).data('action')
+    onBlogCrud[crudAction](event)
+  })
+  $('body').on('click', '.edit-blog-btn', toggleEditBlog)
+  $('body').on('click', '.like-blog-btn', onLikeBlog)
+  $('body').on('click', '.toggle-comments', onToggleComments)
+
+  $('#refresh-button').on('click', onModalFailure)
+  $('#page-title').on('click', onBlogCrud.index)
+
+  $('#search-blogs-title-form').on('submit', onSearchBlogsByTitle)
+  $('#search-blogs-body-form').on('submit', onSearchBlogsByBody)
+  $('#search-blogs-handle-form').on('submit', onSearchBlogsByHandle)
 }
 
 module.exports = {
