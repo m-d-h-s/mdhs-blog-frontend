@@ -22,7 +22,6 @@ const onCommentCrud = {
     event.preventDefault()
     const data = $(event.target).data('comment-id')
     const blog = $(event.target).data('blog-id-del')
-    console.log(blog)
     api.deleteComment(data)
       .then(responseData => ui.onDeleteCommentSuccess(responseData, data, blog))
       .catch(ui.onCommentFailure)
