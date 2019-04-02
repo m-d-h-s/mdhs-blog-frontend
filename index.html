@@ -19,13 +19,12 @@
   <!-- NAVBAR START -->
   <nav class="navbar navbar-light fixed-top main-nav">
     <!-- NAVBAR TITLE -->
-    <span class="navbar-brand mb-0 h1 text-light"></span>
 
     <!-- <button id="collapse-all-blogs" class="btn btn-dark text-light">Open all Blogs</button> -->
     <button id="collapse-all-comments" class="btn btn-dark mx-2">Open All</button>
 
     <form id="index-blog" class="blog-crud-form" data-action="index">
-      <button class="btn btn-dark" type="submit">Show All Blogs</button>
+      <button class="btn btn-dark" type="submit">Update All Blogs</button>
     </form>
 
     <button id="search-btn" class="btn btn-dark text-light mx-2" data-toggle="modal" data-target="#search-modal">Search Blogs</button>
@@ -35,7 +34,7 @@
     <button id="sign-up-btn" class="pre-login btn btn-dark text-light mx-1" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
 
     <!-- NAVBAR CREATE BLOG MODAL SHOW BUTTON -->
-    <button id="create-log-btn" class="post-login btn btn-outline-light mx-2 ml-auto" data-toggle="modal" data-target="#create-blog-modal">Write your own blog</button>
+    <button id="create-log-btn" class="post-login btn btn-outline-light mx-2 ml-auto" data-toggle="modal" data-target="#create-blog-modal">Write Your Own Blog</button>
 
     <!-- NAVBAR CHANGE PASSWORD/SIGN OUT DROPDOWN BUTTONS -->
     <div class="dropdown post-login">
@@ -43,9 +42,9 @@
         Settings
       </button>
       <div class="dropdown-menu dropdown-menu-right">
-        <button id="change-password-btn" class="post-login clean-btn" data-toggle="modal" data-target="#change-password-modal">Change Password</button>
+        <button id="change-password-btn" class="post-login clean-btn px-2" data-toggle="modal" data-target="#change-password-modal">Change Password</button>
         <div class="dropdown-divider"></div>
-        <button id="sign-out-btn" class="post-login clean-btn" data-toggle="modal" data-target="#sign-out-modal">Sign Out</button>
+        <button id="sign-out-btn" class="post-login clean-btn px-2" data-toggle="modal" data-target="#sign-out-modal">Sign Out</button>
       </div>
       <!-- NAVBAR CHANGE PASSWORD/SIGN OUT DROPDOWN BUTTONS END-->
     </div>
@@ -68,8 +67,8 @@
           </button>
         </div>
         <!-- SEARCH FORM -->
-        <form id="search-blogs-title-form" class="search-blogs-title-form">
-          <div class="modal-body d-flex flex-column form-group">
+        <form id="search-blogs-title-form" class="search-blogs-title-form my-0 py-0">
+          <div class="modal-body d-flex flex-column form-group my-0 py-0">
             <label for="">Search by Title</label>
             <input name="blog[title]" required type="text" placeholder="Enter Title">
             <div>
@@ -79,7 +78,7 @@
         </form>
 
         <form id="search-blogs-body-form" class="search-blogs-body-form my-1">
-          <div class="modal-body d-flex flex-column form-group">
+          <div class="modal-body d-flex flex-column form-group py-1 my-1">
             <label for="">Search by Content</label>
             <input name="blog[body]" required type="text" placeholder="Enter Content">
             <div>
@@ -88,8 +87,8 @@
           </div>
         </form>
 
-        <form id="search-blogs-handle-form" class="search-blogs-handle-form">
-          <div class="modal-body d-flex flex-column form-group">
+        <form id="search-blogs-handle-form" class="search-blogs-handle-form my-0 py-0">
+          <div class="modal-body d-flex flex-column form-group my-0 py-0">
             <label for="">Search by Handle</label>
             <input name="blog[handle]" required type="text" placeholder="Enter Handle">
             <div>
@@ -282,7 +281,7 @@
     <!-- FAILURE MODAL END -->
   </div>
 
-  <h1 class="title pt-5 mt-3 text-center">LetterBox</h1>
+  <h1 id="page-title" class="title pt-5 mt-5 text-center">LetterBox</h1>
   <h3 class="subhead">A text-only social media platform</h3>
 
   <h2 id="user-message" class="mx-5 my-0"></h2>

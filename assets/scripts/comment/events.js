@@ -22,7 +22,6 @@ const onCommentCrud = {
     event.preventDefault()
     const data = $(event.target).data('comment-id')
     const blog = $(event.target).data('blog-id-del')
-    console.log(blog)
     api.deleteComment(data)
       .then(responseData => ui.onDeleteCommentSuccess(responseData, data, blog))
       .catch(ui.onCommentFailure)
@@ -60,11 +59,15 @@ const toggleCollapseAllComments = () => {
     $('.card-body').collapse('show')
     $('.comment').collapse('show')
     $('.toggle-comments').text('Hide Comments')
+    $('#user-message').text('All Elements Open')
+    setTimeout(() => $('#user-message').text(''), 3000)
   } else {
     $('#collapse-all-comments').text('Open All')
     $('.comment').collapse('hide')
     $('.card-body').collapse('hide')
     $('.toggle-comments').text('Show Comments')
+    $('#user-message').text('All Elements Closed')
+    setTimeout(() => $('#user-message').text(''), 3000)
   }
 }
 
