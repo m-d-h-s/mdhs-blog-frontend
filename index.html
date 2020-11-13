@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>LetterBox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link href="https://fonts.googleapis.com/css?family=Mrs+Sheppards|Open+Sans" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+
+  <!-- NAVBAR START -->
+  <nav class="navbar navbar-light fixed-top main-nav">
+    <!-- NAVBAR TITLE -->
+
+    <!-- <button id="collapse-all-blogs" class="btn btn-dark text-light">Open all Blogs</button> -->
+    <button id="collapse-all-comments" class="btn btn-dark mx-2">Open All</button>
+
+    <form id="index-blog" class="blog-crud-form" data-action="index">
+      <button class="btn btn-dark" type="submit">Update All Blogs</button>
+    </form>
+
+    <button id="search-btn" class="btn btn-dark text-light mx-2" data-toggle="modal" data-target="#search-modal">Search Blogs</button>
+
+    <!-- NAVBAR SIGN IN/UP MODAL SHOW BUTTONS -->
+    <button id="sign-in-btn" class="pre-login btn btn-dark text-light mx-1" data-toggle="modal" data-target="#sign-in-modal">Sign In</button>
+    <button id="sign-up-btn" class="pre-login btn btn-dark text-light mx-1" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
+
+    <!-- NAVBAR CREATE BLOG MODAL SHOW BUTTON -->
+    <button id="create-log-btn" class="post-login btn btn-outline-light mx-2 ml-auto" data-toggle="modal" data-target="#create-blog-modal">Write Your Own Blog</button>
+
+    <!-- NAVBAR CHANGE PASSWORD/SIGN OUT DROPDOWN BUTTONS -->
+    <div class="dropdown post-login">
+      <button id="settings-button" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Settings
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <button id="change-password-btn" class="post-login clean-btn px-2" data-toggle="modal" data-target="#change-password-modal">Change Password</button>
+        <div class="dropdown-divider"></div>
+        <button id="sign-out-btn" class="post-login clean-btn px-2" data-toggle="modal" data-target="#sign-out-modal">Sign Out</button>
+      </div>
+      <!-- NAVBAR CHANGE PASSWORD/SIGN OUT DROPDOWN BUTTONS END-->
+    </div>
+    <button class="mobile-only btn btn-dark text-light mx-2 hide-nav">Close</button>
+    <!-- NAVBAR END -->
+  </nav>
+
+  <nav class="collapsed-nav navbar">
+    <button class="mobile-only btn btn-dark text-light mx-2 show-nav">Options</button>
+  </nav>
+
+  <!-- SEARCH MODAL -->
+  <div id="search-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Search Blogs</h5>
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- SEARCH FORM -->
+        <form id="search-blogs-title-form" class="search-blogs-title-form my-0 py-0">
+          <div class="modal-body d-flex flex-column form-group my-0 py-0">
+            <label for="">Search by Title</label>
+            <input name="blog[title]" required type="text" placeholder="Enter Title">
+            <div>
+              <input class="btn btn-secondary my-1" type="submit" value="Search">
+            </div>
+          </div>
+        </form>
+
+        <form id="search-blogs-body-form" class="search-blogs-body-form my-1">
+          <div class="modal-body d-flex flex-column form-group py-1 my-1">
+            <label for="">Search by Content</label>
+            <input name="blog[body]" required type="text" placeholder="Enter Content">
+            <div>
+              <input class="btn btn-secondary my-1" type="submit" value="Search">
+            </div>
+          </div>
+        </form>
+
+        <form id="search-blogs-handle-form" class="search-blogs-handle-form my-0 py-0">
+          <div class="modal-body d-flex flex-column form-group my-0 py-0">
+            <label for="">Search by Handle</label>
+            <input name="blog[handle]" required type="text" placeholder="Enter Handle">
+            <div>
+              <input class="btn btn-secondary my-1" type="submit" value="Search">
+            </div>
+          </div>
+        </form>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- SEARCH MODAL END -->
+  </div>
+
+  <!-- SIGN IN MODAL -->
+  <div id="sign-in-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign In</h5>
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- SIGN IN FORM -->
+        <form id="sign-in-form">
+          <div class="modal-body d-flex flex-column form-group">
+            <label for="">Email</label>
+            <input class="form-control my-1" name="credentials[email]" required type="email" placeholder="Enter Email Here">
+            <label for="">Password</label>
+            <input class="form-control my-1" name="credentials[password]" required type="password" placeholder="Enter Password Here">
+            <div id="sign-in-form-feedback" class="bg-danger text-light my-2"></div>
+          </div>
+          <div class="modal-footer">
+            <input class="button btn btn-success" type="submit" value="Sign In">
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- SIGN IN MODAL END -->
+  </div>
+
+  <!-- SIGN UP MODAL -->
+  <div id="sign-up-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign Up</h5>
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- SIGN UP FORM -->
+        <form id="sign-up-form">
+          <div class="modal-body d-flex flex-column form-group">
+            <label for="">Email</label>
+            <input class="form-control my-1" name="credentials[email]" required type="email" placeholder="Enter Email Here">
+            <label for="">Handle</label>
+            <input class="form-control my-1" name="credentials[handle]" required type="text" placeholder="Enter Handle Here">
+            <label for="">Password</label>
+            <input class="form-control my-1" name="credentials[password]" required type="password" placeholder="Enter Password Here">
+            <label for="">Password Confirmation</label>
+            <input class="form-control my-1" name="credentials[password_confirmation]" required type="password" placeholder="Confirm Password Here">
+            <div id="sign-up-form-feedback" class="bg-danger text-light my-2"></div>
+          </div>
+          <div class="modal-footer">
+            <input class="button btn btn-success" type="submit" value="Sign Up">
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- SIGN UP MODAL END -->
+  </div>
+
+  <!-- CHANGE PASSWORD MODAL -->
+  <div id="change-password-modal" class="modal fade" tabindex="-1" role="dialog">
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change Password Form</h5>
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- CHANGE PASSWORD FORM -->
+        <form id="change-password-form">
+          <div class="modal-body">
+            <label for="">Old Password</label>
+            <input class="form-control" name="passwords[old]" required type="password" placeholder="Enter Here">
+            <label for="">New Password</label>
+            <input class="form-control my-2" name="passwords[new]" required type="password" placeholder="Enter Here">
+            <div id="change-password-form-feedback" class="text-light my-2"></div>
+          </div>
+          <div class="modal-footer">
+            <input class="button btn btn-success" type="submit" value="Change Password">
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <!-- CHANGE PASSWORD MODAL END -->
+  </div>
+
+
+  <!-- SIGN OUT MODAL -->
+  <div id="sign-out-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign Out</h5>
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- SIGN OUT FORM -->
+        <form id="sign-out-form">
+          <div class="modal-body">
+            <p>Are you sure you want to sign out?</p>
+          </div>
+          <div class="modal-footer">
+            <input class="btn btn-danger" type="submit" value="Yes">
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">No</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <!-- SIGN OUT MODAL END -->
+  </div>
+
+  <!-- CREATE BLOG MODAL -->
+  <div id="create-blog-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Write Your Blog</h5>
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- CREATE BLOG FORM -->
+        <form id="new-blog" class="blog-crud-form d-flex flex-column" data-action="create">
+          <div class="modal-body col-12">
+            <p class="my-1">Title</p>
+            <input class="col-12 my-2" name="blog[title]" type="text" placeholder="Write your blog title here" maxlength="32" required>
+            <p class="my-1">Body</p>
+            <textarea id="blog-body-textarea" class="col-12 my-2" name="blog[body]" placeholder="Write about..." maxlength="10000" required></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-success" type="submit">Post your Blog</button>
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- CREATE BLOG MODAL END -->
+  </div>
+
+  <!-- FAILURE MODAL -->
+  <div id="failure-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Something went wrong!</h5>
+          <button type="button" class="close cancel" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- FAILURE MESSAGE BODY -->
+        <div class="modal-body col-12">
+          <p class="my-1 text-justify">The resource you have done an action on might have been deleted by its owner already. Please refresh the blog resources.</p>
+        </div>
+
+        <div class="modal-footer">
+          <button id="refresh-button" class="btn btn-success" type="submit">Get up to date</button>
+          <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- FAILURE MODAL END -->
+  </div>
+
+  <h1 id="page-title" class="title pt-5 mt-5 text-center">LetterBox</h1>
+  <h3 class="subhead">A text-only social media platform</h3>
+
+  <h2 id="user-message" class="mx-5 my-0"></h2>
+
+  <div id="blog-content"></div>
+
+  <div id="blog-search-content"></div>
+
+</body>
+
+</html>
